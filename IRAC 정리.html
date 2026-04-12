@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IRAC-V GraphRAG — 연구 방법론 브리핑</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --navy:  #0f1f3d;
+  --navy2: #1a3460;
+  --blue:  #1e5fa8;
+  --blue2: #2d7dd2;
+  --sky:   #e8f1fb;
+  --sky2:  #cce0f5;
+  --gold:  #b8860b;
+  --gold2: #d4a017;
+  --red:   #b83232;
+  --green: #1a6b3c;
+  --green2:#27ae60;
+  --bg:    #f4f7fc;
+  --white: #ffffff;
+  --text:  #1a2438;
+  --text2: #4a5568;
+  --text3: #718096;
+  --border:#d0dce8;
+  --mono: 'JetBrains Mono', monospace;
+  --sidebar-w: 240px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.75;
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ── SIDEBAR ── */
+.sidebar {
+  width: var(--sidebar-w);
+  background: var(--navy);
+  color: white;
+  position: fixed;
+  top: 0; left: 0;
+  height: 100vh;
+  overflow-y: auto;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+.sidebar-logo {
+  padding: 20px 18px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.sidebar-logo .logo-badge {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 6px;
+}
+.sidebar-logo .logo-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: white;
+  line-height: 1.4;
+}
+.sidebar-logo .logo-sub {
+  font-size: 10px;
+  color: rgba(255,255,255,0.45);
+  margin-top: 4px;
+}
+.sidebar-nav { flex: 1; padding: 10px 0; }
+.nav-group-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  padding: 12px 18px 4px;
+}
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 18px;
+  cursor: pointer;
+  transition: background .15s;
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.7);
+  border-left: 3px solid transparent;
+  user-select: none;
+}
+.nav-item:hover { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.9); }
+.nav-item.active {
+  background: rgba(45,125,210,0.25);
+  color: white;
+  border-left-color: var(--blue2);
+}
+.nav-item .nav-num {
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.35);
+  min-width: 18px;
+  font-family: var(--mono);
+}
+.nav-item.active .nav-num { color: var(--blue2); }
+
+/* ── MAIN ── */
+.main {
+  margin-left: var(--sidebar-w);
+  flex: 1;
+  min-height: 100vh;
+}
+
+/* ── PAGE ── */
+.page {
+  display: none;
+  min-height: 100vh;
+  flex-direction: column;
+}
+.page.active { display: flex; }
+
+/* ── PAGE HEADER ── */
+.page-header {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 70%, var(--blue) 100%);
+  color: white;
+  padding: 36px 44px 28px;
+}
+.page-header .ph-num {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 8px;
+  font-family: var(--mono);
+}
+.page-header h1 {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+.page-header .ph-sub { font-size: 13px; color: rgba(255,255,255,0.6); }
+
+/* ── PAGE BODY ── */
+.page-body { padding: 32px 44px 48px; flex: 1; }
+
+/* ── NAVIGATION FOOTER ── */
+.page-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 44px;
+  border-top: 1px solid var(--border);
+  background: var(--white);
+}
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--white);
+  cursor: pointer;
+  font-size: 13px;
+  font-family: 'Noto Sans KR', sans-serif;
+  color: var(--text2);
+  transition: all .15s;
+}
+.nav-btn:hover { background: var(--sky); border-color: var(--blue2); color: var(--blue); }
+.nav-btn.primary { background: var(--navy); color: white; border-color: var(--navy); }
+.nav-btn.primary:hover { background: var(--blue); border-color: var(--blue); }
+.nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+.page-counter { font-size: 12px; color: var(--text3); }
+
+/* ── COMPONENTS ── */
+h2 { font-size: 17px; font-weight: 700; color: var(--navy); margin: 28px 0 12px; padding-bottom: 8px; border-bottom: 2px solid var(--border); }
+h2:first-child { margin-top: 0; }
+h3 { font-size: 14px; font-weight: 700; color: var(--navy2); margin: 20px 0 9px; padding-left: 10px; border-left: 3px solid var(--blue2); }
+p { margin-bottom: 10px; }
+
+.callout { border-radius: 8px; padding: 14px 18px; margin: 12px 0; font-size: 13px; }
+.callout.navy  { background: var(--sky); border-left: 3px solid var(--blue); }
+.callout.gold  { background: #fef9ee; border-left: 3px solid var(--gold2); }
+.callout.red   { background: #fdf2f2; border-left: 3px solid var(--red); }
+.callout.green { background: #f0faf4; border-left: 3px solid var(--green2); }
+.cl-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text3); margin-bottom: 6px; }
+
+.tbl-wrap { overflow-x: auto; margin: 12px 0; border-radius: 8px; border: 1px solid var(--border); }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+thead tr { background: var(--navy); color: white; }
+thead th { padding: 10px 13px; text-align: left; font-weight: 500; font-size: 12px; letter-spacing: 0.02em; white-space: nowrap; }
+tbody tr:nth-child(even) { background: #f8fbff; }
+tbody tr:hover { background: var(--sky); }
+td { padding: 9px 13px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.55; }
+td.mono { font-family: var(--mono); font-size: 11px; }
+td.center { text-align: center; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+.b-blue   { background: var(--sky2); color: var(--blue); }
+.b-navy   { background: #d8e4f0; color: var(--navy); }
+.b-gold   { background: #fdefc3; color: #7a5c00; }
+.b-green  { background: #d4edda; color: var(--green); }
+.b-red    { background: #fde8e8; color: var(--red); }
+.b-gray   { background: #e8ecf0; color: #4a5568; }
+
+.code-block {
+  background: #1a2438;
+  color: #e2e8f0;
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.65;
+  padding: 16px 20px;
+  border-radius: 8px;
+  margin: 12px 0;
+  overflow-x: auto;
+}
+.c-green  { color: #68d391; }
+.c-yellow { color: #f6e05e; }
+.c-blue2  { color: #90cdf4; }
+.c-pink   { color: #fc8181; }
+.c-gray2  { color: #718096; }
+.c-orange { color: #fbd38d; }
+
+.metric-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 14px 0; }
+.metric-card { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 16px 14px; text-align: center; }
+.metric-card .m-val { font-size: 22px; font-weight: 900; color: var(--navy); line-height: 1.2; }
+.metric-card .m-unit { font-size: 10px; color: var(--text3); margin-top: 1px; }
+.metric-card .m-label { font-size: 11px; color: var(--text2); margin-top: 4px; }
+.metric-card.hl { border-color: var(--blue2); background: var(--sky); }
+.metric-card.hl .m-val { color: var(--blue); }
+
+.pipeline { display: flex; align-items: center; flex-wrap: wrap; gap: 0; margin: 14px 0; }
+.pipe-box { padding: 10px 14px; border-radius: 6px; font-size: 12px; font-weight: 600; text-align: center; min-width: 90px; line-height: 1.35; }
+.pipe-box small { font-weight: 400; font-size: 10px; display: block; margin-top: 2px; opacity: 0.85; }
+.pipe-arr { color: var(--text3); font-size: 18px; padding: 0 4px; }
+.pb-gray  { background: #e8ecf0; color: var(--navy); }
+.pb-blue  { background: var(--blue); color: white; }
+.pb-navy  { background: var(--navy); color: white; }
+.pb-gold  { background: #b8860b; color: white; }
+.pb-green { background: var(--green); color: white; }
+.pb-red   { background: var(--red); color: white; }
+
+.kg-node { display: inline-block; padding: 3px 10px; border-radius: 14px; font-size: 11px; font-weight: 600; margin: 3px; }
+.kn-blue  { background: var(--sky2); color: var(--blue); border: 1px solid var(--blue2); }
+.kn-navy  { background: #d8e4f0; color: var(--navy); border: 1px solid var(--navy2); }
+.kn-green { background: #d4edda; color: var(--green); border: 1px solid var(--green2); }
+.kn-gold  { background: #fdefc3; color: #7a5c00; border: 1px solid var(--gold2); }
+.kn-red   { background: #fde8e8; color: var(--red); border: 1px solid var(--red); }
+
+.ablation-row { display: grid; grid-template-columns: 130px 1fr 1fr 1fr 1fr; margin-bottom: 1px; }
+.ab-cell { border: 1px solid var(--border); padding: 8px 10px; font-size: 12px; text-align: center; display: flex; align-items: center; justify-content: center; }
+.ab-label { background: #f0f4f8; border: 1px solid var(--border); padding: 8px 12px; font-size: 12px; font-weight: 600; color: var(--text2); display: flex; align-items: center; }
+.ab-head  { background: var(--navy); color: white; font-weight: 600; font-size: 11px; }
+.ab-s4    { background: var(--sky); font-weight: 700; color: var(--blue); }
+.ab-good  { color: var(--green2); font-weight: 700; }
+.ab-bad   { color: var(--red); }
+.ab-warn  { color: var(--gold); font-weight: 600; }
+
+.infra-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 14px 0; }
+.infra-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.infra-card-head { background: var(--navy); color: white; padding: 12px 16px; font-size: 13px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+.infra-card-head .ic-badge { background: rgba(255,255,255,0.15); padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: 600; }
+.infra-card-body { padding: 14px 16px; }
+.infra-row { display: flex; justify-content: space-between; align-items: flex-start; padding: 6px 0; border-bottom: 1px solid var(--border); font-size: 12px; }
+.infra-row:last-child { border-bottom: none; }
+.infra-key { color: var(--text3); font-weight: 500; min-width: 80px; }
+.infra-val { color: var(--text); text-align: right; font-family: var(--mono); font-size: 11px; }
+
+.fn { font-size: 11px; color: var(--text3); font-style: italic; margin-top: 6px; padding-left: 12px; border-left: 2px solid var(--border); }
+
+.url-link { color: var(--blue); font-family: var(--mono); font-size: 11px; word-break: break-all; }
+
+/* ── OVERVIEW COVER ── */
+.cover-block {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 60%, var(--blue) 100%);
+  color: white;
+  padding: 32px 36px;
+  border-radius: 10px;
+  margin-bottom: 24px;
+}
+.cover-block h2 { color: white; border-bottom-color: rgba(255,255,255,0.2); font-size: 18px; }
+.cover-block p { color: rgba(255,255,255,0.8); }
+
+@media (max-width: 900px) {
+  .sidebar { transform: translateX(-100%); }
+  .main { margin-left: 0; }
+  .metric-grid { grid-template-columns: 1fr 1fr; }
+  .infra-grid { grid-template-columns: 1fr; }
+  .page-header { padding: 24px 20px; }
+  .page-body { padding: 20px; }
+  .page-footer { padding: 14px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════ SIDEBAR ════ -->
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-badge">연구 방법론 브리핑</div>
+    <div class="logo-title">IRAC-V GraphRAG<br>Framework</div>
+    <div class="logo-sub">화물차 DTG 법적 심각도 분류</div>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="nav-group-label">연구 개요</div>
+    <div class="nav-item active" onclick="goTo(0)"><span class="nav-num">00</span>연구 개요</div>
+    <div class="nav-item" onclick="goTo(1)"><span class="nav-num">01</span>연구 배경</div>
+
+    <div class="nav-group-label">데이터 & 인프라</div>
+    <div class="nav-item" onclick="goTo(2)"><span class="nav-num">02</span>데이터 출처</div>
+    <div class="nav-item" onclick="goTo(3)"><span class="nav-num">03</span>사용 인프라</div>
+
+    <div class="nav-group-label">기술 구성요소</div>
+    <div class="nav-item" onclick="goTo(4)"><span class="nav-num">04</span>온톨로지 설계</div>
+    <div class="nav-item" onclick="goTo(5)"><span class="nav-num">05</span>Knowledge Graph</div>
+    <div class="nav-item" onclick="goTo(6)"><span class="nav-num">06</span>RAG 설계</div>
+    <div class="nav-item" onclick="goTo(7)"><span class="nav-num">07</span>Multi-hop 추론</div>
+    <div class="nav-item" onclick="goTo(8)"><span class="nav-num">08</span>LLM 활용</div>
+
+    <div class="nav-group-label">방법론 & 실험</div>
+    <div class="nav-item" onclick="goTo(9)"><span class="nav-num">09</span>IRAC-V 프레임워크</div>
+    <div class="nav-item" onclick="goTo(10)"><span class="nav-num">10</span>Ablation Study</div>
+    <div class="nav-item" onclick="goTo(11)"><span class="nav-num">11</span>평가 메트릭</div>
+    <div class="nav-item" onclick="goTo(12)"><span class="nav-num">12</span>통계 검증</div>
+
+    <div class="nav-group-label">결과 & 논의</div>
+    <div class="nav-item" onclick="goTo(13)"><span class="nav-num">13</span>실험 결과</div>
+    <div class="nav-item" onclick="goTo(14)"><span class="nav-num">14</span>한계 & 기여</div>
+  </nav>
+</aside>
+
+<!-- ════ PAGES ════ -->
+<main class="main">
+
+<!-- ── P0: 연구 개요 ── -->
+<div class="page active" id="p0">
+  <div class="page-header">
+    <div class="ph-num">00 · Overview</div>
+    <h1>화물차 DTG 위험운전행동의 법적 심각도 자동 분류를 위한<br>교통법령 지식그래프 기반 IRAC-V GraphRAG 프레임워크</h1>
+    <div class="ph-sub">Automated Legal Severity Classification of Commercial Vehicle Hazardous Driving Using Traffic Law KG-Based IRAC-V GraphRAG Framework</div>
+  </div>
+  <div class="page-body">
+    <div class="metric-grid">
+      <div class="metric-card"><div class="m-val">594명</div><div class="m-unit">2024년</div><div class="m-label">화물차 교통사고 사망자</div></div>
+      <div class="metric-card"><div class="m-val">100건</div><div class="m-unit">시나리오</div><div class="m-label">7개 카테고리, 3난이도</div></div>
+      <div class="metric-card hl"><div class="m-val">6개</div><div class="m-unit">평가 메트릭</div><div class="m-label">M1 ~ M6 (신규 M6 포함)</div></div>
+      <div class="metric-card"><div class="m-val">4단계</div><div class="m-unit">Ablation</div><div class="m-label">Vanilla → IRAC-V</div></div>
+    </div>
+
+    <h2>연구 핵심 요약</h2>
+    <div class="callout navy">
+      <div class="cl-label">패러다임 전환</div>
+      <p>기존 eTAS: <strong>"위험운전이 얼마나 발생했는가"</strong> (통계 카운팅)</p>
+      <p>본 연구:  <strong>"위험운전이 법적으로 무엇을 의미하는가"</strong> (법리 판정)</p>
+    </div>
+
+    <h2>문서 구성 안내</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>섹션</th><th>내용</th><th>핵심 포인트</th></tr></thead>
+        <tbody>
+          <tr><td><span class="badge b-gray">01</span> 연구 배경</td><td>화물차 사고 통계, DTG 제도, eTAS 한계</td><td>왜 법적 심각도가 필요한가</td></tr>
+          <tr><td><span class="badge b-gray">02</span> 데이터 출처</td><td>12개 데이터셋 URL·형식·용도</td><td>SGT 6단계 법적 근거표</td></tr>
+          <tr><td><span class="badge b-gray">03</span> 사용 인프라</td><td>Neo4j, FAISS, API, 개발 환경</td><td>버전·설정·비용 포함</td></tr>
+          <tr><td><span class="badge b-blue">04</span> 온톨로지</td><td>클래스·관계 설계, IRAC 구조 반영</td><td>7개 클래스, 6개 엣지</td></tr>
+          <tr><td><span class="badge b-blue">05</span> Knowledge Graph</td><td>Neo4j 구축, Cypher 쿼리</td><td>65 노드, 100% 검증</td></tr>
+          <tr><td><span class="badge b-blue">06</span> RAG 설계</td><td>Flat RAG vs GraphRAG 비교</td><td>공정 비교 설계 원칙</td></tr>
+          <tr><td><span class="badge b-blue">07</span> Multi-hop</td><td>경로 추론, M6 Recall 수식</td><td>S2=0% vs S3=62.5%</td></tr>
+          <tr><td><span class="badge b-blue">08</span> LLM</td><td>모델 선택, 프롬프트 설계, Bug B 수정</td><td>speed_over Python 계산</td></tr>
+          <tr><td><span class="badge b-navy">09</span> IRAC-V</td><td>5에이전트 파이프라인, Self-Healing</td><td>I→R→A→V→C 흐름</td></tr>
+          <tr><td><span class="badge b-navy">10</span> Ablation</td><td>4 Stage, N=100 시나리오 구성</td><td>카테고리별 변별력 설계</td></tr>
+          <tr><td><span class="badge b-navy">11</span> 평가 메트릭</td><td>M1~M6 정의·측정·자동화</td><td>M6 신규 도입</td></tr>
+          <tr><td><span class="badge b-navy">12</span> 통계 검증</td><td>Bootstrap CI, McNemar test</td><td>N=100, N_REPEAT=3</td></tr>
+          <tr><td><span class="badge b-red">13</span> 실험 결과</td><td>잠정 수치 (N=20), 해석</td><td>S4 최종 실험 필요</td></tr>
+          <tr><td><span class="badge b-red">14</span> 한계 & 기여</td><td>Limitations, 학술적 기여 4개</td><td>선행연구 비교</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="page-footer">
+    <button class="nav-btn" disabled>← 이전</button>
+    <span class="page-counter">1 / 15</span>
+    <button class="nav-btn primary" onclick="goTo(1)">다음: 연구 배경 →</button>
+  </div>
+</div>
+
+
+<!-- ── P1: 연구 배경 ── -->
+<div class="page" id="p1">
+  <div class="page-header">
+    <div class="ph-num">01 · Background</div>
+    <h1>연구 배경 및 필요성</h1>
+    <div class="ph-sub">화물차 사고 현황 · DTG 제도 · eTAS 구조적 한계</div>
+  </div>
+  <div class="page-body">
+    <div class="metric-grid">
+      <div class="metric-card"><div class="m-val">594명</div><div class="m-unit">2024</div><div class="m-label">화물차 사고 사망자</div></div>
+      <div class="metric-card"><div class="m-val">12년</div><div class="m-unit">2013~2024</div><div class="m-label">연속 감소 추세</div></div>
+      <div class="metric-card"><div class="m-val">96.9%</div><div class="m-unit">Trip 100건</div><div class="m-label">복합 위반 비율</div></div>
+      <div class="metric-card hl"><div class="m-val">0건</div><div class="m-unit">KCI/arXiv</div><div class="m-label">DTG 법적 심각도 선행연구</div></div>
+    </div>
+
+    <h2>DTG 의무 장착 제도</h2>
+    <p><strong>교통안전법 제55조</strong>에 의거 사업용 화물차에 DTG(Digital Tachograph) 의무 장착. 2024년 10월부터 총중량 25톤 이상으로 의무제출 범위 확대(<strong>교통안전법 제56조</strong>). 국토교통부 산하 한국교통안전공단이 eTAS로 분석 결과를 제공.</p>
+
+    <h2>eTAS의 구조적 한계</h2>
+    <div class="callout red">
+      <div class="cl-label">핵심 문제</div>
+      <p>현행 eTAS 출력: <strong>"60km/h 초과 과속 9회, 급가속 3회, 급진로변경 2회"</strong></p>
+      <p>→ 9회 중 몇 회가 범칙금(행정)인지, 형사처벌 대상인지, 제151조의2 반복과속인지 알 수 없음</p>
+      <p>→ <strong>법적 심각도 해석 없음 = 운수회사 법적 리스크 관리 불가</strong></p>
+    </div>
+
+    <h2>과속 법적 심각도 6단계 (SGT 기준)</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Level</th><th>초과속도 (화물차·사업용)</th><th>처분</th><th>범칙금</th><th>벌점</th><th>법적 근거</th></tr></thead>
+        <tbody>
+          <tr><td><span class="badge b-green">level_1</span></td><td>1 ~ 20km/h</td><td>행정</td><td>3만원</td><td>없음</td><td>도교법 제156조제1호, 시행령 별표 8</td></tr>
+          <tr><td><span class="badge b-blue">level_2</span></td><td>21 ~ 40km/h</td><td>행정</td><td>7만원</td><td>15점</td><td>도교법 제156조제1호, 시행령 별표 7·8</td></tr>
+          <tr><td><span class="badge b-blue">level_3</span></td><td>41 ~ 60km/h</td><td>행정</td><td>10만원</td><td>30점</td><td>도교법 제156조제1호, 시행령 별표 7·8</td></tr>
+          <tr><td><span class="badge b-gold">level_4</span></td><td>61 ~ 80km/h</td><td>행정 (면허정지)</td><td>13만원</td><td>60점</td><td>도교법 제156조제1호, 시행령 별표 7·8</td></tr>
+          <tr><td><span class="badge b-red">level_5</span></td><td>81 ~ 100km/h</td><td>형사처벌</td><td>30만원 이하 벌금</td><td>80점</td><td>도교법 제154조제9호</td></tr>
+          <tr><td><span class="badge b-red">level_6</span></td><td>101km/h 초과</td><td>형사처벌 가중</td><td>100만원 이하 벌금</td><td>취소</td><td>도교법 제153조제2항제2호</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout gold">
+      <div class="cl-label">M2 Penalty Accuracy 한계 — 논문 명기 필요</div>
+      <p>구체 범칙금 금액(3만·7만원 등)은 <strong>시행령 별표 8에 위임</strong>. 조문 본문(제156조)은 "20만원 이하 벌금·과료" 상한만 규정. API/KG에서 자동 접근 불가 → M2가 전 스테이지 낮게 나오는 구조적 이유. Limitations에 명기.</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <button class="nav-btn" onclick="goTo(0)">← 연구 개요</button>
+    <span class="page-counter">2 / 15</span>
+    <button class="nav-btn primary" onclick="goTo(2)">다음: 데이터 출처 →</button>
+  </div>
+</div>
+
+
+<!-- ── P2: 데이터 출처 ── -->
+<div class="page" id="p2">
+  <div class="page-header">
+    <div class="ph-num">02 · Data Sources</div>
+    <h1>데이터 출처</h1>
+    <div class="ph-sub">12개 데이터셋 — URL · 형식 · 규모 · 사용 목적</div>
+  </div>
+  <div class="page-body">
+
+    <h2>DTG 운행기록 데이터</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>데이터명</th><th>URL</th><th>형식</th><th>규모</th><th>사용 목적</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>사업용차량 Trip단위 위험운전 데이터</strong></td>
+            <td><span class="url-link">https://etas.ts2020.kr</span><br><span style="font-size:11px;color:var(--text3)">공공데이터포털 연계</span></td>
+            <td class="mono">CSV</td>
+            <td>100 Trip, 66컬럼</td>
+            <td>복합위반 빈도 분석, 시나리오 생성 근거</td>
+          </tr>
+          <tr>
+            <td><strong>사업용차량 초단위 운행기록 데이터</strong></td>
+            <td><span class="url-link">https://etas.ts2020.kr</span></td>
+            <td class="mono">CSV (header + body)</td>
+            <td>1,100행 × 14컬럼</td>
+            <td>GPS 맵매칭 테스트, 속도·가속도 EDA</td>
+          </tr>
+          <tr>
+            <td><strong>일별 집계 위험운전 데이터<br><small>(DT_CAR_BSN_DDRA)</small></strong></td>
+            <td><span class="url-link">https://etas.ts2020.kr</span></td>
+            <td class="mono">CSV</td>
+            <td>28,654행 × 19컬럼<br>(2020–2023)</td>
+            <td>시계열 위험운전 빈도 분석, 논문 배경 통계</td>
+          </tr>
+          <tr>
+            <td><strong>위험운전행동 기준 (11대)</strong></td>
+            <td><span class="url-link">https://etas.ts2020.kr/etasfrtl0401/pop/goList.do</span></td>
+            <td class="mono">HTML 규정표</td>
+            <td>11개 행동 기준</td>
+            <td>급가속·급감속 등 비과속 위반 임계값</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>제한속도 및 도로 데이터</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>데이터명</th><th>URL</th><th>형식</th><th>규모</th><th>사용 목적</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>전국도로안전표지 표준데이터</strong></td>
+            <td><span class="url-link">https://www.data.go.kr/data/15025289/fileData.do</span></td>
+            <td class="mono">CSV</td>
+            <td>50,000건 (샘플 5,600)</td>
+            <td>GPS → 제한속도 맵매칭 1단계</td>
+          </tr>
+          <tr>
+            <td><strong>고속도로 구간별 제한속도</strong></td>
+            <td><span class="url-link">https://data.ex.co.kr</span><br><span style="font-size:11px;color:var(--text3)">한국도로공사 데이터몰</span></td>
+            <td class="mono">CSV</td>
+            <td>95구간 × 6컬럼</td>
+            <td>고속도로 제한속도 맵매칭 2단계</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>교통사고 통계</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>데이터명</th><th>URL</th><th>형식</th><th>규모</th><th>사용 목적</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>경찰청 연도별 차종별 교통사고 건수</strong></td>
+            <td><span class="url-link">https://taas.koroad.or.kr</span><br><span style="font-size:11px;color:var(--text3)">교통사고분석시스템 (TAAS)</span></td>
+            <td class="mono">CSV</td>
+            <td>연도별·차종별<br>(2019–2024)</td>
+            <td>화물차 사망자 추세, 논문 배경</td>
+          </tr>
+          <tr>
+            <td><strong>교통사고통계 상세</strong></td>
+            <td><span class="url-link">https://taas.koroad.or.kr/sta/acs/exs/typical.do</span></td>
+            <td class="mono">XLSX</td>
+            <td>다년도 상세 통계</td>
+            <td>화물차 사고 심각도 분포</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>법령 데이터 (API 경유 수집)</h2>
+    <div class="callout navy">
+      <div class="cl-label">API 사용 항목 — URL은 아래 인프라 섹션 참조</div>
+      <p>국가법령정보센터 Open API를 통해 수집. 도로교통법 10개 조문 + 시행규칙 1개 + 시행령 별표 3개 + 교통안전법 3개 + 화물차법 2개</p>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>법령</th><th>조문/항목</th><th>내용</th><th>수집 방법</th></tr></thead>
+        <tbody>
+          <tr><td>도로교통법</td><td>제12·17·19·21·25·49조<br>제151조의2·153·154·156조</td><td>속도제한, 어린이보호구역, 벌칙</td><td>법제처 API (MST 코드)</td></tr>
+          <tr><td>도로교통법 시행규칙</td><td>제19조</td><td>화물차 법정 최고속도 (80km/h)</td><td>법제처 API</td></tr>
+          <tr><td>도로교통법 시행령</td><td>별표 7·8·10</td><td>벌점기준, 범칙금액, 보호구역 범칙금</td><td>PDF 다운로드 후 수동 파싱</td></tr>
+          <tr><td>교통안전법</td><td>제54조의2·55·56조</td><td>DTG 장착·제출 의무</td><td>법제처 API</td></tr>
+          <tr><td>화물자동차 운수사업법</td><td>제11·59조</td><td>허가취소, 운수종사자 교육</td><td>법제처 API</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="fn">별표 PDF는 법제처 법령 상세 페이지(<span class="url-link">https://www.law.go.kr</span>)에서 직접 다운로드 후 파싱. API로는 별표 수치 접근 불가.</p>
+  </div>
+  <div class="page-footer">
+    <button class="nav-btn" onclick="goTo(1)">← 연구 배경</button>
+    <span class="page-counter">3 / 15</span>
+    <button class="nav-btn primary" onclick="goTo(3)">다음: 사용 인프라 →</button>
+  </div>
+</div>
+
+
+<!-- ── P3: 인프라 ── -->
+<div class="page" id="p3">
+  <div class="page-header">
+    <div class="ph-num">03 · Infrastructure</div>
+    <h1>사용 인프라</h1>
+    <div class="ph-sub">Neo4j · FAISS · LLM API · 개발 환경 · 비용 추정</div>
+  </div>
+  <div class="page-body">
+
+    <h2>핵심 구성요소 개요</h2>
+    <div class="infra-grid">
+      <div class="infra-card">
+        <div class="infra-card-head">Neo4j <span class="ic-badge">Graph DB</span></div>
+        <div class="infra-card-body">
+          <div class="infra-row"><span class="infra-key">버전</span><span class="infra-val">Neo4j 5.x (Community / AuraDB)</span></div>
+          <div class="infra-row"><span class="infra-key">목적</span><span class="infra-val">교통법령 KG 저장·쿼리</span></div>
+          <div class="infra-row"><span class="infra-key">연결</span><span class="infra-val">bolt://localhost:7687</span></div>
+          <div class="infra-row"><span class="infra-key">드라이버</span><span class="infra-val">neo4j==5.x (Python)</span></div>
+          <div class="infra-row"><span class="infra-key">노드 수</span><span class="infra-val">65 nodes (v3 기준)</span></div>
+          <div class="infra-row"><span class="infra-key">비용</span><span class="infra-val">Community 무료 / AuraDB Free Tier</span></div>
+        </div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-card-head">FAISS <span class="ic-badge">Vector DB</span></div>
+        <div class="infra-card-body">
+          <div class="infra-row"><span class="infra-key">버전</span><span class="infra-val">faiss-cpu 1.8.x</span></div>
+          <div class="infra-row"><span class="infra-key">목적</span><span class="infra-val">Stage 2 Flat RAG 검색</span></div>
+          <div class="infra-row"><span class="infra-key">인덱스</span><span class="infra-val">IndexFlatIP (내적 유사도)</span></div>
+          <div class="infra-row"><span class="infra-key">차원</span><span class="infra-val">1536 (text-embedding-3-small)</span></div>
+          <div class="infra-row"><span class="infra-key">청크 수</span><span class="infra-val">22건 (법령 원문만)</span></div>
+          <div class="infra-row"><span class="infra-key">저장</span><span class="infra-val">data/kg/faiss_index.bin</span></div>
+        </div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-card-head">Anthropic Claude <span class="ic-badge">LLM</span></div>
+        <div class="infra-card-body">
+          <div class="infra-row"><span class="infra-key">모델</span><span class="infra-val">claude-sonnet-4-20250514</span></div>
+          <div class="infra-row"><span class="infra-key">용도</span><span class="infra-val">S1~S4 추론, M4 평가</span></div>
+          <div class="infra-row"><span class="infra-key">Temperature</span><span class="infra-val">0.0 (재현성)</span></div>
+          <div class="infra-row"><span class="infra-key">max_tokens</span><span class="infra-val">500~2000 (에이전트별)</span></div>
+          <div class="infra-row"><span class="infra-key">환경변수</span><span class="infra-val">ANTHROPIC_API_KEY</span></div>
+          <div class="infra-row"><span class="infra-key">예상 비용</span><span class="infra-val">N=100×3회 ≈ $15~25</span></div>
+        </div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-card-head">OpenAI Embedding <span class="ic-badge">Embedding</span></div>
+        <div class="infra-card-body">
+          <div class="infra-row"><span class="infra-key">모델</span><span class="infra-val">text-embedding-3-small</span></div>
+          <div class="infra-row"><span class="infra-key">용도</span><span class="infra-val">Stage 2 RAG 청크 임베딩</span></div>
+          <div class="infra-row"><span class="infra-key">차원</span><span class="infra-val">1536</span></div>
+          <div class="infra-row"><span class="infra-key">환경변수</span><span class="infra-val">OPENAI_API_KEY</span></div>
+          <div class="infra-row"><span class="infra-key">호출 시점</span><span class="infra-val">인덱스 구축 1회 + 쿼리마다</span></div>
+          <div class="infra-row"><span class="infra-key">예상 비용</span><span class="infra-val">실험 전체 $1 미만</span></div>
+        </div>
+      </div>
+    </div>
+
+    <h2>법제처 API</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>항목</th><th>상세</th></tr></thead>
+        <tbody>
+          <tr><td>서비스 명</td><td>국가법령정보 Open API (법제처)</td></tr>
+          <tr><td>URL</td><td><span class="url-link">https://open.law.go.kr/LSO/openApi.do</span></td></tr>
+          <tr><td>인증 방식</td><td>OC(인증코드) 발급 후 쿼리 파라미터로 전달 (<code>?OC={코드}</code>)</td></tr>
+          <tr><td>주요 엔드포인트</td><td><code>lawSearch.do</code> (법령 검색), <code>lawService.do</code> (조문 조회)</td></tr>
+          <tr><td>응답 형식</td><td>JSON / XML (type 파라미터로 선택)</td></tr>
+          <tr><td>한계</td><td>별표(HWP/PDF 형태)는 API 미제공 → 직접 다운로드 필요</td></tr>
+          <tr><td>Rate Limit</td><td>일 10,000건 (무료), 300ms 딜레이 권장</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>개발 환경</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>항목</th><th>버전/사양</th><th>비고</th></tr></thead>
+        <tbody>
+          <tr><td>Python</td><td>3.13.7</td><td>가상환경 권장 (venv/conda)</td></tr>
+          <tr><td>Jupyter</td><td>Notebook 7.x / Lab 4.x</td><td>01~05 .ipynb 실행 환경</td></tr>
+          <tr><td>neo4j</td><td>5.x</td><td><code>pip install neo4j</code></td></tr>
+          <tr><td>faiss-cpu</td><td>1.8.x</td><td><code>pip install faiss-cpu</code></td></tr>
+          <tr><td>anthropic</td><td>0.x (최신)</td><td><code>pip install anthropic</code></td></tr>
+          <tr><td>openai</td><td>1.x</td><td><code>pip install openai</code></td></tr>
+          <tr><td>scikit-learn</td><td>1.5.x</td><td>F1 score, McNemar test</td></tr>
+          <tr><td>scipy</td><td>1.x</td><td>카이제곱 분포 (McNemar)</td></tr>
+          <tr><td>pandas / numpy</td><td>최신</td><td>데이터 처리</td></tr>
+          <tr><td>matplotlib</td><td>최신</td><td>논문 그림 (600dpi 출력)</td></tr>
+          <tr><td>python-dotenv</td><td>1.x</td><td>.env 환경변수 관리</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>.env 파일 구성</h2>
+    <div class="code-block">
+<span class="c-gray2"># .env 파일 (프로젝트 루트)</span>
+<span class="c-green">ANTHROPIC_API_KEY</span>=sk-ant-...
+<span class="c-green">OPENAI_API_KEY</span>=sk-...
+<span class="c-green">NEO4J_URI</span>=bolt://localhost:7687
+<span class="c-green">NEO4J_USER</span>=neo4j
+<span class="c-green">NEO4J_PASSWORD</span>=your_password
+<span class="c-green">LAW_OC</span>=your_oc_code    <span class="c-gray2"># 법제처 API 인증코드 (open.law.go.kr 회원가입 후 발급)</span>
+    </div>
+
+    <h2>비용 추정</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>항목</th><th>N=20 테스트</th><th>N=100 최종 (×3회)</th><th>비고</th></tr></thead>
+        <tbody>
+          <tr><td>Claude API (추론)</td><td>~$1~2</td><td>~$15~25</td><td>Stage 1~4 × 100 × 3</td></tr>
+          <tr><td>OpenAI API (임베딩)</td><td>&lt;$0.1</td><td>&lt;$0.5</td><td>인덱스 구축 1회</td></tr>
+          <tr><td>법제처 API</td><td>무료</td><td>무료</td><td>일 10,000건 이하</td></tr>
+          <tr><td>Neo4j (AuraDB Free)</td><td>무료</td><td>무료</td><td>200MB 한도</td></tr>
+          <tr><td style="font-weight:700">합계</td><td style="font-weight:700">~$2</td><td style="font-weight:700">~$20~30</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="page-footer">
+    <button class="nav-btn" onclick="goTo(2)">← 데이터 출처</button>
+    <span class="page-counter">4 / 15</span>
+    <button class="nav-btn primary" onclick="goTo(4)">다음: 온톨로지 →</button>
+  </div>
+</div>
+
+
+<!-- ── P4: 온톨로지 ── -->
+<div class="page" id="p4">
+  <div class="page-header">
+    <div class="ph-num">04 · Ontology</div>
+    <h1>교통법령 온톨로지 설계</h1>
+    <div class="ph-sub">IRAC 구조 반영 · 7개 클래스 · 6개 관계</div>
+  </div>
+  <div class="page-body">
+    <h2>클래스 체계</h2>
+    <div style="margin:14px 0 20px;">
+      <span class="kg-node kn-blue">HazardousBehavior</span>
+      <span class="kg-node kn-navy">LegalArticle</span>
+      <span class="kg-node kn-green">SeverityLevel</span>
+      <span class="kg-node kn-gold">Penalty</span>
+      <span class="kg-node kn-red">AggravatingFactor</span>
+      <span class="kg-node kn-blue">VehicleType</span>
+      <span class="kg-node kn-navy">RoadType</span>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>클래스</th><th>설명</th><th>주요 속성</th><th>인스턴스 예시</th></tr></thead>
+        <tbody>
+          <tr><td><span class="badge b-blue">HazardousBehavior</span></td><td>위험운전 유형 (11대)</td><td>name, threshold, unit</td><td>speeding, sudden_accel, sudden_decel ...</td></tr>
+          <tr><td><span class="badge b-navy">LegalArticle</span></td><td>법령 조문 단위</td><td>id, law, jo_num, title, content, type</td><td>RTA_17 (제17조), RTA_154 (제154조)</td></tr>
+          <tr><td><span class="badge b-green">SeverityLevel</span></td><td>과속 심각도 6단계</td><td>id, label, speed_over_min, speed_over_max, criminal</td><td>level_1 (0~20), level_5 (80~100)</td></tr>
+          <tr><td><span class="badge b-gold">Penalty</span></td><td>처벌 내용</td><td>id, type, value, vehicle, criminal</td><td>FINE_L4_FREIGHT (13만원), P_CRIMINAL_154</td></tr>
+          <tr><td><span class="badge b-red">AggravatingFactor</span></td><td>가중처벌 조건</td><td>id, name, legal_basis</td><td>school_zone, repeat_100km</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>관계(Edge) 유형</h2>
+    <div class="code-block">
+<span class="c-gray2">// IRAC 구조를 반영한 법령 관계 (Neo4j Property Graph)</span>
+<span class="c-green">HazardousBehavior</span> <span class="c-yellow">-[:VIOLATES]→</span>       <span class="c-blue2">LegalArticle</span>      <span class="c-gray2">// 위반행위 → 위반 조문</span>
+<span class="c-green">LegalArticle</span>       <span class="c-yellow">-[:RELATED_TO]→</span>     <span class="c-blue2">LegalArticle</span>      <span class="c-gray2">// 정의조문 → 벌칙조문</span>
+<span class="c-green">LegalArticle</span>       <span class="c-yellow">-[:DEFINED_BY]→</span>     <span class="c-blue2">LegalArticle</span>      <span class="c-gray2">// 조문 → 정의 조문</span>
+<span class="c-green">SeverityLevel</span>      <span class="c-yellow">-[:PENALIZED_BY]→</span>   <span class="c-orange">Penalty</span>           <span class="c-gray2">// 심각도 → 처벌 내용</span>
+<span class="c-green">AggravatingFactor</span>  <span class="c-yellow">-[:AGGRAVATES]→</span>     <span class="c-pink">SeverityLevel</span>     <span class="c-gray2">// 가중조건 → 등급 상향</span>
+<span class="c-green">SeverityLevel</span>      <span class="c-yellow">-[:ESCALATES_TO]→</span>   <span class="c-pink">SeverityLevel</span>     <span class="c-gray2">// 반복과속 → 상위 등급</span>
+    </div>
+
+    <h2>IRAC 구조와의 대응</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>IRAC 단계</th><th>대응 클래스/관계</th><th>담당 에이전트</th></tr></thead>
+        <tbody>
+          <tr><td><strong>I</strong> (Issue · 쟁점)</td><td>HazardousBehavior 식별, 속도 계산</td><td>I-Agent</td></tr>
+          <tr><td><strong>R</strong> (Rule · 법규)</td><td>VIOLATES → LegalArticle → RELATED_TO 경로 탐색</td><td>R-Agent (KG 쿼리)</td></tr>
+          <tr><td><strong>A</strong> (Application · 포섭)</td><td>SeverityLevel PENALIZED_BY Penalty + AggravatingFactor</td><td>A-Agent</td></tr>
+          <tr><td><strong>C</strong> (Conclusion · 결론)</td><td>최종 심각도 + 인용 조문 + 처벌 내용</td><td>C-Agent</td></tr>
+          <tr><td>— (Verification · 검증)</td><td>Citation 교차확인, KG 일관성 검증</td><td>V-Agent</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout navy">
+      <div class="cl-label">설계 원칙</div>
+      <p>OWL 기반 형식 온톨로지는 구축 비용이 높고 법령 개정 시 유지관리 부담이 크므로, 본 연구는 Neo4j의 <strong>Property Graph Ontology</strong>를 채택. 실용적 법적 추론 지원에 최적화.</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <button class="nav-btn" onclick="goTo(3)">← 사용 인프라</button>
+    <span class="page-counter">5 / 15</span>
+    <button class="nav-btn primary" onclick="goTo(5)">다음: Knowledge Graph →</button>
+  </div>
+</div>
+
+
+<!-- ── P5: KG ── -->
+<div class="page" id="p5">
+  <div class="page-header">
+    <div class="ph-num">05 · Knowledge Graph</div>
+    <h1>Knowledge Graph (Neo4j)</h1>
+    <div class="ph-sub">구축 파이프라인 · Cypher 쿼리 · 검증</div>
+  </div>
+  <div class="page-body">
+    <h2>KG 구축 파이프라인</h2>
+    <div class="pipeline">
+      <div class="pipe-box pb-gray">법령 수집<small>법제처 API</small></div>
+      <div class="pipe-arr">→</div>
+      <div class="pipe-box pb-blue">조문 파싱<small>JSON 구조화</small></div>
+      <div class="pipe-arr">→</div>
+      <div class="pipe-box pb-blue">노드 생성<small>Neo4j CREATE</small></div>
+      <div class="pipe-arr">→</div>
+      <div class="pipe-box pb-navy">관계 생성<small>"제○조에 따라" 패턴</small></div>
+      <div class="pipe-arr">→</div>
+      <div class="pipe-box pb-green">자동 검증<small>83건 테스트</small></div>
+    </div>
+
+    <h2>KG 구성 현황</h2>
+    <div class="metric-grid">
+      <div class="metric-card"><div class="m-val">65</div><div class="m-unit">노드</div><div class="m-label">총 노드 수</div></div>
+      <div class="metric-card"><div class="m-val">16</div><div class="m-unit">LegalArticle</div><div class="m-label">법령 조문 노드</div></div>
+      <div class="metric-card"><div class="m-val">6</div><div class="m-unit">SeverityLevel</div><div class="m-label">심각도 단계 노드</div></div>
+      <div class="metric-card hl"><div class="m-val">100%</div><div class="m-unit">83건 자동 테스트</div><div class="m-label">KG 검증 정확도</div></div>
+    </div>
+
+    <h2>핵심 Cypher 쿼리</h2>
+    <div class="code-block">
+<span class="c-gray2">// 1-hop: 위반유형 → 관련 조문 검색 (R-Agent)</span>
+<span class="c-blue2">MATCH</span> (h:HazardousBehavior {name: $violation_type})
+      -[:VIOLATES]->(a:LegalArticle)
+<span class="c-blue2">RETURN</span> a.id, a.jo_num, a.title, a.content
+<span class="c-blue2">ORDER BY</span> a.id
+
+<span class="c-gray2">// 2-hop: 위반 → 정의조문 → 벌칙조문 (Multi-hop)</span>
+<span class="c-blue2">MATCH</span> (h:HazardousBehavior {name: $vtype})
+      -[:VIOLATES]->(a:LegalArticle)
+      -[:RELATED_TO]->(a2:LegalArticle)
+<span class="c-blue2">RETURN DISTINCT</span> a2.id, a2.jo_num, a2.content
+
+<span class="c-gray2">// 초과속도 → SeverityLevel 직접 조회 (R-Agent)</span>
+<span class="c-blue2">MATCH</span> (s:SeverityLevel)
+<span class="c-blue2">WHERE</span>  s.speed_over_min <= $speed_over <span class="c-blue2">AND</span> s.speed_over_max > $speed_over
+<span class="c-blue2">OPTIONAL MATCH</span> (s)-[:PENALIZED_BY]->(p:Penalty)
+<span class="c-blue2">RETURN</span> s.id, s.label, s.criminal, s.legal_basis, collect(p.value)
+
+<span class="c-gray2">// 가중조건 조회 (어린이보호구역 시)</span>
+<span class="c-blue2">MATCH</span> (af:AggravatingFactor)
+<span class="c-blue2">RETURN</span> af.name, af.description, af.legal_basis
+
+<span class="c-gray2">// 별표 기준표 전체 조회 (S3 컨텍스트 제공)</span>
+<span class="c-blue2">MATCH</span> (a:LegalArticle) <span class="c-blue2">WHERE</span> a.type = 'penalty_table'
+<span class="c-blue2">RETURN</span> a.id, a.jo_num, a.title, a.content
+    </div>
+
+    <h2>Neo4j 선택 이유</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>기준</th><th>Neo4j (채택)</th><th>RDF/SPARQL</th><th>RDBMS</th></tr></thead>
+        <tbody>
+          <tr><td>Multi-hop 탐색</td><td><span class="badge b-green">Cypher 직관적</span></td><td>복잡한 SPARQL</td><td>JOIN 중첩 필요</td></tr>
+          <tr><td>법령 개정 유연성</td><td><span class="badge b-green">노드 속성 변경</span></td><td>OWL 재정의</td><td>스키마 변경</td></tr>
+          <tr><td>LLM Python 통합</td><td><span class="badge b-green">neo4j 드라이버</span></td><td>제한적</td><td>제한적</td></tr>
+          <tr><td>시각화</td><td><span class="badge b-green">Neo4j Browser</span></td><td>별도 도구</td><td>별도 도구</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="page-footer">
+    <button class="nav-btn" onclick="goTo(4)">← 온톨로지</button>
+    <span class="page-counter">6 / 15</span>
+    <button class="nav-btn primary" onclick="goTo(6)">다음: RAG 설계 →</button>
+  </div>
+</div>
+
+
+<!-- ── P6: RAG ── -->
+<div class="page" id="p6">
+  <div class="page-header">
+    <div class="ph-num">06 · RAG Design</div>
+    <h1>RAG 설계</h1>
+    <div class="ph-sub">Flat RAG (Stage 2) vs GraphRAG (Stage 3·4) 비교</div>
+  </div>
+  <div class="page-body">
+    <h2>Flat RAG (Stage 2) 구성</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>항목</th><th>내용</th><th>비고</th></tr></thead>
+        <tbody>
+          <tr><td>임베딩 모델</td><td>text-embedding-3-small (OpenAI)</td><td>1536차원</td></tr>
+          <tr><td>벡터 DB</td><td>FAISS IndexFlatIP</td><td>내적 유사도 (L2 정규화 후)</td></tr>
+          <tr><td>청크 전략</td><td>조문 단위 (300자 max, 100자 overlap)</td><td>최소 20자 이상</td></tr>
+          <tr><td>청크 수</td><td>22건</td><td>법령 원문만 (SGT 제외)</td></tr>
+          <tr><td>검색 Top-K</td><td>7 (일반) / 4+4 병행 (과속)</td><td>과속 시 penalty 쿼리 추가</td></tr>
+          <tr><td>쿼리 구성</td><td>시나리오 설명 + 위반유형 + "과속 N km 초과 범칙금 벌점"</td><td>v4: penalty 청크 우선 검색</td></tr>
+          <tr><td>의도적 제외</td><td>SGT 등급표, 별표 수치, 위반→조문 매핑</td><td>S2/S3 공정 비교를 위해</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>GraphRAG (Stage 3·4) 구성</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>항목</th><th>내용</th></tr></thead>
+        <tbody>
+          <tr><td>검색 방식</td><td>Neo4j Cypher 쿼리 (구조적 탐색)</td></tr>
+          <tr><td>제공 정보</td><td>법조문 원문 + 조문 간 관계 경로 + 벌칙기준표</td></tr>
+          <tr><td>S3와의 차이</td><td>S3: 단일 프롬프트 일괄 처리 / S4: 5에이전트 단계별 처리</td></tr>
+          <tr><td>SeverityLevel 조회</td><td>S3: 직접 조회 없음 (LLM 추론) / S4: R-Agent가 직접 조회</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout navy">
+      <div class="cl-label">S2 vs S3 공정 비교 설계 원칙</div>
+      <p>S2와 S3 모두 <strong>동일한 법령 원문 코퍼스</strong> 사용. S3는 추가로 조문 간 VIOLATES·RELATED_TO 관계 경로만 제공. <strong>"정보량이 아닌 구조적 표현의 효용"</strong>을 단독으로 측정하는 설계.</p>
+    </div>
+
+    <h2>S1=S2 Severity F1 동일 — 예상된 결과</h2>
+    <div class="callout gold">
+      <div class="cl-label">해석 주의 — 버그가 아님</div>
+      <p>Flat RAG가 별표 8 청크("20km/h이하 3만원, 20~40km/h 7만원")를 검색해 오더라도, 이 숫자를 <strong>"초과속도 70km/h → level_4"</strong>라는 구조화된 추론으로 연결하지 못한다. 이것이 Multi-hop Recall S2=0%로 정량화된다. 논문에서 이 결과는 <strong>"KG의 필요성을 실증하는 핵심 증거"</strong>로 프레이밍한다.</p>
+    </div>
+
+    <h2>RAG 청크 구성 (22건)</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>청크 ID</th><th>법령</th><th>조문</th><th>내용 요약</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">RTA_17</td><td>도로교통법</td><td>제17조</td><td>자동차등의 속도 (제한속도 준수 의무)</td></tr>
+          <tr><td class="mono">RTA_12</td><td>도로교통법</td><td>제12조</td><td>어린이 보호구역 지정 및 속도 제한</td></tr>
+          <tr><td class="mono">RTA_156</td><td>도로교통법</td><td>제156조</td><td>벌칙 (20만원 이하 벌금·과료)</td></tr>
+          <tr><td class="mono">RTA_154</td><td>도로교통법</td><td>제154조</td><td>벌칙 (30만원 이하 — 80km/h 초과)</td></tr>
+          <tr><td class="mono">RTA_153</td><td>도로교통법</td><td>제153조</td><td>벌칙 (100만원 이하 — 100km/h 초과)</td></tr>
+          <tr><td class="mono">RTAE_T8</td><td>시행령 별표 8</td><td>범칙금액표</td><td>승합·화물 20km/h이하 3만원, 20~40km/h 7만원...</td></tr>
+          <tr><td class="mono">RTAE_T7</td><td>시행령 별표 7</td><td>벌점기준</td><td>과속 20km/h이하 없음, 20~40km/h 15점...</td></tr>
+          <tr><td colspan="4" style="color:var(--text3);font-style:italic;text-align:center">+ 기타 15건 (교통안전법·화물차법·시행규칙 등)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="page-footer">
+    <button class="nav-btn" onclick="goTo(5)">← Knowledge Graph</button>
+    <span class="page-counter">7 / 15</span>
+    <button class="nav-btn primary" onclick="goTo(7)">다음: Multi-hop →</button>
+  </div>
+</div>
+
+
+<!-- ── P7: Multi-hop ── -->
+<div class="page" id="p7">
+  <div class="page-header">
+    <div class="ph-num">07 · Multi-hop</div>
+    <h1>Multi-hop 추론 원리</h1>
+    <div class="ph-sub">경로 탐색 · M6 Recall 정의 · S2↔S3 증거</div>
+  </div>
+  <div class="page-body">
+    <h2>Multi-hop이란</h2>
+    <p>단일 검색(single-hop): 쿼리 → 관련 노드 (1단계)</p>
+    <p>Multi-hop: 쿼리 → 중간 노드 → 최종 노드 (2단계 이상) — 법률 도메인에서 "위반행위 → 정의조문 → 벌칙조문"처럼 여러 노드를 거쳐야 완전한 법적 추론이 가능하다.</p>
+
+    <h2>교통법령 Multi-hop 경로 예시</h2>
+    <div class="code-block">
+<span class="c-gray2">// 과속(speeding) 위반의 Multi-hop 경로</span>
+
+<span class="c-gray2">// Hop 1: 위반 → 정의조문</span>
+speeding <span class="c-yellow">─[:VIOLATES]→</span> RTA_17  <span class="c-gray2">(제17조: 자동차등의 속도)</span>
+
+<span class="c-gray2">// Hop 2: 정의조문 → 벌칙조문</span>
+RTA_17 <span class="c-yellow">─[:RELATED_TO]→</span> RTA_156  <span class="c-gray2">(제156조: 20만원 이하 — level_1~4)</span>
+RTA_17 <span class="c-yellow">─[:RELATED_TO]→</span> RTA_154  <span class="c-gray2">(제154조: 30만원 이하 — level_5, 80km/h 초과)</span>
+RTA_17 <span class="c-yellow">─[:RELATED_TO]→</span> RTA_153  <span class="c-gray2">(제153조: 100만원 이하 — level_6, 100km/h 초과)</span>
+
+<span class="c-gray2">// Hop 3 (조건부): 벌칙조문 → 가중조항</span>
+RTA_154 <span class="c-yellow">─[:RELATED_TO]→</span> RTA_151_2  <span class="c-gray2">(제151조의2: 반복과속 3회 이상 → 가중)</span>
+    </div>
+
+    <h2>M6 Multi-hop Recall 계산 방법</h2>
+    <div class="code-block">
+<span class="c-gray2"># 필수 조문 집합 정의 (VIOLATION_MAPPING 기반)</span>
+required = {<span class="c-orange">"RTA_17"</span>,  <span class="c-gray2"># 정의: 속도제한</span>
+            <span class="c-orange">"RTA_156"</span>}  <span class="c-gray2"># 벌칙: 20만원 이하 (level_1~4의 경우)</span>
+
+<span class="c-gray2"># 어린이보호구역 포함 시</span>
+required.add(<span class="c-orange">"RTA_12"</span>)
+
+<span class="c-gray2"># Recall 계산</span>
+recall = len(cited_articles ∩ required) / len(required)
+
+<span class="c-gray2"># 결과 비교:</span>
+<span class="c-gray2"># S1: 0.0%  — 인용 없음 (환각 100%)</span>
+<span class="c-gray2"># S2: 0.0%  — Flat RAG로는 경로 추론 불가</span>
+<span class="c-gray2"># S3: 62.5% — KG Multi-hop으로 연결 가능</span>
+<span class="c-gray2"># S4: 80.0% — 멀티에이전트로 추가 경로 탐색</span>
+    </div>
+
+    <h2>S2↔S3 비교: Multi-hop의 핵심 증거</h2>
+    <div class="callout green">
+      <div class="cl-label">논문 핵심 주장</div>
+      <p><strong>S2→S3 Multi-hop Recall: 0% → 62.5% (+62.5%p)</strong></p>
+      <p>동일 코퍼스에서 Flat RAG는 Multi-hop 경로 추론 불가. KG가 "위반→정의→벌칙" 관계를 구조적으로 제공할 때 비로소 완전한 법적 추론 사슬이 구성된다. Severity F1 차이(+7.2%p)보다 Multi-hop Recall 차이(+62.5%p)가 훨씬 크다는 점이 KG 효용의 본질을 보여준다.</p>
+    </div>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Stage</th><th>Multi-hop Recall</th><th>이유</th></tr></thead>
+        <tbody>
+          <tr><td>S1: Vanilla</td><td class="ab-bad">0.0%</td><td>인용 없음, 환각 100%</td></tr>
+          <tr><td>S2: Flat RAG</td><td class="ab-bad">0.0%</td><td>청크 유사도 검색으로 관계 경로 추론 불가</td></tr>
+          <tr><td>S3: GraphRAG</td><td class="ab-warn">62.5%</td><td>KG VIOLATES→RELATED_TO 경로 제공</td></tr>
+          <tr><td>S4: IRAC-V</td><td class="ab-good">80.0%</td><td>R-Agent가 멀티홉 + API Fallback으로 추가 경로 탐색</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="page-footer">
+    <button class="nav-btn" onclick="goTo(6)">← RAG 설계</button>
+    <span class="page-counter">8 / 15</span>
+    <button class="nav-btn primary" onclick="goTo(8)">다음: LLM 활용 →</button>
+  </div>
+</div>
+
+
+<!-- ── P8: LLM ── -->
+<div class="page" id="p8">
+  <div class="page-header">
+    <div class="ph-num">08 · LLM</div>
+    <h1>LLM 활용 설계</h1>
+    <div class="ph-sub">모델 선택 · 프롬프트 설계 · Bug B 수정 내역</div>
+  </div>
+  <div class="page-body">
+    <h2>모델 구성</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>역할</th><th>모델</th><th>설정</th><th>이유</th></tr></thead>
+        <tbody>
+          <tr><td>주 추론 (S1~S4)</td><td>claude-sonnet-4-20250514</td><td>temperature=0.0</td><td>한국어 법령 이해력, 재현성</td></tr>
+          <tr><td>임베딩 (S2 RAG)</td><td>text-embedding-3-small</td><td>1536차원</td><td>FAISS 호환, 비용 효율</td></tr>
+          <tr><td>M4 평가 (LLM-as-Judge)</td><td>claude-sonnet-4-20250514</td><td>temperature=0.3</td><td>프롬프트 변형으로 편향 통제</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>스테이지별 프롬프트 설계</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Stage</th><th>컨텍스트 제공</th><th>프롬프트 핵심 차이</th></tr></thead>
+        <tbody>
+          <tr><td><span class="badge b-gray">S1: Vanilla</span></td><td>없음 (LLM 내부 지식)</td><td>법령명·구조 안내만. 실제 조문 텍스트·KG 없음</td></tr>
+          <tr><td><span class="badge b-blue">S2: Flat RAG</span></td><td>FAISS 검색 결과 (법령 원문)</td><td>S1과 동일 지시 + [참고 법령] 섹션 추가</td></tr>
+          <tr><td><span class="badge b-navy">S3: GraphRAG</span></td><td>KG 쿼리 결과 (조문+관계+벌칙기준)</td><td>[KG 검색 결과] + 구조화 데이터</td></tr>
+          <tr><td><span class="badge b-gold">S4: IRAC-V</span></td><td>5에이전트 단계별 컨텍스트</td><td>각 에이전트 역할 특화 + speed_over 명시 전달</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Bug B 수정 — I-Agent speed_over 계산</h2>
+    <div class="callout red">
+      <div class="cl-label">버그 원인 (v3 이전)</div>
+      <p>I-Agent 프롬프트에 "화물차(4톤 초과) 법정 제한속도: 고속도로 80km/h" 구절 포함 시, 도로 제한속도가 80km/h 미만(50/60km/h)일 때 LLM이 차종 보정값 +10km/h를 오적용함. 초과속도 70→80, 78→88, 90→100, 98→108km/h로 과산정 → 상위 등급 오판정.</p>
+    </div>
+    <div class="code-block">
+<span class="c-gray2">## v4 수정: Python에서 직접 계산 (LLM에게 맡기지 않음)</span>
+
+<span class="c-green">def</span> <span class="c-blue2">_calc_speed_over</span>(scenario):
+    pre_calc = scenario.get(<span class="c-orange">'speed_over'</span>)     <span class="c-gray2"># 시나리오 JSON 우선</span>
+    <span class="c-pink">if</span> pre_calc <span class="c-pink">is not None</span>: <span class="c-pink">return</span> max(0, int(pre_calc))
+    actual = scenario.get(<span class="c-orange">'actual_speed'</span>, 0)
+    limit  = scenario.get(<span class="c-orange">'speed_limit'</span>, 0)
+    <span class="c-pink">return</span> max(0, int(actual) - int(limit))
+
+<span class="c-gray2">## I-Agent 프롬프트 핵심 변경</span>
+prompt = f<span class="c-orange">"""
+[DTG 계측값]
+  실제속도: {actual}km/h, 제한속도: {limit}km/h
+  초과속도: {speed_over}km/h  ← 이 값을 speed_over_km에 사용
+  (초과속도 = 실제속도 - 도로 제한속도, 차종 보정 없음)
+"""</span>
+
+<span class="c-gray2">## 안전장치: LLM이 값을 바꿨을 경우 강제 복원</span>
+<span class="c-pink">for</span> issue <span class="c-pink">in</span> result[<span class="c-orange">'issues'</span>]:
+    <span class="c-pink">if</span> issue.get(<span class="c-orange">'issue_type'</span>) == <span class="c-orange">'speeding'</span>:
+        issue[<span class="c-orange">'speed_over_km'</span>] = speed_over  <span class="c-gray2"># 강제 복원</span>
+    </div>
+  </div>
+  <div class="page-footer">
+    <button class="nav-btn" onclick="goTo(7)">← Multi-hop</button>
+    <span class="page-counter">9 / 15</span>
+    <button class="nav-btn primary" onclick="goTo(9)">다음: IRAC-V →</button>
+  </div>
+</div>
+
+
+<!-- ── P9: IRAC-V ── -->
+<div class="page" id="p9">
+  <div class="page-header">
+    <div class="ph-num">09 · IRAC-V Framework</div>
+    <h1>IRAC-V 프레임워크</h1>
+    <div class="ph-sub">5에이전트 파이프라인 · Self-Healing · 맵매칭</div>
+  </div>
+  <div class="page-body">
+    <h2>전체 파이프라인</h2>
+    <div class="pipeline">
+      <div class="pipe-box pb-gray">DTG 이벤트<small>속도·GPS·차종</small></div>
+      <div class="pipe-arr">→</div>
+      <div class="pipe-box pb-blue">I-Agent<small>쟁점 추출</small></div>
+      <div class="pipe-arr">→</div>
+      <div class="pipe-box pb-blue">R-Agent<small>KG 법규 검색</small></div>
+      <div class="pipe-arr">→</div>
+      <div class="pipe-box pb-navy">A-Agent<small>법리 포섭</small></div>
+      <div class="pipe-arr">→</div>
+      <div class="pipe-box pb-red">V-Agent<small>검증·Self-Heal</small></div>
+      <div class="pipe-arr">→</div>
+      <div class="pipe-box pb-green">C-Agent<small>결론 생성</small></div>
+    </div>
+
+    <h2>5개 에이전트 상세 명세</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>에이전트</th><th>IRAC</th><th>입력</th><th>처리 내용</th><th>출력</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>I-Agent</strong><br><small>Issue Extractor</small></td>
+            <td>I</td>
+            <td>이벤트 설명, 위반유형, speed_over (Python 계산)</td>
+            <td>사실관계 구조화: 위반유형, 초과속도, 도로유형, 가중요인 추출</td>
+            <td>issues JSON</td>
+          </tr>
+          <tr>
+            <td><strong>R-Agent</strong><br><small>Rule Retriever</small></td>
+            <td>R</td>
+            <td>I-Agent 출력</td>
+            <td>KG Cypher 쿼리: 위반→조문(1-hop) + 조문→벌칙(2-hop) + SeverityLevel 직접 조회. KG 불충분 시 법제처 API Fallback</td>
+            <td>rules JSON</td>
+          </tr>
+          <tr>
+            <td><strong>A-Agent</strong><br><small>Application</small></td>
+            <td>A</td>
+            <td>I+R 출력</td>
+            <td>법리 포섭: 사실관계+법규 → 심각도 판정. KG 심각도 참조값 우선. 형사/행정 구분, 가중조건 반영</td>
+            <td>application JSON</td>
+          </tr>
+          <tr>
+            <td><strong>V-Agent</strong><br><small>Verifier</small></td>
+            <td>—</td>
+            <td>I+R+A 전체</td>
+            <td>① Citation 검증 (KG 실존 여부) ② KG 일관성 (R vs A 판정 비교) ③ 형사/행정 일관성. 오류 시 Self-Healing (최대 2회 재시도)</td>
+            <td>verification JSON</td>
+          </tr>
+          <tr>
+            <td><strong>C-Agent</strong><br><small>Conclusion</small></td>
+            <td>C</td>
+            <td>A+V 출력</td>
+            <td>최종 결론 구성. 검증 통과 결과만 확정</td>
+            <td>conclusion JSON</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Self-Healing 메커니즘</h2>
+    <div class="callout navy">
+      <p>V-Agent가 "KG 불일치" 또는 "판정 실패" 오류 감지 시 → I-Agent 결과는 유지하고 R→A→V 순서로 최대 2회 재시도 → 재시도 후에도 unknown/undetermined이면 첫 번째 결과 복원.</p>
+    </div>
+
+    <h2>속도 맵매칭 (SpeedLimitMatcher)</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>단계</th><th>소스</th><th>방법</th><th>샘플 커버리지</th></tr></thead>
+        <tbody>
+          <tr><td>1단계</td><td>전국도로안전표지 표준데이터</td><td>GPS 반경 500m 최근접 표지판</td><td>0% (GPS 좌표 오차)</td></tr>
+          <tr><td>2단계</td><td>한국도로공사 고속도로 구간</td><td>노선명+구간 텍스트 매칭</td><td>0% (고속도로 전용)</td></tr>
+          <tr><td>3단계 (fallback)</td><td>시행규칙 제19조 법정속도</td><td>도로유형별 기본속도 적용</td><td>100%</td></tr>
+          <tr><td>4단계 (보정)</td><td>차종 규정</td><td>화물차(1.5톤 초과) 고속도로 80km/h 상한</td><td>자동 적용</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="fn">샘플 데이터 100% fallback은 Limitation에 명기 필요. 전체 데이터에서의 매칭률 측정 권장.</p>
+  </div>
+  <div class="page-footer">
+    <button class="nav-btn" onclick="goTo(8)">← LLM 활용</button>
+    <span class="page-counter">10 / 15</span>
+    <button class="nav-btn primary" onclick="goTo(10)">다음: Ablation Study →</button>
+  </div>
+</div>
+
+
+<!-- ── P10: Ablation ── -->
+<div class="page" id="p10">
+  <div class="page-header">
+    <div class="ph-num">10 · Ablation Study</div>
+    <h1>4-Stage Ablation Study 설계</h1>
+    <div class="ph-sub">N=100 · 7개 카테고리 · 경계값 설계</div>
+  </div>
+  <div class="page-body">
+    <h2>4 Stage 설계 원칙</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Stage</th><th>추가 요소</th><th>비교 관점</th><th>예상 약점</th></tr></thead>
+        <tbody>
+          <tr><td><span class="badge b-gray">S1: Vanilla LLM</span></td><td>없음</td><td>환각률 기준점</td><td>Hallucination 100%, Multi-hop 0%</td></tr>
+          <tr><td><span class="badge b-blue">S2: Flat RAG</span></td><td>법령 원문 청크 (FAISS)</td><td>벡터 검색 한계 측정</td><td>Severity F1 S1과 동일, Multi-hop 0%</td></tr>
+          <tr><td><span class="badge b-navy">S3: GraphRAG</span></td><td>KG 구조 (조문 관계)</td><td>KG 구조적 지식 효용</td><td>단일 에이전트 한계</td></tr>
+          <tr><td><span class="badge b-gold">S4: IRAC-V</span></td><td>5에이전트 + V-Agent 검증</td><td>멀티에이전트 효과</td><td>처리 시간 2× 증가</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>시나리오 데이터셋 (N=100)</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>카테고리</th><th>난이도</th><th>건수</th><th>설명</th><th>변별력</th></tr></thead>
+        <tbody>
+          <tr><td>A: Explicit Limit</td><td>Easy</td><td>18건</td><td>제한속도 명시, 단일 과속</td><td>기본 계산 능력. S3·S4는 정확, S1·S2는 많이 틀림</td></tr>
+          <tr><td>B: No Limit</td><td>Medium</td><td>18건</td><td>제한속도 미명시</td><td>화물차 80km/h 추론 필요 (S1·S2 약점)</td></tr>
+          <tr><td>C: Non-speed</td><td>Easy</td><td>14건</td><td>비과속 위반</td><td>severity_level=null 정확 판정 능력</td></tr>
+          <tr><td>D: Compound</td><td>Hard</td><td>14건</td><td>복합 위반 (과속+급가속 등)</td><td>복합 조건 처리</td></tr>
+          <tr><td>E: Aggravating</td><td>Hard</td><td>14건</td><td>가중 조건 (어린이보호구역, 반복과속)</td><td>법령 교차 참조</td></tr>
+          <tr><td>F: Special Road</td><td>Medium</td><td>10건</td><td>특수 도로 조건</td><td>도로 맥락 이해</td></tr>
+          <tr><td>G: Cross-law</td><td>Hard</td><td>12건</td><td>법률 교차 참조</td><td>멀티 법령 추론</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="fn">심각도 분포: None 18건·L1 9건·L2 17건·L3 18건·L4 17건·L5 9건·L6 12건. 경계값 테스트 11건 포함 (L4↔L5 형사처벌 전환점 등).</p>
+
+    <h2>과적합 방지 설계</h2>
+    <div class="callout gold">
+      <div class="cl-label">N=20(Easy only) vs N=100(전체) 차이</div>
+      <p>N=20 Category A만 실행 시 S4가 100%에 근접할 수 있으나, 이는 가장 단순한 케이스만 포함한 결과. N=100 전체에서는 Hard 카테고리(D/E/G 40건)가 포함되어 현실적 성능을 측정. <strong>논문 최종 수치는 반드시 N=100으로 재실행 필요.</strong></p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <button class="nav-btn" onclick="goTo(9)">← IRAC-V</button>
+    <span class="page-counter">11 / 15</span>
+    <button class="nav-btn primary" onclick="goTo(11)">다음: 평가 메트릭 →</button>
+  </div>
+</div>
+
+
+<!-- ── P11: 메트릭 ── -->
+<div class="page" id="p11">
+  <div class="page-header">
+    <div class="ph-num">11 · Metrics</div>
+    <h1>평가 메트릭 M1 ~ M6</h1>
+    <div class="ph-sub">정의 · 측정 방법 · 자동화 · 논문에서의 의미</div>
+  </div>
+  <div class="page-body">
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>메트릭</th><th>정의</th><th>측정 방법</th><th>자동화</th><th>논문 의미</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="badge b-blue">M1</span><br>Citation Accuracy</td>
+            <td>인용 조문이 KG에 실존하는 비율</td>
+            <td>cited_articles의 각 ID를 VALID_ARTICLE_IDS와 대조</td>
+            <td>100% 자동</td>
+            <td>환각 감소 효과. M5 = 1 - M1</td>
+          </tr>
+          <tr>
+            <td><span class="badge b-blue">M2</span><br>Penalty Accuracy</td>
+            <td>범칙금 금액 정확도</td>
+            <td>예상 금액 vs 출력 금액 문자열 매칭</td>
+            <td>100% 자동</td>
+            <td>별표 위임 구조로 전 스테이지 낮음 → Limitation 명기</td>
+          </tr>
+          <tr>
+            <td><span class="badge b-gold">M3</span><br>Severity F1 Macro</td>
+            <td>6단계 심각도 분류의 F1</td>
+            <td>sklearn f1_score(average='macro', zero_division=0)</td>
+            <td>100% 자동</td>
+            <td>논문 핵심 지표. S4의 법적 분류 능력</td>
+          </tr>
+          <tr>
+            <td><span class="badge b-red">M4</span><br>Reasoning Quality</td>
+            <td>포섭 논증의 논리적 타당성 (1~5점)</td>
+            <td>LLM-as-Judge (Zheng et al. 2023): AB/BA 양방향 + 3회 반복 + 편차 통제</td>
+            <td>자동 (LLM)</td>
+            <td>S4 법적 추론의 질적 평가. S1~S3에도 적용 권장</td>
+          </tr>
+          <tr>
+            <td><span class="badge b-blue">M5</span><br>Hallucination Rate</td>
+            <td>미존재 조문 인용 비율 (1 - M1)</td>
+            <td>M1과 동일 계산</td>
+            <td>100% 자동</td>
+            <td>S1=100%, S4≈0% — 극적 대비</td>
+          </tr>
+          <tr>
+            <td><span class="badge b-green">M6 ★</span><br>Multi-hop Recall</td>
+            <td>위반→정의조문→벌칙조문 경로 완결성</td>
+            <td>필수 조문 집합(VIOLATION_MAPPING) vs 실제 인용 조문의 Recall</td>
+            <td>100% 자동</td>
+            <td><strong>S2↔S3 KG 효용 핵심 증거. 본 연구 신규 도입.</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>M4 LLM-as-Judge 편향 통제</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>편향 유형</th><th>통제 방법</th></tr></thead>
+        <tbody>
+          <tr><td>위치 편향 (Position Bias)</td><td>AB순서·BA순서 양방향 평가. 불일치 시 평균 사용</td></tr>
+          <tr><td>자기강화 편향 (Self-Enhancement)</td><td>2종 프롬프트 변형(법학교수/전문심사자) 교대 사용</td></tr>
+          <tr><td>무작위 변동</td><td>3회 반복. 편차 >1.0점이면 중간값 사용</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="fn">출처: Zheng et al. (2023). "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena." NeurIPS 2023 Datasets & Benchmarks.</p>
+
+    <h2>M6 신규 도입 의의</h2>
+    <div class="callout green">
+      <div class="cl-label">본 연구 기여</div>
+      <p>M6(Multi-hop Recall)은 "KG 구조가 실제로 multi-hop 추론 경로를 제공하는가"를 직접 측정하는 신규 메트릭이다. Severity F1(+7.2%p)보다 Multi-hop Recall(+62.5%p) 차이가 훨씬 크다는 점이 KG 효용의 본질 — 단순 정확도보다 추론 경로의 완결성에 있음 — 을 보여준다.</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <button class="nav-btn" onclick="goTo(10)">← Ablation Study</button>
+    <span class="page-counter">12 / 15</span>
+    <button class="nav-btn primary" onclick="goTo(12)">다음: 통계 검증 →</button>
+  </div>
+</div>
+
+
+<!-- ── P12: 통계 ── -->
+<div class="page" id="p12">
+  <div class="page-header">
+    <div class="ph-num">12 · Statistics</div>
+    <h1>통계 검증 방법</h1>
+    <div class="ph-sub">Bootstrap CI · McNemar test · 반복 설계</div>
+  </div>
+  <div class="page-body">
+    <h2>Bootstrap 95% 신뢰구간</h2>
+    <div class="code-block">
+<span class="c-green">def</span> <span class="c-blue2">bootstrap_ci</span>(y_true, y_pred, metric_fn, n_boot=2000, seed=42):
+    np.random.seed(seed)
+    n = len(y_true); scores = []
+    <span class="c-pink">for</span> _ <span class="c-pink">in</span> range(n_boot):
+        idx = np.random.choice(n, n, replace=True)
+        scores.append(metric_fn([y_true[i] <span class="c-pink">for</span> i <span class="c-pink">in</span> idx],
+                                [y_pred[i] <span class="c_pink">for</span> i <span class="c-pink">in</span> idx]))
+    mean  = np.mean(scores)
+    lo    = np.percentile(scores, 2.5)
+    hi    = np.percentile(scores, 97.5)
+    <span class="c-pink">return</span> mean, lo, hi
+
+<span class="c-gray2">## 논문 표기: 82.3% [76.1%, 87.9%]</span>
+    </div>
+
+    <h2>McNemar Test (연속성 보정)</h2>
+    <div class="code-block">
+<span class="c-gray2">## 쌍별 비교: S3 vs S4</span>
+S3_correct = [yt == yp <span class="c-pink">for</span> yt, yp <span class="c-pink">in</span> zip(y_true, S3_preds)]
+S4_correct = [yt == yp <span class="c-pink">for</span> yt, yp <span class="c-pink">in</span> zip(y_true, S4_preds)]
+
+b01 = sum(1 <span class="c-pink">for</span> a, b <span class="c-pink">in</span> zip(S3_correct, S4_correct) <span class="c-pink">if not</span> a <span class="c-pink">and</span> b)
+b10 = sum(1 <span class="c-pink">for</span> a, b <span class="c-pink">in</span> zip(S3_correct, S4_correct) <span class="c-pink">if</span> a <span class="c-pink">and not</span> b)
+
+<span class="c-gray2">## 연속성 보정 적용</span>
+chi2 = (abs(b01 - b10) - 1)**2 / (b01 + b10)
+p = 1 - scipy.stats.chi2.cdf(chi2, df=1)
+
+<span class="c-gray2">## S3→S4: b01 >> b10이면 p<0.05 → 유의미한 개선</span>
+    </div>
+
+    <h2>반복 실험 설계</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>설정</th><th>권장값</th><th>이유</th></tr></thead>
+        <tbody>
+          <tr><td>N (시나리오)</td><td>100</td><td>McNemar test 검정력, 카테고리별 충분한 수</td></tr>
+          <tr><td>N_REPEAT (반복)</td><td>3</td><td>temperature=0.0이지만 API 응답 미세 변동 보정</td></tr>
+          <tr><td>평균 방식</td><td>mean ± std</td><td>3회 평균으로 표준편차 추정</td></tr>
+          <tr><td>대표 결과</td><td>run_id=0</td><td>Error Analysis는 첫 번째 실행 사용</td></tr>
+          <tr><td>통계 검증</td><td>Bootstrap + McNemar</td><td>N=100은 정규분포 가정 불안정 → Bootstrap 적합</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout navy">
+      <div class="cl-label">논문 Table 1 표기 형식</div>
+      <p>S4 Severity F1: <strong>82.3% [76.1%, 87.9%]</strong> (95% CI, n_boot=2000)<br>
+      S3 vs S4 McNemar: χ²=N.N, p=0.0NN** (연속성 보정)</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <button class="nav-btn" onclick="goTo(11)">← 평가 메트릭</button>
+    <span class="page-counter">13 / 15</span>
+    <button class="nav-btn primary" onclick="goTo(13)">다음: 실험 결과 →</button>
+  </div>
+</div>
+
+
+<!-- ── P13: 결과 ── -->
+<div class="page" id="p13">
+  <div class="page-header">
+    <div class="ph-num">13 · Results</div>
+    <h1>실험 결과 (잠정)</h1>
+    <div class="ph-sub">N=20 예비 실험 결과 · 최종 실험 N=100 필요</div>
+  </div>
+  <div class="page-body">
+    <div class="callout gold">
+      <div class="cl-label">주의 — 예비 실험 수치</div>
+      <p>현재 수치는 N=20 (Category A Easy 위주)으로 과낙관적. 논문 최종 수치는 N=100 전체 + Bug B 수정 적용 후 재실행 필요.</p>
+    </div>
+
+    <h2>잠정 수치 (N=20, 1회 반복)</h2>
+    <div style="overflow-x:auto; margin:14px 0;">
+      <div class="ablation-row">
+        <div class="ab-label ab-head">메트릭</div>
+        <div class="ab-cell ab-head">S1 Vanilla</div>
+        <div class="ab-cell ab-head">S2 Flat RAG</div>
+        <div class="ab-cell ab-head">S3 GraphRAG</div>
+        <div class="ab-cell ab-head ab-s4">S4 IRAC-V</div>
+      </div>
+      <div class="ablation-row"><div class="ab-label">M1 Citation Acc</div><div class="ab-cell ab-bad">0.0%</div><div class="ab-cell ab-warn">73.3%</div><div class="ab-cell ab-good">97.5%</div><div class="ab-cell ab-s4 ab-good">100.0%</div></div>
+      <div class="ablation-row"><div class="ab-label">M5 Hallucination</div><div class="ab-cell ab-bad">100.0%</div><div class="ab-cell ab-warn">26.7%</div><div class="ab-cell ab-good">2.5%</div><div class="ab-cell ab-s4 ab-good">0.0%</div></div>
+      <div class="ablation-row"><div class="ab-label">M6 Multi-hop ★</div><div class="ab-cell ab-bad">0.0%</div><div class="ab-cell ab-bad">0.0%</div><div class="ab-cell ab-warn">62.5%</div><div class="ab-cell ab-s4 ab-good">80.0%</div></div>
+      <div class="ablation-row"><div class="ab-label">M3 Severity F1</div><div class="ab-cell ab-bad">13.3%</div><div class="ab-cell ab-bad">13.3%</div><div class="ab-cell ab-warn">20.5%</div><div class="ab-cell ab-s4 ab-good">76.4%</div></div>
+      <div class="ablation-row"><div class="ab-label">Severity Acc</div><div class="ab-cell ab-bad">20.0%</div><div class="ab-cell ab-bad">20.0%</div><div class="ab-cell ab-warn">30.0%</div><div class="ab-cell ab-s4 ab-good">80.0%</div></div>
+      <div class="ablation-row"><div class="ab-label">M2 Penalty Acc</div><div class="ab-cell ab-warn">21.4%</div><div class="ab-cell ab-good">57.1%</div><div class="ab-cell ab-warn">42.9%</div><div class="ab-cell ab-s4 ab-good">92.9%</div></div>
+      <div class="ablation-row"><div class="ab-label">Criminal Acc</div><div class="ab-cell ab-warn">60.0%</div><div class="ab-cell ab-warn">55.0%</div><div class="ab-cell ab-warn">55.0%</div><div class="ab-cell ab-s4 ab-good">90.0%</div></div>
+      <div class="ablation-row"><div class="ab-label">Avg Time</div><div class="ab-cell">6.2s</div><div class="ab-cell">6.4s</div><div class="ab-cell">7.0s</div><div class="ab-cell ab-s4">12.2s</div></div>
+    </div>
+
+    <h2>전환 구간별 핵심 해석</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>전환</th><th>핵심 지표</th><th>해석</th></tr></thead>
+        <tbody>
+          <tr><td>S1→S2</td><td>M1: 0%→73.3%, M5: 100%→26.7%</td><td>RAG는 환각 감소. 그러나 Severity F1 불변(Multi-hop 0%) → KG 필요성 입증</td></tr>
+          <tr><td>S2→S3</td><td><strong>M6: 0%→62.5%</strong></td><td>동일 코퍼스에서 KG 구조가 추가될 때 multi-hop 추론 경로 완성</td></tr>
+          <tr><td>S3→S4</td><td>M3: 20.5%→76.4% (+55.9%p)</td><td>멀티에이전트 역할 분담 + V-Agent 검증 루프의 결정적 효과</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="page-footer">
+    <button class="nav-btn" onclick="goTo(12)">← 통계 검증</button>
+    <span class="page-counter">14 / 15</span>
+    <button class="nav-btn primary" onclick="goTo(14)">다음: 한계 & 기여 →</button>
+  </div>
+</div>
+
+
+<!-- ── P14: 한계 & 기여 ── -->
+<div class="page" id="p14">
+  <div class="page-header">
+    <div class="ph-num">14 · Limitations & Contributions</div>
+    <h1>연구의 한계 및 학술적 기여</h1>
+    <div class="ph-sub">7개 Limitation · 4개 학술적 기여 · 선행연구 비교</div>
+  </div>
+  <div class="page-body">
+    <h2>연구의 한계 (Limitations)</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>한계</th><th>상세</th><th>논문 대응</th></tr></thead>
+        <tbody>
+          <tr><td><strong>맵매칭 커버리지</strong></td><td>샘플 데이터 100% 법정속도 fallback. GPS 오차 시 제한속도 오판 가능</td><td>매칭률(0%/0%/100%) 투명 보고. 전체 데이터 측정 권장</td></tr>
+          <tr><td><strong>M2 Penalty Accuracy</strong></td><td>구체 범칙금이 시행령 별표 위임 → API/KG 접근 불가</td><td>Limitation 섹션 명기. 별표 수동 파싱 필요성 기술</td></tr>
+          <tr><td><strong>합성 시나리오</strong></td><td>100건은 법령 기반 합성 시나리오. 실 사건 데이터 아님</td><td>"기술적 타당성 검증" 목적 명기. 실증은 후속 연구</td></tr>
+          <tr><td><strong>LLM 비결정성</strong></td><td>temperature=0.0이지만 API 응답 미세 변동 존재</td><td>N_REPEAT=3 반복으로 보정. 평균±std 보고</td></tr>
+          <tr><td><strong>화물차 특수성</strong></td><td>고속도로 80km/h 등 차종별 규정 복잡성</td><td>SpeedLimitMatcher apply_cargo_override() 명기</td></tr>
+          <tr><td><strong>법령 개정 취약성</strong></td><td>KG·SGT는 특정 시점 기준</td><td>실험 시작일 기준 법령 버전 고정 명기</td></tr>
+          <tr><td><strong>M4 자기강화 편향</strong></td><td>생성·평가 모델 동일 가능성</td><td>Zheng et al. 프로토콜: 2종 프롬프트, AB/BA, 3회</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>학술적 기여</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>기여</th><th>내용</th><th>의의</th></tr></thead>
+        <tbody>
+          <tr><td><strong>기여 1</strong><br>IRAC 온톨로지</td><td>한국 교통법령의 정의-벌칙-가중 구조를 KG로 형식화</td><td>한국 교통법령 도메인 최초 Property Graph Ontology</td></tr>
+          <tr><td><strong>기여 2</strong><br>DTG 벤치마크</td><td>100건 테스트셋 + 6개 메트릭 + SGT</td><td>재현 가능한 DTG 법적 분류 벤치마크 최초 제공</td></tr>
+          <tr><td><strong>기여 3</strong><br>Multi-hop Recall</td><td>위반→정의→벌칙 경로 완결성 정량화 신규 메트릭</td><td>Flat RAG 한계와 KG 효용 구별 지표</td></tr>
+          <tr><td><strong>기여 4</strong><br>IRAC-V 프레임워크</td><td>법학 IRAC + 5에이전트 + V-Agent Self-Healing</td><td>법적 추론 특화 멀티에이전트 GraphRAG 아키텍처</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>선행연구 비교</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>선행연구</th><th>방법</th><th>본 연구 차별점</th></tr></thead>
+        <tbody>
+          <tr><td>이석준·이청원 (2012, KCI:ART001726782)</td><td>DTG 통계 분석</td><td>통계 → 법리 판정 패러다임 전환</td></tr>
+          <tr><td>장재민 외 (2017, KCI:ART002292825)</td><td>DTG 빅데이터 패턴</td><td>물리적 임계값 → 법적 4~6단계 분류</td></tr>
+          <tr><td>김희수 외 (2025, 한국ITS 24(1))</td><td>LLM + 교통</td><td>자율주행 → 화물차 법령 인용</td></tr>
+          <tr><td>SAT-Graph RAG (arXiv:2505.00039)</td><td>GraphRAG 법률</td><td>브라질 헌법 → 한국 교통법 실용 적용</td></tr>
+          <tr><td>Legis AI (ACM CIKM 2024)</td><td>Legal KG + LLM</td><td>입법 지원 → DTG 데이터 연동 분류</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="page-footer">
+    <button class="nav-btn" onclick="goTo(13)">← 실험 결과</button>
+    <span class="page-counter">15 / 15</span>
+    <button class="nav-btn" onclick="goTo(0)">처음으로 ↑</button>
+  </div>
+</div>
+
+</main>
+
+<script>
+const PAGES = 15;
+let cur = 0;
+function goTo(n) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+  document.getElementById('p' + n).classList.add('active');
+  document.querySelectorAll('.nav-item')[n].classList.add('active');
+  cur = n;
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>

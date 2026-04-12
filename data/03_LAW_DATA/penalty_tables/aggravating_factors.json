@@ -1,0 +1,13 @@
+{
+  "school_zone": {
+    "name": "어린이보호구역",
+    "demerit_multiplier": 2.0,
+    "fine_basis": "시행령 별표 10",
+    "legal_basis": "시행령 별표 7·10"
+  },
+  "repeat_100km": {
+    "name": "100km/h초과 3회이상",
+    "escalation": "제151조의2제2호",
+    "penalty": "1년이하 징역/500만원이하 벌금"
+  }
+}

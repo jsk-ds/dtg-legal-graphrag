@@ -1,0 +1,153 @@
+{
+  "speeding": {
+    "name_kr": "과속",
+    "etas_threshold": "제한속도+20km/h",
+    "definition_articles": [
+      "RTA_17"
+    ],
+    "penalty_articles": [
+      "RTA_156",
+      "RTA_154",
+      "RTA_153",
+      "RTA_151_2"
+    ],
+    "aggravation": [
+      "RTA_12"
+    ],
+    "has_severity_levels": true
+  },
+  "prolonged_speeding": {
+    "name_kr": "장기과속",
+    "etas_threshold": "제한속도+20km/h, 3분이상",
+    "definition_articles": [
+      "RTA_17"
+    ],
+    "penalty_articles": [
+      "RTA_156",
+      "RTA_154",
+      "RTA_153"
+    ],
+    "has_severity_levels": true
+  },
+  "sudden_accel": {
+    "name_kr": "급가속",
+    "etas_threshold": "초당 8km/h이상",
+    "definition_articles": [
+      "RTA_49"
+    ],
+    "penalty_articles": [
+      "RTA_156"
+    ],
+    "has_severity_levels": false
+  },
+  "sudden_start": {
+    "name_kr": "급출발",
+    "etas_threshold": "5km/h이하→초당10km/h이상",
+    "definition_articles": [
+      "RTA_49"
+    ],
+    "penalty_articles": [
+      "RTA_156"
+    ],
+    "has_severity_levels": false
+  },
+  "sudden_decel": {
+    "name_kr": "급감속",
+    "etas_threshold": "초당 14km/h이상 감속",
+    "definition_articles": [
+      "RTA_49"
+    ],
+    "penalty_articles": [
+      "RTA_156"
+    ],
+    "has_severity_levels": false
+  },
+  "sudden_stop": {
+    "name_kr": "급정지",
+    "etas_threshold": "초당 14km/h이상→5km/h이하",
+    "definition_articles": [
+      "RTA_49"
+    ],
+    "penalty_articles": [
+      "RTA_156"
+    ],
+    "has_severity_levels": false
+  },
+  "sudden_lane_change": {
+    "name_kr": "급진로변경",
+    "etas_threshold": "30km/h이상, 6~10도/sec",
+    "definition_articles": [
+      "RTA_19"
+    ],
+    "penalty_articles": [
+      "RTA_156"
+    ],
+    "has_severity_levels": false
+  },
+  "sudden_overtake": {
+    "name_kr": "급앞지르기",
+    "etas_threshold": "급차로변경+가속3km/h/s",
+    "definition_articles": [
+      "RTA_19",
+      "RTA_21"
+    ],
+    "penalty_articles": [
+      "RTA_156"
+    ],
+    "has_severity_levels": false
+  },
+  "sudden_turn": {
+    "name_kr": "급회전",
+    "etas_threshold": "20~30km/h이상",
+    "definition_articles": [
+      "RTA_25"
+    ],
+    "penalty_articles": [
+      "RTA_156"
+    ],
+    "has_severity_levels": false
+  },
+  "sudden_uturn": {
+    "name_kr": "급유턴",
+    "etas_threshold": "15~25km/h이상",
+    "definition_articles": [
+      "RTA_25"
+    ],
+    "penalty_articles": [
+      "RTA_156"
+    ],
+    "has_severity_levels": false
+  },
+  "dtg_violation": {
+    "name_kr": "DTG 운행기록 미제출",
+    "etas_threshold": "운행기록 미제출 또는 불성실 제출",
+    "definition_articles": [
+      "TSA_55"
+    ],
+    "penalty_articles": [],
+    "has_severity_levels": false,
+    "note": "교통안전법 제55조 위반 — 과태료. 심각도 등급 없음"
+  },
+  "education": {
+    "name_kr": "운수종사자 교육 미이수",
+    "etas_threshold": "연간 4시간 교통안전체험교육 미이수",
+    "definition_articles": [
+      "TTBA_59"
+    ],
+    "penalty_articles": [],
+    "has_severity_levels": false,
+    "note": "화물자동차 운수사업법 제59조 위반 — 100만원 이하 과태료"
+  },
+  "overload": {
+    "name_kr": "적재량 초과",
+    "etas_threshold": "최대 적재량 초과 운행",
+    "definition_articles": [
+      "RTA_49"
+    ],
+    "penalty_articles": [
+      "RTA_156"
+    ],
+    "has_severity_levels": false,
+    "note": "도로교통법 제49조 위반 — 범칙금 처분"
+  }
+}

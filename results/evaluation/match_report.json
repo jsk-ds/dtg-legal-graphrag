@@ -1,0 +1,10 @@
+{
+  "total": 1100,
+  "sign_matched": 0,
+  "sign_rate": 0.0,
+  "highway_matched": 0,
+  "highway_rate": 0.0,
+  "statutory_fallback": 1100,
+  "statutory_rate": 1.0,
+  "note": "표지판 미매칭 시 법정 기본속도(시행규칙 제19조) 적용"
+}

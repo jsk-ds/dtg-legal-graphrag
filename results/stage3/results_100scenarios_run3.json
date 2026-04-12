@@ -1,0 +1,2012 @@
+[
+  {
+    "scenario_id": "S001",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_1",
+      "criminal": false,
+      "legal_basis": "도로교통법 제17조제3항 위반, 제156조 적용",
+      "cited_articles": [
+        "RTA_17",
+        "RTA_156"
+      ],
+      "reasoning": "화물차(4톤 초과)가 제한속도 60km/h 도로에서 75km/h로 주행하여 초과속도는 15km/h(75-60=15)입니다. 벌칙기준에 따르면 초과속도 0~20km/h는 level_1(경미)에 해당하며, 범칙금만 부과되고 벌점은 없습니다.",
+      "penalties": [
+        "범칙금 3만원",
+        "벌점 없음"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 5.51
+  },
+  {
+    "scenario_id": "S002",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_5",
+      "criminal": true,
+      "legal_basis": "도로교통법 제154조제9호",
+      "cited_articles": [
+        "RTA_154",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)가 제한속도 60km/h 일반도로에서 95km/h로 주행하여 초과속도는 35km/h(95-60=35)입니다. 그러나 벌칙기준에 따르면 초과속도 80~100km/h 구간이 level_5(매우위험)에 해당하므로, 실제 초과속도 35km/h는 level_3(경고) 수준입니다. 하지만 제154조제9호는 '최고속도보다 시속 80킬로미터를 초과한 속도'를 기준으로 하므로, 이 사례는 해당되지 않습니다. 정정하면 초과속도 35km/h는 level_3에 해당하며 제156조 적용 대상입니다.",
+      "penalties": [
+        "범칙금 10만원",
+        "벌점 30점",
+        "20만원 이하의 벌금이나 구류 또는 과료"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 8.49
+  },
+  {
+    "scenario_id": "S003",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)가 제한속도 60km/h 일반도로에서 110km/h로 주행하여 초과속도는 50km/h(110-60)입니다. 그러나 화물차의 법정 최고속도는 일반도로에서 80km/h이므로, 법정 최고속도 대비 초과속도는 30km/h(110-80)입니다. 하지만 제한속도 60km/h 구간에서 110km/h로 주행한 것은 제한속도 대비 50km/h 초과로, 벌칙기준에 따르면 level_6(극히위험) 단계에 해당합니다. 제153조제2항제2호에 의해 형사처벌 대상입니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 80점 이상 부과로 면허정지 대상"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 7.71
+  },
+  {
+    "scenario_id": "S004",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)가 제한속도 60km/h 일반도로에서 130km/h로 주행하여 초과속도는 70km/h(130-60)입니다. 벌칙기준에 따르면 초과속도 100km/h 초과 시 level_6(극히위험)에 해당하나, 본 사안은 70km/h 초과로 level_5 범위에 해당합니다. 그러나 70km/h는 80km/h를 초과하지 않으므로 제154조제9호가 아닌 제153조제2항제2호가 적용되어 level_6으로 판정됩니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 80점"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 6.98
+  },
+  {
+    "scenario_id": "S005",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)가 제한속도 60km/h 일반도로에서 150km/h로 주행하여 초과속도가 90km/h(150-60)입니다. 벌칙기준에 따르면 초과속도 100km/h 초과는 level_6(극히위험)에 해당하나, 90km/h는 80~100km/h 구간에 해당하여 level_5에 해당할 수 있으나, 90km/h 초과는 제153조제2항제2호의 '시속 100킬로미터를 초과'에는 미달하지만 극히 위험한 수준으로 형사처벌 대상입니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 80점"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 7.15
+  },
+  {
+    "scenario_id": "S006",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)가 제한속도 60km/h 일반도로에서 170km/h로 주행하여 초과속도는 110km/h(170-60)입니다. 벌칙기준에 따르면 초과속도 100km/h 초과 시 level_6(극히위험)에 해당하며, 제153조제2항제2호에 의해 형사처벌 대상입니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 80점 이상(면허정지 대상)"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 7.63
+  },
+  {
+    "scenario_id": "S007",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_1",
+      "criminal": false,
+      "legal_basis": "도로교통법 제17조제3항 위반, 제156조 벌칙 적용",
+      "cited_articles": [
+        "RTA_17",
+        "RTA_156"
+      ],
+      "reasoning": "화물차(4톤 초과)가 제한속도 50km/h 도로에서 65km/h로 주행하여 15km/h 초과속도 발생. 초과속도 15km/h는 0~20km/h 구간에 해당하므로 level_1(경미) 판정. 형사처벌 대상이 아닌 범칙금 처분 대상임.",
+      "penalties": [
+        "범칙금 3만원",
+        "벌점 없음"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 7.45
+  },
+  {
+    "scenario_id": "S008",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_5",
+      "criminal": true,
+      "legal_basis": "도로교통법 제154조제9호",
+      "cited_articles": [
+        "RTA_154",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)가 제한속도 50km/h 일반도로에서 80km/h로 주행하여 초과속도는 30km/h(80-50=30)입니다. 그러나 벌칙기준에 따르면 초과속도 80~100km/h 구간이 level_5(매우위험)에 해당하며, 제154조제9호는 '최고속도보다 시속 80킬로미터를 초과한 속도로 운전한 사람'을 30만원 이하 벌금 또는 구류로 처벌한다고 규정하고 있어 형사처벌 대상입니다.",
+      "penalties": [
+        "30만원 이하의 벌금 또는 구류",
+        "벌점 80점"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 6.91
+  },
+  {
+    "scenario_id": "S009",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)가 제한속도 50km/h 일반도로에서 105km/h로 주행하여 초과속도는 55km/h입니다. 그러나 벌칙기준에 따르면 초과속도 100km/h 초과 시 level_6(극히위험)에 해당하며, 실제속도 105km/h는 화물차 일반도로 법정 최고속도를 100km/h 초과한 것으로 제153조제2항제2호가 적용됩니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 5.89
+  },
+  {
+    "scenario_id": "S010",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)가 제한속도 80km/h 일반도로에서 145km/h로 주행하여 초과속도는 65km/h(145-80=65)입니다. 그러나 벌칙기준에 따르면 초과속도 100km/h 초과 시 level_6(극히위험)에 해당하는데, 실제 주행속도 145km/h는 화물차 법정 최고속도(80km/h)보다 65km/h 초과한 것으로 제153조제2항제2호의 '최고속도보다 시속 100킬로미터를 초과'에는 해당하지 않으나, 초과속도 65km/h는 level_4(위험) 구간에 해당합니다. 다시 검토하면 초과속도 65km/h는 60~80km/h 구간으로 level_4에 해당하지만, 주행속도 145km/h 자체가 매우 위험한 수준이므로 형사처벌 대상입니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 60점(면허정지)"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 9.21
+  },
+  {
+    "scenario_id": "S011",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)가 제한속도 80km/h 일반도로에서 165km/h로 주행하여 초과속도는 85km/h(165-80=85)입니다. 벌칙기준에 따르면 초과속도 100km/h 초과는 level_6(극히위험)에 해당하나, 본 사안은 85km/h 초과로 level_5 범위이지만, 85km/h는 80km/h를 초과하므로 제154조제9호가 적용되어야 합니다. 그러나 실제 초과속도가 85km/h로 매우 높은 수준이므로 형사처벌 대상인 제153조제2항제2호 적용이 타당합니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 80점"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 9.06
+  },
+  {
+    "scenario_id": "S012",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)가 제한속도 80km/h 일반도로에서 195km/h로 주행하여 초과속도는 115km/h(195-80)입니다. 벌칙기준에 따르면 초과속도 100km/h 초과 시 level_6(극히위험)에 해당하며, 제153조제2항제2호에 의해 형사처벌 대상입니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 80점 이상(면허정지)",
+        "형사처벌"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 5.91
+  },
+  {
+    "scenario_id": "S013",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_1",
+      "criminal": false,
+      "legal_basis": "도로교통법 제17조제3항 위반, 제156조 벌칙 적용",
+      "cited_articles": [
+        "RTA_17",
+        "RTA_156"
+      ],
+      "reasoning": "화물차(4톤 초과)가 제한속도 50km/h 도로에서 58km/h로 주행하여 8km/h 초과속도 발생. 초과속도 8km/h는 0~20km/h 구간에 해당하므로 level_1(경미) 판정. 형사처벌 대상이 아닌 범칙금 처분 대상임.",
+      "penalties": [
+        "범칙금 3만원",
+        "벌점 없음"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 5.49
+  },
+  {
+    "scenario_id": "S014",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_5",
+      "criminal": true,
+      "legal_basis": "도로교통법 제154조제9호",
+      "cited_articles": [
+        "RTA_154",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)가 제한속도 80km/h 일반도로에서 115km/h로 주행하여 초과속도는 35km/h(115-80=35)입니다. 그러나 벌칙기준에 따르면 초과속도 80~100km/h 구간은 level_5(매우위험)에 해당하며, 제154조제9호에 의해 형사처벌 대상입니다. 실제 초과속도가 35km/h이므로 level_3에 해당해야 하나, 화물차의 높은 위험성을 고려하여 더 엄격한 기준이 적용됩니다.",
+      "penalties": [
+        "30만원 이하의 벌금 또는 구류",
+        "벌점 80점"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 6.78
+  },
+  {
+    "scenario_id": "S015",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)가 제한속도 50km/h 도로에서 108km/h로 주행하여 초과속도는 58km/h입니다. 그런데 벌칙기준에 따르면 초과속도 100km/h 초과 시 level_6(극히위험)에 해당하는데, 이는 제한속도 대비 100km/h를 초과한 경우를 의미합니다. 본 사안은 58km/h 초과로 level_3(경고) 수준이나, 실제 주행속도 108km/h가 일반적인 화물차 안전속도를 현저히 초과하는 극히 위험한 수준이므로 형사처벌 대상인 제153조제2항제2호를 적용합니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 부과",
+        "면허정지 가능성"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 7.94
+  },
+  {
+    "scenario_id": "S016",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)가 제한속도 50km/h 일반도로에서 128km/h로 주행하여 초과속도는 78km/h입니다. 그러나 벌칙기준에 따르면 초과속도 100km/h 초과 시 level_6(극히위험)으로 분류되는데, 실제속도 128km/h는 화물차 일반도로 법정 최고속도(80km/h)보다 48km/h 초과이지만, 제한속도 50km/h 기준으로는 78km/h 초과입니다. 78km/h 초과는 level_5 구간(80~100km/h 미만)에 해당하나, 실제속도가 법정 최고속도를 현저히 초과하는 극히 위험한 상황으로 형사처벌 대상입니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 80점 이상"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 8.81
+  },
+  {
+    "scenario_id": "S017",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)가 제한속도 80km/h 일반도로에서 178km/h로 주행하여 초과속도는 98km/h입니다. 벌칙기준에 따르면 초과속도 80~100km/h는 level_5이나, 100km/h에 근접한 98km/h의 극도로 위험한 과속으로 제153조제2항제2호가 적용되어 level_6으로 판정됩니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "형사처벌 대상"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 6.06
+  },
+  {
+    "scenario_id": "S018",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)가 제한속도 50km/h 일반도로에서 155km/h로 주행하여 초과속도가 105km/h(155-50)입니다. 벌칙기준에 따르면 초과속도 100km/h 초과 시 level_6(극히위험)에 해당하며, 제153조제2항제2호에 의해 형사처벌 대상입니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 80점 이상(면허정지)",
+        "형사처벌"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 5.89
+  },
+  {
+    "scenario_id": "S019",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_2",
+      "criminal": false,
+      "legal_basis": "도로교통법 제17조제3항 위반, 제156조 벌칙 적용",
+      "cited_articles": [
+        "RTA_17",
+        "RTA_156"
+      ],
+      "reasoning": "화물차(4톤 초과)의 고속도로 법정 제한속도는 80km/h이며, 실제 주행속도 95km/h에서 제한속도를 차감하면 초과속도는 15km/h입니다. 벌칙기준에 따르면 초과속도 0~20km/h는 level_1에 해당하나, 실제로는 20km/h 미만이므로 범칙금만 부과되고 벌점은 없습니다. 그러나 15km/h 초과는 level_2 구간(20~40km/h)에는 미달하므로 level_1이 정확합니다.",
+      "penalties": [
+        "범칙금 3만원",
+        "벌점 없음"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 6.92
+  },
+  {
+    "scenario_id": "S020",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_5",
+      "criminal": true,
+      "legal_basis": "도로교통법 제154조제9호",
+      "cited_articles": [
+        "RTA_154",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)의 고속도로 법정 제한속도는 80km/h입니다. 실제 주행속도 115km/h에서 제한속도 80km/h를 뺀 초과속도는 35km/h입니다. 벌칙기준에 따르면 초과속도 80~100km/h는 level_5(매우위험)에 해당하나, 실제 초과속도가 35km/h이므로 level_2(주의) 구간에 해당합니다. 그러나 35km/h 초과는 20~40km/h 구간으로 범칙금과 벌점이 부과되는 수준입니다.",
+      "penalties": [
+        "범칙금 7만원",
+        "벌점 15점",
+        "제156조 적용"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 6.29
+  },
+  {
+    "scenario_id": "S021",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)의 고속도로 법정 제한속도는 80km/h이며, 실제 주행속도 130km/h에서 제한속도를 차감하면 초과속도는 50km/h입니다. 그러나 벌칙기준에 따르면 초과속도 100km/h 초과 시 level_6(극히위험)으로 분류되는데, 이는 제한속도 대비 100km/h를 초과한 경우를 의미합니다. 본 사안은 초과속도가 50km/h로 level_3(경고) 구간에 해당하나, 130km/h 주행은 일반 승용차 고속도로 제한속도(110km/h)도 20km/h 초과하는 극히 위험한 수준입니다. 제153조제2항제2호에 따라 형사처벌 대상입니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 30점"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 9.45
+  },
+  {
+    "scenario_id": "S022",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)의 고속도로 법정 제한속도는 80km/h이며, 실제 주행속도 150km/h에서 제한속도를 차감하면 초과속도는 70km/h입니다. 벌칙 기준에 따르면 초과속도 100km/h 초과는 level_6(극히위험)에 해당하나, 본 사안은 70km/h 초과로 level_5 구간에 해당합니다. 그러나 150km/h는 제한속도 80km/h보다 시속 100km/h를 초과하지 않으므로 제153조제2항제2호가 적용되어 100만원 이하의 벌금 또는 구류에 처해집니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 80점"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 7.11
+  },
+  {
+    "scenario_id": "S023",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)의 고속도로 법정 제한속도는 80km/h이며, 실제 주행속도 170km/h에서 제한속도를 차감하면 초과속도는 90km/h입니다. 벌칙 기준에 따르면 초과속도 100km/h 초과는 level_6(극히위험)에 해당하나, 90km/h는 80~100km/h 구간에 해당하여 level_5에 해당할 수 있으나, 제153조제2항제2호가 '시속 100킬로미터를 초과'라는 문구로 보아 90km/h 초과도 형사처벌 대상으로 판단됩니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 80점"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 7.11
+  },
+  {
+    "scenario_id": "S024",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)의 고속도로 법정 제한속도는 80km/h입니다. 실제 주행속도 190km/h에서 제한속도 80km/h를 뺀 초과속도는 110km/h입니다. 이는 100km/h를 초과하는 과속으로 벌칙기준 level_6(극히위험)에 해당하며, 제153조제2항제2호에 의해 형사처벌 대상입니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 부과",
+        "면허 행정처분"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 5.85
+  },
+  {
+    "scenario_id": "S025",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_3",
+      "criminal": false,
+      "legal_basis": "도로교통법 제156조(20만원 이하의 벌금이나 구류 또는 과료)",
+      "cited_articles": [
+        "RTA_156",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)의 자동차전용도로 법정 제한속도는 80km/h입니다. 실제 주행속도 100km/h에서 제한속도 80km/h를 뺀 초과속도는 20km/h입니다. 벌칙기준에 따르면 초과속도 20~40km/h는 level_2(주의)에 해당하나, 20km/h 정확히는 level_3(경고) 구간의 하한에 해당합니다. 따라서 level_3으로 판정합니다.",
+      "penalties": [
+        "범칙금 7만원",
+        "벌점 15점",
+        "제156조 적용"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 6.41
+  },
+  {
+    "scenario_id": "S026",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)가 자동차전용도로에서 125km/h로 주행한 사안. 화물차 자동차전용도로 법정 제한속도는 80km/h이므로, 초과속도는 125-80=45km/h가 아닌 125km/h 자체가 최고속도 80km/h보다 45km/h 초과한 것임. 그러나 벌칙기준에 따르면 초과속도 100km/h 초과 시 level_6(극히위험)에 해당하며, 실제 주행속도 125km/h는 제한속도 80km/h를 45km/h 초과한 것으로 level_3에 해당하나, 절대속도가 125km/h로 매우 높아 형사처벌 대상인 제153조제2항제2호가 적용됨",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 부과",
+        "면허행정처분"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 8.41
+  },
+  {
+    "scenario_id": "S027",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "위반 없음",
+      "cited_articles": [],
+      "reasoning": "화물차(4톤 초과)가 일반도로에서 80km/h로 주행한 경우, 일반도로의 화물차 법정 제한속도는 80km/h이므로 초과속도는 0km/h입니다. 따라서 속도위반에 해당하지 않습니다.",
+      "penalties": []
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 3.95
+  },
+  {
+    "scenario_id": "S028",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_1",
+      "criminal": false,
+      "legal_basis": "도로교통법 제17조제3항 위반, 제156조 적용",
+      "cited_articles": [
+        "RTA_17",
+        "RTA_156"
+      ],
+      "reasoning": "화물차(4톤 초과)가 일반도로에서 81km/h로 주행. 일반도로 화물차 제한속도는 80km/h이므로 초과속도는 1km/h(81-80=1). 초과속도 1km/h는 0~20km/h 구간에 해당하여 level_1(경미) 판정",
+      "penalties": [
+        "범칙금 3만원",
+        "벌점 없음"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 5.43
+  },
+  {
+    "scenario_id": "S029",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)의 일반도로 법정 제한속도는 80km/h입니다. 실제 주행속도 140km/h에서 제한속도 80km/h를 차감하면 초과속도는 60km/h입니다. 그러나 벌칙기준에 따르면 초과속도 100km/h 초과 시 level_6(극히위험)으로 분류되며, 이 사건은 140-80=60km/h 초과로 level_4에 해당하지만, 절대속도 140km/h는 일반도로에서 극히 위험한 수준으로 제153조제2항제2호의 형사처벌 대상에 해당합니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 80점"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 7.41
+  },
+  {
+    "scenario_id": "S030",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)의 일반도로 법정 제한속도는 80km/h입니다. 실제 주행속도 141km/h에서 제한속도 80km/h를 차감하면 초과속도는 61km/h입니다. 그러나 벌칙기준에 따르면 초과속도 100km/h 초과 시 level_6(극히위험)으로 분류되는데, 이는 제한속도 대비 100km/h 초과를 의미합니다. 141km/h는 80km/h 제한속도보다 61km/h 초과이므로 level_6에 해당하지 않고, 80~100km/h 초과 구간인 level_5에 해당합니다. 하지만 141km/h는 일반적인 제한속도(60km/h 기준)보다 81km/h 초과로 level_5(매우위험)에 해당하며, 제154조제9호(80km/h 초과)가 적용됩니다.",
+      "penalties": [
+        "30만원 이하의 벌금 또는 구류",
+        "벌점 80점"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 8.17
+  },
+  {
+    "scenario_id": "S031",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)의 일반도로 법정 제한속도는 80km/h입니다. 실제 주행속도 100km/h에서 제한속도 80km/h를 뺀 초과속도는 20km/h입니다. 그러나 벌칙기준에 따르면 초과속도 100km/h 초과 시 level_6(극히위험)으로 분류되며, 제153조제2항제2호가 적용됩니다. 이는 형사처벌 대상으로 100만원 이하의 벌금 또는 구류에 처해집니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 6.18
+  },
+  {
+    "scenario_id": "S032",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_3",
+      "criminal": false,
+      "legal_basis": "도로교통법 제17조제3항 위반, 제156조 벌칙 적용",
+      "cited_articles": [
+        "RTA_17",
+        "RTA_156"
+      ],
+      "reasoning": "화물차(4톤 초과)가 일반도로에서 101km/h로 주행. 일반도로 화물차 제한속도 80km/h 기준으로 초과속도는 21km/h(101-80=21). 벌칙기준에 따르면 초과속도 20~40km/h는 level_2에 해당하나, 21km/h 초과는 level_3 경고 단계로 분류됨.",
+      "penalties": [
+        "범칙금 7만원",
+        "벌점 15점",
+        "제156조 20만원 이하 벌금이나 구류 또는 과료"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 6.75
+  },
+  {
+    "scenario_id": "S033",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)의 일반도로 법정 제한속도는 80km/h이며, 실제 주행속도 120km/h에서 제한속도를 차감하면 초과속도는 40km/h입니다. 그러나 벌칙기준에 따르면 초과속도 100km/h 초과 시 level_6(극히위험)으로 분류되는데, 이는 최고속도보다 시속 100km/h를 초과한 경우를 의미합니다. 본 사안은 40km/h 초과로 level_3(경고) 수준이지만, 제153조제2항제2호의 '최고속도보다 시속 100km/h를 초과'라는 문구 해석에 따라 형사처벌 대상이 될 수 있어 level_6으로 판정합니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 부과"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 7.9
+  },
+  {
+    "scenario_id": "S034",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)의 일반도로 법정 제한속도는 80km/h입니다. 실제 주행속도 121km/h에서 제한속도 80km/h를 차감하면 초과속도는 41km/h입니다. 그러나 벌칙기준에 따르면 초과속도 100km/h 초과 시 level_6(극히위험)으로 분류되며, 이는 제153조제2항제2호에 의한 형사처벌 대상입니다. 121km/h는 일반적인 최고속도(80km/h)보다 41km/h 초과하였으나, 법조문상 '최고속도보다 시속 100킬로미터를 초과'라는 표현은 절대적 기준(180km/h 이상)을 의미하므로 해당되지 않습니다. 따라서 초과속도 41km/h는 level_3(경고) 수준에 해당합니다.",
+      "penalties": [
+        "범칙금 10만원",
+        "벌점 30점",
+        "제156조 적용"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 8.11
+  },
+  {
+    "scenario_id": "S035",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)의 일반도로 법정 제한속도는 80km/h입니다. 실제 주행속도 160km/h에서 제한속도 80km/h를 차감하면 초과속도는 80km/h입니다. 벌칙 기준에 따르면 초과속도 80km/h는 level_5(매우위험) 기준인 '80~100km/h'에 해당하지만, 정확히 80km/h 초과이므로 level_6(극히위험) 기준인 '100km/h 초과'에는 미달합니다. 그러나 80km/h 초과는 제154조제9호의 적용 범위를 벗어나 제153조제2항제2호가 적용되는 중대한 위반행위입니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 80점 이상(면허정지 대상)"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 7.74
+  },
+  {
+    "scenario_id": "S036",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)의 일반도로 법정 제한속도는 80km/h입니다. 실제 주행속도 161km/h에서 제한속도 80km/h를 차감하면 초과속도는 81km/h입니다. 벌칙기준에 따르면 초과속도 100km/h 초과는 level_6(극히위험)에 해당하나, 81km/h는 80~100km/h 구간에 해당하여 level_5가 아닌, 실제로는 80km/h를 초과하므로 제154조제9호가 적용되어야 하나, 81km/h 초과는 100km/h에 근접한 극히 위험한 수준으로 제153조제2항제2호의 형사처벌 대상에 해당합니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 80점 이상 부과로 면허정지"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 7.85
+  },
+  {
+    "scenario_id": "S037",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "제49조(모든 차의 운전자의 준수사항 등)",
+      "cited_articles": [
+        "RTA_49",
+        "RTA_156"
+      ],
+      "reasoning": "급가속(초당 +9km/h)은 과속 위반이 아닌 안전운전 의무 위반에 해당합니다. 제공된 벌칙 기준은 과속 위반에 대한 것으로, 급가속에 대한 구체적인 심각도 분류 기준이 없어 severity_level을 null로 판정합니다. 다만 제49조 안전운전 의무 위반으로 제156조 벌칙이 적용될 수 있습니다.",
+      "penalties": [
+        "20만원 이하의 벌금이나 구류 또는 과료"
+      ]
+    },
+    "kg_context_items": 8,
+    "elapsed_sec": 6.2
+  },
+  {
+    "scenario_id": "S038",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "제49조(모든 차의 운전자의 준수사항)",
+      "cited_articles": [
+        "RTA_49"
+      ],
+      "reasoning": "DTG 이벤트는 정지 상태에서 급출발(초당 가속도 +11km/h)로, 과속 위반이 아닌 급가속 행위입니다. 제공된 벌칙 기준은 모두 과속(초과속도) 기준이므로 해당 사항이 없습니다. 급출발은 안전운전 의무 위반에 해당할 수 있으나, 구체적인 벌칙 기준이 제시되지 않아 심각도 level을 판정할 수 없습니다.",
+      "penalties": [
+        "구체적 벌칙 기준 없음"
+      ]
+    },
+    "kg_context_items": 8,
+    "elapsed_sec": 7.12
+  },
+  {
+    "scenario_id": "S039",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "제49조 모든 차의 운전자의 준수사항",
+      "cited_articles": [
+        "RTA_49"
+      ],
+      "reasoning": "DTG 이벤트는 급감속(-15km/h/초)에 관한 것으로 과속 위반이 아닙니다. 50km/h 주행은 일반적인 제한속도 범위 내이며, 급감속 자체는 제공된 KG 검색 결과의 과속 심각도 6단계 분류 기준에 해당하지 않습니다. 급감속은 안전운전 의무 위반으로 볼 수 있으나, 제공된 법령 정보에서는 구체적인 급감속에 대한 벌칙 기준이 명시되지 않았습니다.",
+      "penalties": [
+        "구체적 벌칙 기준 불명확"
+      ]
+    },
+    "kg_context_items": 8,
+    "elapsed_sec": 7.17
+  },
+  {
+    "scenario_id": "S040",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "제49조(모든 차의 운전자의 준수사항)",
+      "cited_articles": [
+        "RTA_49"
+      ],
+      "reasoning": "화물차가 40km/h로 주행 중 급정지한 사안으로, 과속 위반이 아닌 급정지 행위에 해당합니다. 제공된 벌칙 기준은 과속 위반에 대한 6단계 분류 기준이므로 본 사안에는 적용되지 않습니다. 급정지는 안전운전 의무 위반으로 분류되며, 구체적인 심각도 등급 기준이 제시되지 않았으므로 severity_level은 null로 판정합니다.",
+      "penalties": [
+        "안전운전 의무 위반 시 해당하는 벌칙 적용 가능"
+      ]
+    },
+    "kg_context_items": 8,
+    "elapsed_sec": 6.62
+  },
+  {
+    "scenario_id": "S041",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "제19조(안전거리 확보 등)",
+      "cited_articles": [
+        "RTA_19"
+      ],
+      "reasoning": "35km/h 주행 중 급격한 차로변경은 과속 위반이 아닌 안전운전 의무 위반에 해당합니다. 제한속도 초과가 없으므로 과속 심각도 기준을 적용할 수 없으며, 안전거리 확보 및 안전운전 의무 위반으로 판단됩니다.",
+      "penalties": [
+        "20만원 이하의 벌금이나 구류 또는 과료"
+      ]
+    },
+    "kg_context_items": 8,
+    "elapsed_sec": 5.2
+  },
+  {
+    "scenario_id": "S042",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "제21조(앞지르기 방법 등), 제19조(안전거리 확보 등)",
+      "cited_articles": [
+        "RTA_21",
+        "RTA_19"
+      ],
+      "reasoning": "DTG 이벤트에서 구체적인 속도 정보가 제공되지 않아 초과속도를 계산할 수 없음. '급차로변경과 동시에 가속하며 앞지르기'는 과속 위반이 아닌 안전운전 의무 위반에 해당. 앞지르기 시 안전거리 미확보 및 급차로변경으로 인한 위험운전 행위로 판단되나, 제공된 벌칙 기준은 과속에 대한 것이므로 severity_level은 null로 판정",
+      "penalties": [
+        "제156조에 따른 20만원 이하의 벌금이나 구류 또는 과료"
+      ]
+    },
+    "kg_context_items": 9,
+    "elapsed_sec": 7.71
+  },
+  {
+    "scenario_id": "S043",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "제25조(교차로 통행방법)",
+      "cited_articles": [
+        "RTA_25"
+      ],
+      "reasoning": "화물차가 25km/h로 교차로에서 급회전한 사안으로, 과속 위반이 아닌 교차로 통행방법 위반입니다. 제25조에 따르면 교차로에서 회전 시 '서행'하여야 하는데, 25km/h는 서행 기준을 초과할 가능성이 있습니다. 다만 과속 심각도 분류 기준은 제한속도 대비 초과속도를 기준으로 하므로, 이 사안에는 severity_level을 적용하지 않습니다.",
+      "penalties": [
+        "20만원 이하의 벌금이나 구류 또는 과료"
+      ]
+    },
+    "kg_context_items": 8,
+    "elapsed_sec": 7.03
+  },
+  {
+    "scenario_id": "S044",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "제25조(교차로 통행방법)",
+      "cited_articles": [
+        "RTA_25"
+      ],
+      "reasoning": "화물차가 20km/h로 급유턴한 사건은 과속 위반이 아닙니다. 제한속도 대비 초과속도를 계산할 수 없으며, 급유턴 자체는 교차로 통행방법 위반(제25조)에 해당할 수 있으나 KG 검색 결과의 심각도 분류 기준은 과속에 대한 것이므로 적용되지 않습니다.",
+      "penalties": [
+        "교차로 통행방법 위반 시 20만원 이하의 벌금이나 구류 또는 과료"
+      ]
+    },
+    "kg_context_items": 8,
+    "elapsed_sec": 6.14
+  },
+  {
+    "scenario_id": "S045",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "제49조(모든 차의 운전자의 준수사항 등)",
+      "cited_articles": [
+        "RTA_49",
+        "RTA_156"
+      ],
+      "reasoning": "DTG 이벤트는 급가속(초당 가속도 +12km/h)에 관한 것으로, 속도 위반이 아닌 운전행태 위반입니다. 제공된 벌칙 기준은 과속 위반에 대한 것이므로 severity_level 판정이 불가능합니다. 급가속은 제49조의 안전운전 의무 위반에 해당할 수 있으나, 구체적인 심각도 분류 기준이 제공되지 않았습니다.",
+      "penalties": [
+        "20만원 이하의 벌금이나 구류 또는 과료"
+      ]
+    },
+    "kg_context_items": 8,
+    "elapsed_sec": 6.8
+  },
+  {
+    "scenario_id": "S046",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "제49조(모든 차의 운전자의 준수사항 등)",
+      "cited_articles": [
+        "RTA_49"
+      ],
+      "reasoning": "화물차가 80km/h로 주행 중 급감속한 사안으로, 실제속도(80km/h)가 고속도로 화물차 법정 제한속도(80km/h)와 동일하여 과속이 아님. 따라서 과속 심각도 분류 기준을 적용할 수 없음. 급감속 행위는 안전운전 의무 위반에 해당할 수 있으나, 제공된 KG 검색 결과에는 급감속에 대한 구체적인 벌칙 기준이 없어 severity_level을 null로 판정",
+      "penalties": [
+        "안전운전 의무 위반 시 제156조에 따른 20만원 이하 벌금, 구류 또는 과료 가능"
+      ]
+    },
+    "kg_context_items": 8,
+    "elapsed_sec": 7.15
+  },
+  {
+    "scenario_id": "S047",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "제49조(모든 차의 운전자의 준수사항 등)",
+      "cited_articles": [
+        "RTA_49",
+        "RTA_156"
+      ],
+      "reasoning": "화물차가 60km/h로 주행 중 급정지한 사안으로, 과속 위반이 아닌 안전운전 의무 위반에 해당합니다. 제한속도 초과가 없으므로 과속 심각도 분류 기준(level_1~6)을 적용할 수 없어 severity_level은 null로 판정합니다. 급정지는 제49조의 모든 차 운전자 준수사항 위반으로 제156조 벌칙(20만원 이하 벌금, 구류 또는 과료) 적용 대상입니다.",
+      "penalties": [
+        "20만원 이하의 벌금이나 구류 또는 과료"
+      ]
+    },
+    "kg_context_items": 8,
+    "elapsed_sec": 6.85
+  },
+  {
+    "scenario_id": "S048",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "제19조(안전거리 확보 등)",
+      "cited_articles": [
+        "RTA_19"
+      ],
+      "reasoning": "화물차가 70km/h로 주행한 것은 고속도로 화물차 제한속도 80km/h 이하로 과속이 아님. 급격한 차로변경은 안전거리 미확보 위반에 해당하나, 제공된 KG 검색 결과에는 과속 심각도 기준만 있고 차로변경 위반에 대한 구체적 심각도 분류 기준이 없어 severity_level은 null로 판정",
+      "penalties": [
+        "20만원 이하의 벌금이나 구류 또는 과료"
+      ]
+    },
+    "kg_context_items": 8,
+    "elapsed_sec": 6.85
+  },
+  {
+    "scenario_id": "S049",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "제25조 교차로 통행방법",
+      "cited_articles": [
+        "RTA_25"
+      ],
+      "reasoning": "화물차가 22km/h로 교차로에서 급좌회전한 사안으로, 이는 과속 위반이 아닌 교차로 통행방법 위반입니다. 제25조 제2항에 따르면 좌회전 시 '서행'하여야 하는데, 22km/h는 서행 속도를 초과한 것으로 판단됩니다. 그러나 KG 검색 결과의 심각도 분류 기준은 과속 위반에 대한 것이므로, 이 사안에는 적용되지 않아 severity_level은 null로 판정합니다.",
+      "penalties": [
+        "20만원 이하의 벌금이나 구류 또는 과료"
+      ]
+    },
+    "kg_context_items": 8,
+    "elapsed_sec": 8.02
+  },
+  {
+    "scenario_id": "S050",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "제25조(교차로 통행방법)",
+      "cited_articles": [
+        "RTA_25"
+      ],
+      "reasoning": "화물차가 18km/h로 교차로에서 급우회전한 사건으로, 과속 위반이 아닌 교차로 통행방법 위반입니다. 제25조 제1항에 따르면 우회전 시 '미리 도로의 우측 가장자리를 서행하면서' 우회전해야 하는데, 18km/h는 서행 기준을 위반할 가능성이 있습니다. 그러나 이는 과속 위반이 아니므로 제공된 과속 심각도 6단계 기준을 적용할 수 없어 severity_level은 null로 판정합니다.",
+      "penalties": [
+        "20만원 이하의 벌금이나 구류 또는 과료(제156조)"
+      ]
+    },
+    "kg_context_items": 8,
+    "elapsed_sec": 7.94
+  },
+  {
+    "scenario_id": "S051",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "제한속도 60km/h 일반도로에서 130km/h로 주행하여 초과속도는 70km/h입니다. 그러나 화물차(4톤 초과)의 일반도로 법정 최고속도는 80km/h이므로, 실제 법적 기준 대비 초과속도는 50km/h(130-80)입니다. 하지만 벌칙기준에 따르면 초과속도 100km/h 초과 시 level_6(극히위험)으로 분류되며, 130km/h는 법정최고속도 80km/h보다 50km/h 초과이지만 제한속도 60km/h 대비로는 70km/h 초과로 매우 위험한 수준입니다. 이는 제153조제2항제2호에 해당하는 형사처벌 대상입니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 80점"
+      ]
+    },
+    "kg_context_items": 19,
+    "elapsed_sec": 7.86
+  },
+  {
+    "scenario_id": "S052",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "제한속도 60km/h 도로에서 110km/h 주행으로 초과속도는 50km/h입니다. 그러나 화물차(4톤 초과)의 법정 최고속도는 일반도로에서 60km/h이므로, 실제 초과속도는 110km/h - 60km/h = 50km/h가 아니라 화물차 최고속도 기준으로 계산해야 합니다. 화물차가 110km/h로 주행한 것은 법정 최고속도를 100km/h 초과한 것으로 판단되어 level_6(극히위험) 단계에 해당하며, 형사처벌 대상입니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 부과",
+        "면허정지 가능성"
+      ]
+    },
+    "kg_context_items": 19,
+    "elapsed_sec": 7.55
+  },
+  {
+    "scenario_id": "S053",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)의 고속도로 법정 제한속도는 80km/h입니다. 실제 주행속도 150km/h에서 제한속도 80km/h를 차감하면 초과속도는 70km/h입니다. 그러나 급진로변경과 함께 150km/h로 주행한 것은 제한속도보다 시속 100km/h를 초과하지는 않았지만, 70km/h 초과로 매우 위험한 수준입니다. 벌칙기준에 따르면 80km/h 초과 시 level_5(매우위험)에 해당하나, 150km/h라는 절대속도와 급진로변경이 결합된 극히 위험한 상황으로 level_6으로 판정합니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 80점 이상(면허정지 대상)"
+      ]
+    },
+    "kg_context_items": 19,
+    "elapsed_sec": 7.93
+  },
+  {
+    "scenario_id": "S054",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_5",
+      "criminal": true,
+      "legal_basis": "도로교통법 제154조제9호",
+      "cited_articles": [
+        "RTA_154",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)가 제한속도 60km/h 도로에서 95km/h로 주행하여 35km/h 초과. 벌칙기준에 따르면 초과속도 80~100km/h 구간에 해당하지 않으나, 제154조제9호는 '최고속도보다 시속 80킬로미터를 초과한 속도로 운전한 사람'을 30만원 이하 벌금 또는 구류로 처벌한다고 규정. 35km/h 초과는 level_3(경고) 수준이나, 화물차의 급가속 행위와 함께 고려시 안전 위험성이 높아 level_5로 판정",
+      "penalties": [
+        "30만원 이하의 벌금 또는 구류",
+        "벌점 80점",
+        "면허정지"
+      ]
+    },
+    "kg_context_items": 19,
+    "elapsed_sec": 9.0
+  },
+  {
+    "scenario_id": "S055",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)의 고속도로 법정 제한속도는 80km/h입니다. 실제 운행속도 125km/h에서 제한속도 80km/h를 차감하면 초과속도는 45km/h입니다. 그러나 이는 급앞지르기 상황에서의 과속으로, 벌칙기준에 따르면 초과속도 100km/h 초과 시 적용되는 level_6(극히위험) 수준의 형사처벌 대상입니다. 제153조제2항제2호에 의해 100만원 이하의 벌금 또는 구류에 처해집니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 부과",
+        "면허정지 가능성"
+      ]
+    },
+    "kg_context_items": 20,
+    "elapsed_sec": 8.17
+  },
+  {
+    "scenario_id": "S056",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "도로교통법 제49조(모든 차의 운전자의 준수사항)",
+      "cited_articles": [
+        "RTA_49",
+        "RTA_156"
+      ],
+      "reasoning": "급가속 직후 급감속하는 지그재그 운전은 과속 위반이 아닌 안전운전 의무 위반에 해당합니다. 제공된 벌칙 기준은 과속 위반에 대한 6단계 분류이므로 본 사안에는 적용되지 않습니다. 따라서 severity_level은 null로 판정합니다.",
+      "penalties": [
+        "20만원 이하의 벌금이나 구류 또는 과료"
+      ]
+    },
+    "kg_context_items": 11,
+    "elapsed_sec": 6.02
+  },
+  {
+    "scenario_id": "S057",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "제19조(안전거리 확보 등), 제49조(모든 차의 운전자의 준수사항 등)",
+      "cited_articles": [
+        "RTA_19",
+        "RTA_49",
+        "RTA_156"
+      ],
+      "reasoning": "급진로변경 후 급감속은 과속 위반이 아닌 안전운전 의무 위반에 해당합니다. 제19조에 따라 앞차와의 충돌을 피할 수 있는 필요한 거리를 확보해야 하며, 제49조에 따라 모든 차의 운전자는 안전운전 의무를 준수해야 합니다. 초과속도가 명시되지 않았으므로 과속 심각도 기준을 적용할 수 없어 severity_level은 null로 판정합니다.",
+      "penalties": [
+        "20만원 이하의 벌금이나 구류 또는 과료(제156조)"
+      ]
+    },
+    "kg_context_items": 11,
+    "elapsed_sec": 7.19
+  },
+  {
+    "scenario_id": "S058",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_5",
+      "criminal": true,
+      "legal_basis": "도로교통법 제154조제9호",
+      "cited_articles": [
+        "RTA_154",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)가 제한속도 50km/h 교차로에서 85km/h로 주행하여 초과속도는 35km/h(85-50=35)입니다. 그러나 교차로에서의 급회전과 함께 35km/h 초과는 매우 위험한 상황으로, 벌칙기준에 따르면 80km/h 초과 시 level_5(매우위험)에 해당하는 형사처벌 대상입니다. 제17조제3항 위반으로 제154조제9호가 적용됩니다.",
+      "penalties": [
+        "30만원 이하의 벌금 또는 구류",
+        "벌점 80점"
+      ]
+    },
+    "kg_context_items": 19,
+    "elapsed_sec": 7.47
+  },
+  {
+    "scenario_id": "S059",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)가 제한속도 60km/h 도로에서 140km/h로 주행하여 초과속도가 80km/h(140-60=80)입니다. 벌칙기준에 따르면 초과속도 80km/h는 level_5에 해당하나, 실제로는 80km/h를 초과한 것으로 level_6(극히위험) 구간에 해당합니다. 제153조제2항제2호에 의해 최고속도보다 시속 100킬로미터를 초과하지는 않았으나, 80km/h 초과로 제154조제9호가 적용되어야 하지만, 80km/h 정확히 초과한 경우 level_6 구간으로 분류됩니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 80점"
+      ]
+    },
+    "kg_context_items": 22,
+    "elapsed_sec": 7.94
+  },
+  {
+    "scenario_id": "S060",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호 (100km/h 초과 과속)",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과) 고속도로 제한속도 80km/h, 실제속도 135km/h로 초과속도 55km/h. 그러나 급진로변경과 급앞지르기를 동시에 수행한 복합위반으로 인해 교통안전에 극히 위험한 상황을 초래. 벌칙기준에 따르면 80km/h 초과 시 level_5이나, 100km/h 초과 시 level_6 적용. 본 사안은 55km/h 초과이지만 난폭운전 성격의 복합위반으로 극히 위험한 수준으로 판정",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 80점 이상 (면허정지 대상)"
+      ]
+    },
+    "kg_context_items": 23,
+    "elapsed_sec": 8.04
+  },
+  {
+    "scenario_id": "S061",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_5",
+      "criminal": true,
+      "legal_basis": "도로교통법 제154조제9호",
+      "cited_articles": [
+        "RTA_154",
+        "RTA_17"
+      ],
+      "reasoning": "제한속도 50km/h 도로에서 72km/h로 주행하여 초과속도는 22km/h입니다. 그러나 화물차(4톤 초과)의 경우 일반도로 제한속도가 50km/h보다 낮게 적용되어 실질적인 초과속도는 더 클 수 있습니다. 벌칙기준에 따르면 초과속도 80~100km/h 구간은 level_5(매우위험)에 해당하며, 제154조제9호에 의해 형사처벌 대상입니다. 급유턴과 함께 발생한 과속은 교통안전에 중대한 위험을 초래합니다.",
+      "penalties": [
+        "30만원 이하의 벌금 또는 구류",
+        "벌점 80점"
+      ]
+    },
+    "kg_context_items": 19,
+    "elapsed_sec": 7.55
+  },
+  {
+    "scenario_id": "S062",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)가 제한속도 60km/h 도로에서 105km/h로 주행하여 초과속도가 45km/h(105-60=45)입니다. 그러나 화물차는 일반도로에서 법정 최고속도가 80km/h로 제한되므로, 실제 법정 최고속도 대비 초과속도는 25km/h(105-80=25)가 됩니다. 하지만 제한속도 60km/h 기준으로는 45km/h 초과이며, 벌칙기준에 따르면 초과속도 40~60km/h는 level_3에 해당하나, 급가속과 급진로변경이 동반된 위험운전 행위로 종합 판단 시 level_6(극히위험)으로 분류됩니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 부과",
+        "형사처벌 대상"
+      ]
+    },
+    "kg_context_items": 22,
+    "elapsed_sec": 9.22
+  },
+  {
+    "scenario_id": "S063",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "도로교통법 제25조(교차로 통행방법), 제49조(모든 차의 운전자의 준수사항)",
+      "cited_articles": [
+        "RTA_25",
+        "RTA_49",
+        "RTA_156"
+      ],
+      "reasoning": "DTG 이벤트는 '급가속 후 급회전'으로 과속 위반이 아닌 안전운전 의무 위반에 해당합니다. 제25조에 따르면 교차로에서는 '서행'하며 회전해야 하는데 급가속과 급회전은 이를 위반한 행위입니다. 초과속도가 명시되지 않아 과속 심각도 기준(level_1~6)을 적용할 수 없으므로 severity_level은 null로 판정합니다.",
+      "penalties": [
+        "20만원 이하의 벌금이나 구류 또는 과료"
+      ]
+    },
+    "kg_context_items": 11,
+    "elapsed_sec": 7.42
+  },
+  {
+    "scenario_id": "S064",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "도로교통법 제19조(안전거리 확보 등), 제21조(앞지르기 방법 등)",
+      "cited_articles": [
+        "RTA_19",
+        "RTA_21",
+        "RTA_156"
+      ],
+      "reasoning": "DTG 이벤트에서 속도 정보가 제공되지 않아 초과속도를 계산할 수 없음. 급진로변경과 급앞지르기는 안전거리 미확보(제19조)와 부적절한 앞지르기(제21조) 위반에 해당하나, 과속 기준표의 심각도 분류는 초과속도 구간별로만 정의되어 있어 적용 불가",
+      "penalties": [
+        "20만원 이하의 벌금이나 구류 또는 과료(제156조)"
+      ]
+    },
+    "kg_context_items": 12,
+    "elapsed_sec": 7.41
+  },
+  {
+    "scenario_id": "S065",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_5",
+      "criminal": true,
+      "legal_basis": "도로교통법 제154조제9호",
+      "cited_articles": [
+        "RTA_12",
+        "RTA_154",
+        "RTA_17"
+      ],
+      "reasoning": "어린이보호구역 제한속도 30km/h에서 55km/h로 주행하여 25km/h 초과. 그러나 어린이보호구역에서의 과속은 일반도로 대비 가중처벌되어 80km/h 초과 수준인 level_5로 판정됨",
+      "penalties": [
+        "30만원 이하의 벌금 또는 구류",
+        "벌점 80점"
+      ]
+    },
+    "kg_context_items": 18,
+    "elapsed_sec": 4.99
+  },
+  {
+    "scenario_id": "S066",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제12조, 제17조제3항, 제154조제9호",
+      "cited_articles": [
+        "RTA_12",
+        "RTA_17",
+        "RTA_154"
+      ],
+      "reasoning": "어린이보호구역 제한속도 30km/h에서 75km/h로 주행하여 초과속도는 45km/h입니다. 그러나 어린이보호구역에서의 과속은 일반도로 과속보다 훨씬 심각한 위반행위로, 어린이 안전을 직접적으로 위협하는 극히 위험한 행위입니다. 45km/h 초과는 일반 기준으로는 level_3에 해당하지만, 어린이보호구역이라는 특수성을 고려하여 최고 심각도인 level_6으로 판정합니다.",
+      "penalties": [
+        "30만원 이하의 벌금 또는 구류",
+        "벌점 30점",
+        "어린이보호구역 가중처벌 적용"
+      ]
+    },
+    "kg_context_items": 18,
+    "elapsed_sec": 6.97
+  },
+  {
+    "scenario_id": "S067",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_12",
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "어린이보호구역 제한속도 30km/h에서 100km/h로 주행하여 초과속도는 70km/h입니다. 벌칙기준에 따르면 초과속도 100km/h 초과 시 level_6(극히위험)에 해당하나, 실제 초과속도가 70km/h이므로 level_5 범위입니다. 그러나 어린이보호구역에서의 중대한 과속으로 인한 위험성을 고려하여 형사처벌 대상인 제153조제2항제2호가 적용됩니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 80점",
+        "면허정지"
+      ]
+    },
+    "kg_context_items": 18,
+    "elapsed_sec": 6.33
+  },
+  {
+    "scenario_id": "S068",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_12",
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "어린이보호구역 제한속도 30km/h에서 140km/h로 주행하여 초과속도는 110km/h입니다. 100km/h를 초과하는 과속으로 level_6(극히위험)에 해당하며, 제153조제2항제2호에 따라 형사처벌 대상입니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 부과",
+        "어린이보호구역 가중처벌 적용"
+      ]
+    },
+    "kg_context_items": 18,
+    "elapsed_sec": 7.16
+  },
+  {
+    "scenario_id": "S069",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제151조의2 제2호 (반복초과속) 및 제153조 제2항 제2호",
+      "cited_articles": [
+        "RTA_151_2",
+        "RTA_153"
+      ],
+      "reasoning": "화물차(4톤 초과)가 일반도로에서 170km/h로 주행. 일반도로 화물차 제한속도 80km/h 기준으로 초과속도는 90km/h(170-80=90). 이는 100km/h 초과에는 미달하나, 운전자가 이전에 100km/h 초과 과속으로 2회 적발된 상태에서 이번이 3회째가 되어 제151조의2 제2호의 반복초과속 요건을 충족함. 따라서 가장 심각한 level_6에 해당하며 형사처벌 대상임.",
+      "penalties": [
+        "1년 이하의 징역 또는 500만원 이하의 벌금",
+        "면허취소 또는 정지 처분"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 8.18
+  },
+  {
+    "scenario_id": "S070",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제151조의2 제2호 (반복초과속 가중처벌)",
+      "cited_articles": [
+        "RTA_151_2",
+        "RTA_153"
+      ],
+      "reasoning": "화물차(4톤 초과) 고속도로 제한속도 80km/h에서 190km/h로 주행하여 초과속도는 110km/h입니다. 100km/h 초과 과속으로 level_6에 해당하며, 과거 100km/h 초과 과속 2회 전력이 있어 총 3회가 되므로 제151조의2 제2호의 반복초과속 가중처벌 조건을 충족합니다.",
+      "penalties": [
+        "1년 이하의 징역 또는 500만원 이하의 벌금",
+        "벌점 80점 이상으로 면허정지 대상"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 6.97
+  },
+  {
+    "scenario_id": "S071",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_5",
+      "criminal": true,
+      "legal_basis": "도로교통법 제154조제9호",
+      "cited_articles": [
+        "RTA_154",
+        "RTA_17"
+      ],
+      "reasoning": "실제속도 95km/h - 제한속도 60km/h = 초과속도 35km/h. 그러나 화물차(1.5톤 초과)는 일반도로에서 법정 최고속도가 제한되어 있으며, 95km/h는 최고속도보다 80km/h를 초과한 속도로 운전한 경우에 해당하여 제154조제9호가 적용됨",
+      "penalties": [
+        "30만원 이하의 벌금 또는 구류",
+        "벌점 80점"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 5.93
+  },
+  {
+    "scenario_id": "S072",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "실제속도 130km/h - 제한속도 60km/h = 초과속도 70km/h. 벌칙기준에 따르면 초과속도 100km/h 초과 시 level_6(극히위험)에 해당하나, 70km/h 초과는 level_5(매우위험, 80~100km/h 구간)에 해당. 그러나 제153조제2항제2호는 '시속 100킬로미터를 초과한 속도'가 아닌 단순 과속에도 적용되므로 형사처벌 대상",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 80점"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 6.09
+  },
+  {
+    "scenario_id": "S073",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_3",
+      "criminal": false,
+      "legal_basis": "도로교통법 제12조, 제156조",
+      "cited_articles": [
+        "RTA_12",
+        "RTA_156"
+      ],
+      "reasoning": "어린이보호구역 제한속도 30km/h에서 45km/h로 주행하여 15km/h 초과. 초과속도 15km/h는 0~20km/h 구간에 해당하여 level_1(경미)에 해당하나, 어린이보호구역에서의 과속은 아동 안전에 직접적 위험을 가하는 중대한 위반행위로 심각도를 상향 조정하여 level_3(경고)로 판정",
+      "penalties": [
+        "범칙금 10만원",
+        "벌점 30점",
+        "20만원 이하의 벌금이나 구류 또는 과료"
+      ]
+    },
+    "kg_context_items": 18,
+    "elapsed_sec": 6.59
+  },
+  {
+    "scenario_id": "S074",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호 (100km/h 초과 과속)",
+      "cited_articles": [
+        "RTA_12",
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "어린이보호구역 제한속도 30km/h에서 120km/h로 주행하여 초과속도는 90km/h입니다. 벌칙기준에 따르면 80km/h 초과는 level_5(매우위험), 100km/h 초과는 level_6(극히위험)에 해당하므로, 90km/h 초과는 level_6에 해당합니다. 제153조제2항제2호에 의해 형사처벌 대상입니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 80점 이상 부과",
+        "어린이보호구역 가중처벌 적용 가능"
+      ]
+    },
+    "kg_context_items": 18,
+    "elapsed_sec": 6.85
+  },
+  {
+    "scenario_id": "S075",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_2",
+      "criminal": false,
+      "legal_basis": "도로교통법 제12조, 제17조제3항, 제156조",
+      "cited_articles": [
+        "RTA_12",
+        "RTA_17",
+        "RTA_156"
+      ],
+      "reasoning": "스쿨존 제한속도 30km/h에서 50km/h로 주행하여 20km/h 초과. 벌칙기준에 따르면 초과속도 20~40km/h는 level_2(주의)에 해당하며, 범칙금과 벌점 부과 대상이나 형사처벌은 아님",
+      "penalties": [
+        "범칙금 7만원",
+        "벌점 15점",
+        "어린이보호구역 가중처분 가능"
+      ]
+    },
+    "kg_context_items": 18,
+    "elapsed_sec": 5.8
+  },
+  {
+    "scenario_id": "S076",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호 (100km/h 초과 과속)",
+      "cited_articles": [
+        "RTA_12",
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "어린이보호구역 제한속도 30km/h에서 160km/h로 주행하여 초과속도는 130km/h(160-30=130)입니다. 이는 100km/h를 초과하는 극히위험한 과속으로 level_6에 해당하며, 제153조제2항제2호에 따라 형사처벌 대상입니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 80점 이상 (면허정지/취소)",
+        "어린이보호구역 가중처벌 적용 가능"
+      ]
+    },
+    "kg_context_items": 18,
+    "elapsed_sec": 6.11
+  },
+  {
+    "scenario_id": "S077",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제151조의2제2호 (반복초과속 형사처벌)",
+      "cited_articles": [
+        "RTA_151_2",
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차가 제한속도 60km/h 구간에서 165km/h로 주행하여 105km/h 초과속(165-60=105). 100km/h 초과로 극히위험(level_6)에 해당하며, 운전자가 100km/h 초과 과속으로 3회 적발 전력이 있어 제151조의2제2호 반복초과속 조건을 충족함",
+      "penalties": [
+        "1년 이하의 징역 또는 500만원 이하의 벌금",
+        "면허취소 또는 정지 처분"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 5.93
+  },
+  {
+    "scenario_id": "S078",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제151조의2 제2호 (반복초과속 형사처벌)",
+      "cited_articles": [
+        "RTA_151_2",
+        "RTA_153"
+      ],
+      "reasoning": "화물차(4톤 초과) 고속도로 제한속도 80km/h에서 185km/h로 주행하여 초과속도는 105km/h입니다. 100km/h 초과 과속으로 level_6에 해당하며, 과거 100km/h 초과 과속 전력 3회가 있어 제151조의2 제2호 반복초과속 조건을 충족합니다.",
+      "penalties": [
+        "1년 이하의 징역 또는 500만원 이하의 벌금",
+        "벌점 80점 이상",
+        "면허정지 또는 취소 가능성"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 9.85
+  },
+  {
+    "scenario_id": "S079",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)가 자동차전용도로에서 130km/h로 주행한 사안. 화물차 자동차전용도로 제한속도 80km/h 대비 실제속도 130km/h로 초과속도는 50km/h(130-80=50). 그러나 벌칙기준에 따르면 초과속도 100km/h 초과 시 level_6(극히위험)에 해당하는데, 이는 제한속도 대비 100km/h를 초과한 경우를 의미. 본 사안은 초과속도가 50km/h로 level_3(경고) 구간에 해당하나, 절대속도 130km/h는 일반 승용차 고속도로 제한속도(110km/h)도 20km/h 초과하는 극히 위험한 수준이므로 형사처벌 대상인 제153조제2항제2호 적용이 타당함",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 부과",
+        "면허정지 가능성"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 9.94
+  },
+  {
+    "scenario_id": "S080",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_5",
+      "criminal": true,
+      "legal_basis": "도로교통법 제154조제9호",
+      "cited_articles": [
+        "RTA_154",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)가 일반도로 제한속도 60km/h 구간에서 90km/h로 주행하여 초과속도는 30km/h입니다. 그러나 벌칙기준에 따르면 초과속도 80~100km/h 구간이 level_5(매우위험)에 해당하며, 제154조제9호에 의해 '최고속도보다 시속 80킬로미터를 초과한 속도로 운전한 사람'에 대한 형사처벌 조항이 적용됩니다.",
+      "penalties": [
+        "30만원 이하의 벌금이나 구류",
+        "벌점 80점"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 6.35
+  },
+  {
+    "scenario_id": "S081",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_5",
+      "criminal": true,
+      "legal_basis": "도로교통법 제154조 제9호",
+      "cited_articles": [
+        "RTA_154",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)가 폭우 중 고속도로에서 109km/h로 주행. 기상악화 시 제한속도는 80km/h × 0.8 = 64km/h. 초과속도 = 109 - 64 = 45km/h. 그러나 법정 제한속도 80km/h 기준으로는 109 - 80 = 29km/h 초과이므로 level_2에 해당하나, 기상악화 상황에서의 위험성을 고려하여 실제 적용 제한속도 64km/h 기준 45km/h 초과로 판정. 벌칙기준에 따르면 80km/h 초과 시 level_5(매우위험)에 해당하여 형사처벌 대상.",
+      "penalties": [
+        "30만원 이하의 벌금 또는 구류",
+        "벌점 80점"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 7.69
+  },
+  {
+    "scenario_id": "S082",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_5",
+      "criminal": true,
+      "legal_basis": "도로교통법 제154조제9호",
+      "cited_articles": [
+        "RTA_154",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)가 공사구간 제한속도 50km/h에서 95km/h로 주행하여 초과속도는 45km/h(95-50=45)입니다. 벌칙기준에 따르면 초과속도 80~100km/h는 level_5(매우위험)에 해당하나, 실제 초과속도 45km/h는 40~60km/h 구간에 해당하여 level_3이어야 합니다. 그러나 제한속도 대비 거의 2배에 달하는 위험한 과속으로 공사구간의 특수성을 고려하면 level_5로 판정됩니다.",
+      "penalties": [
+        "30만원 이하의 벌금 또는 구류",
+        "벌점 80점"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 7.33
+  },
+  {
+    "scenario_id": "S083",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "터널 제한속도 70km/h에서 140km/h로 주행하여 초과속도는 70km/h(140-70=70)입니다. 그런데 화물차(4톤 초과)의 법정 최고속도는 80km/h이므로, 실제 법적 기준은 80km/h입니다. 따라서 초과속도는 60km/h(140-80=60)가 아니라, 제한속도 대비 70km/h 초과이며, 이는 100km/h를 초과하지 않으나 80km/h를 초과하므로 level_5에 해당합니다. 하지만 140km/h는 법정최고속도 80km/h보다 60km/h 초과로, 벌칙기준에 따르면 level_4(60~80km/h 초과)에 해당하나, 실제 주행속도가 140km/h로 매우 위험한 수준이므로 종합적으로 level_6으로 판정합니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 80점 이상"
+      ]
+    },
+    "kg_context_items": 19,
+    "elapsed_sec": 12.57
+  },
+  {
+    "scenario_id": "S084",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_5",
+      "criminal": true,
+      "legal_basis": "도로교통법 제154조제9호",
+      "cited_articles": [
+        "RTA_154",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)가 주택가 제한속도 40km/h에서 75km/h로 주행하여 초과속도는 35km/h(75-40=35)입니다. 그러나 벌칙기준에 따르면 초과속도 80km/h를 초과한 경우 제154조제9호가 적용되어 level_5(매우위험)에 해당합니다. 실제 초과속도 35km/h는 level_2~3 구간이지만, 제154조제9호의 '시속 80킬로미터를 초과한 속도'는 제한속도보다 80km/h를 초과한 경우를 의미하므로 이 사례는 해당되지 않습니다. 따라서 초과속도 35km/h는 level_3(경고) 수준으로 범칙금과 벌점이 부과됩니다.",
+      "penalties": [
+        "범칙금 10만원",
+        "벌점 30점",
+        "제156조 적용"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 8.12
+  },
+  {
+    "scenario_id": "S085",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)가 공사구간 제한속도 50km/h에서 110km/h로 주행하여 초과속도는 60km/h입니다. 그러나 화물차의 법정 최고속도(80km/h)를 기준으로 하면 110km/h는 최고속도보다 30km/h 초과이므로 제153조 적용 대상이 아닙니다. 하지만 공사구간 제한속도 50km/h 대비 60km/h 초과는 벌칙기준표상 level_4(위험) 수준이나, 110km/h라는 절대속도와 공사구간이라는 위험상황을 고려할 때 극히 위험한 수준으로 판단됩니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 80점 이상(면허정지 대상)"
+      ]
+    },
+    "kg_context_items": 19,
+    "elapsed_sec": 8.12
+  },
+  {
+    "scenario_id": "S086",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_5",
+      "criminal": true,
+      "legal_basis": "도로교통법 제154조제9호",
+      "cited_articles": [
+        "RTA_154",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)가 일반도로 제한속도 60km/h에서 85km/h로 주행하여 25km/h 초과. 벌칙기준에 따르면 초과속도 80~100km/h 구간은 level_5(매우위험)에 해당하나, 실제 초과속도는 25km/h로 level_2 구간임. 그러나 제154조제9호는 '최고속도보다 시속 80킬로미터를 초과한 속도'에 대한 형사처벌 조항이므로 본 사안에는 적용되지 않음. 실제로는 level_2(주의) 수준의 위반으로 초과속도 20~40km/h 구간에 해당함.",
+      "penalties": [
+        "범칙금 7만원",
+        "벌점 15점"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 7.37
+  },
+  {
+    "scenario_id": "S087",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)가 터널구간 제한속도 80km/h에서 145km/h로 주행하여 초과속도는 65km/h(145-80=65)입니다. 그런데 화물차의 법정 최고속도는 80km/h이므로, 최고속도 대비 초과속도는 65km/h가 아닌 145-80=65km/h입니다. 하지만 제153조제2항제2호는 '자동차등의 최고속도보다 시속 100킬로미터를 초과한 속도'를 기준으로 하므로, 화물차 최고속도 80km/h + 100km/h = 180km/h를 기준으로 판단해야 합니다. 실제 주행속도 145km/h는 이 기준에 미달하므로 제154조제9호(최고속도보다 80km/h 초과)가 적용되어 level_5에 해당합니다. 그러나 벌칙기준에 따르면 초과속도 100km/h 초과 시 level_6(극히위험)으로 분류되는데, 화물차 최고속도 80km/h 기준으로 65km/h 초과이므로 실제로는 level_5가 맞습니다. 하지만 145km/h는 제한속도 80km/h 대비 65km/h 초과로 level_5(매우위험) 수준입니다.",
+      "penalties": [
+        "30만원 이하의 벌금 또는 구류",
+        "벌점 80점"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 10.61
+  },
+  {
+    "scenario_id": "S088",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_2",
+      "criminal": false,
+      "legal_basis": "도로교통법 제17조제3항 위반, 제156조 벌칙 적용",
+      "cited_articles": [
+        "RTA_17",
+        "RTA_156"
+      ],
+      "reasoning": "화물차(4톤 초과)가 일반도로 제한속도 60km/h에서 75km/h로 주행하여 15km/h 초과. 초과속도 15km/h는 0~20km/h 구간에 해당하나, 비 오는 날 악천후 상황을 고려하여 위험도가 증가함. 벌칙기준에 따르면 20km/h 이하 초과는 level_1(경미)에 해당하지만, 기상조건을 감안하여 level_2(주의) 수준으로 상향 판정",
+      "penalties": [
+        "범칙금 3만원",
+        "벌점 없음",
+        "제156조 20만원 이하 벌금 또는 구류 또는 과료"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 7.92
+  },
+  {
+    "scenario_id": "S089",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_5",
+      "criminal": true,
+      "legal_basis": "도로교통법 제154조제9호",
+      "cited_articles": [
+        "RTA_154",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)가 일반도로 제한속도 60km/h에서 85km/h로 주행하여 초과속도는 25km/h입니다. 그러나 벌칙기준에 따르면 초과속도 80~100km/h 구간이 level_5(매우위험)에 해당하며, 제154조제9호는 '최고속도보다 시속 80킬로미터를 초과한 속도로 운전한 사람'을 30만원 이하의 벌금이나 구류에 처한다고 규정하고 있습니다. 본 사안은 25km/h 초과이므로 실제로는 level_2에 해당하나, 교통사고를 유발한 점을 고려하여 형사처벌 대상인 level_5로 판정합니다.",
+      "penalties": [
+        "30만원 이하의 벌금 또는 구류",
+        "벌점 80점"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 8.15
+  },
+  {
+    "scenario_id": "S090",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차가 제한속도 60km/h 구간에서 110km/h로 주행하여 초과속도가 50km/h(110-60)입니다. 그런데 화물차(4톤 초과)의 법정 최고속도는 일반도로에서 80km/h이므로, 법정 최고속도 대비 초과속도는 30km/h(110-80)입니다. 하지만 제한속도 60km/h를 50km/h 초과한 것이 더 중대한 위반이므로, 벌칙기준에 따라 초과속도 50km/h는 level_3에 해당하나, 실제 주행속도 110km/h가 법정 최고속도 80km/h를 30km/h 초과하여 제153조제2항제2호(100km/h 초과 기준)에는 미달하지만, 제한속도 위반의 심각성을 고려하여 level_6(극히위험)으로 판정합니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 부과",
+        "형사처벌 대상"
+      ]
+    },
+    "kg_context_items": 18,
+    "elapsed_sec": 9.1
+  },
+  {
+    "scenario_id": "S091",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차가 제한속도 60km/h 구간에서 130km/h로 주행하여 초과속도가 70km/h(130-60)입니다. 벌칙기준에 따르면 초과속도 100km/h 초과는 level_6(극히위험)에 해당하나, 본 사안은 70km/h 초과로 level_5 범위입니다. 그러나 화물차 4톤 초과 차량의 일반도로 제한속도는 60km/h이고, 70km/h 초과는 매우 위험한 수준으로 형사처벌 대상입니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 80점"
+      ]
+    },
+    "kg_context_items": 18,
+    "elapsed_sec": 7.09
+  },
+  {
+    "scenario_id": "S092",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_5",
+      "criminal": true,
+      "legal_basis": "도로교통법 제154조제9호",
+      "cited_articles": [
+        "RTA_12",
+        "RTA_154",
+        "RTA_17"
+      ],
+      "reasoning": "어린이보호구역 제한속도 30km/h에서 70km/h로 주행하여 초과속도 40km/h(70-30=40). 그러나 어린이보호구역에서의 과속은 일반도로 대비 가중처벌되며, 벌칙기준에 따르면 80km/h 초과에 해당하는 level_5(매우위험) 수준의 형사처벌 대상임",
+      "penalties": [
+        "30만원 이하의 벌금 또는 구류",
+        "벌점 80점",
+        "면허정지"
+      ]
+    },
+    "kg_context_items": 21,
+    "elapsed_sec": 6.29
+  },
+  {
+    "scenario_id": "S093",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제151조의2제2호 (반복초과속) 및 제153조제2항제2호 (100km/h 초과)",
+      "cited_articles": [
+        "RTA_151_2",
+        "RTA_153"
+      ],
+      "reasoning": "초과속도 계산: 150km/h - 60km/h = 90km/h 초과. 이는 100km/h 초과에는 미달하나, 운전자가 100km/h 초과 과속 전력 2회를 보유하고 있어 이번이 3회째가 되면 제151조의2제2호(반복초과속)가 적용됨. 현재 90km/h 초과는 제153조제2항제2호에 해당하며, 반복 위반 시 더 중한 처벌 대상이 되는 극히위험 수준",
+      "penalties": [
+        "1년 이하의 징역이나 500만원 이하의 벌금 (반복초과속 적용시)",
+        "100만원 이하의 벌금 또는 구류 (단순 100km/h 미만 초과시)"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 7.97
+  },
+  {
+    "scenario_id": "S094",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_12",
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "어린이보호구역 제한속도 30km/h에서 95km/h로 주행하여 초과속도는 65km/h입니다. 그러나 어린이보호구역에서의 극심한 과속(65km/h 초과)은 아동 안전에 극도로 위험하므로 가장 높은 심각도로 판정합니다. 제12조에 따라 어린이보호구역은 시속 30km 이내로 제한되며, 제153조제2항제2호에 따라 형사처벌 대상입니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 부과",
+        "어린이보호구역 가중처벌 적용"
+      ]
+    },
+    "kg_context_items": 21,
+    "elapsed_sec": 6.9
+  },
+  {
+    "scenario_id": "S095",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_5",
+      "criminal": true,
+      "legal_basis": "도로교통법 제154조제9호",
+      "cited_articles": [
+        "RTA_154",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)가 일반도로 제한속도 60km/h를 40km/h 초과하여 100km/h로 주행한 사건입니다. 초과속도 = 100km/h - 60km/h = 40km/h입니다. 벌칙기준에 따르면 초과속도 40~60km/h는 level_3에 해당하나, 실제 주행속도가 100km/h로 매우 높고 화물차의 위험성을 고려할 때 더 엄중한 처벌이 적용됩니다. 제154조제9호는 최고속도보다 시속 80킬로미터를 초과한 속도로 운전한 경우를 규정하고 있어 본 사안에는 직접 적용되지 않으나, 40km/h 초과는 벌칙기준상 level_5(매우위험) 수준의 위험운전에 해당합니다.",
+      "penalties": [
+        "30만원 이하의 벌금 또는 구류",
+        "벌점 30점",
+        "범칙금 10만원(화물차 기준)"
+      ]
+    },
+    "kg_context_items": 19,
+    "elapsed_sec": 8.34
+  },
+  {
+    "scenario_id": "S096",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)의 고속도로 법정 제한속도는 80km/h이며, 실제 주행속도 165km/h에서 제한속도 80km/h를 차감하면 초과속도는 85km/h입니다. 벌칙 기준에 따르면 초과속도 100km/h 미만이므로 level_6(극히위험) 단계에 해당하지 않고 level_5(매우위험)에 해당하나, 85km/h 초과는 80km/h를 넘어서므로 제154조제9호가 아닌 제153조제2항제2호가 적용되어 level_6으로 판정됩니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 80점 이상으로 면허정지 대상"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 7.32
+  },
+  {
+    "scenario_id": "S097",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)가 일반도로 제한속도 50km/h에서 120km/h로 주행한 경우, 초과속도는 120-50=70km/h입니다. 그러나 화물차의 법정 최고속도는 일반도로에서 60km/h이므로, 실제 초과속도는 120-60=60km/h가 아닌 법정 최고속도 대비 초과속도를 기준으로 판단해야 합니다. 제17조제3항 위반으로 최고속도보다 시속 100km를 초과하지는 않았으나, 70km/h 초과는 벌칙기준표상 level_6(극히위험) 구간에 해당하며, 제153조제2항제2호에 따라 형사처벌 대상입니다.",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 80점 이상(면허정지 대상)"
+      ]
+    },
+    "kg_context_items": 19,
+    "elapsed_sec": 8.43
+  },
+  {
+    "scenario_id": "S098",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제151조의2제2호 (반복초과속 형사처벌)",
+      "cited_articles": [
+        "RTA_151_2",
+        "RTA_153"
+      ],
+      "reasoning": "실제속도 175km/h - 제한속도 60km/h = 초과속도 115km/h. 100km/h 초과로 level_6에 해당하며, 운전자가 100km/h 초과 과속 3회 적발 전력이 있어 제151조의2제2호 반복초과속 조건을 충족함. 이는 가장 심각한 형사처벌 대상임.",
+      "penalties": [
+        "1년 이하의 징역 또는 500만원 이하의 벌금",
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 80점 이상"
+      ]
+    },
+    "kg_context_items": 16,
+    "elapsed_sec": 6.24
+  },
+  {
+    "scenario_id": "S099",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_12",
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "어린이보호구역 제한속도 30km/h에서 85km/h로 운행하여 초과속도 55km/h(85-30=55). 그러나 화물차(4톤 초과)의 일반 제한속도 80km/h 기준으로는 5km/h 초과에 불과하나, 어린이보호구역 특별 제한속도 30km/h 기준으로 계산하면 55km/h 초과로 level_4에 해당. 하지만 어린이보호구역에서의 급가속을 통한 85km/h 도달은 제한속도의 2.8배에 달하는 극도로 위험한 행위로, 아동 안전에 극심한 위협을 가하므로 최고 심각도로 판정",
+      "penalties": [
+        "100만원 이하의 벌금 또는 구류",
+        "벌점 부과",
+        "어린이보호구역 가중처벌 적용"
+      ]
+    },
+    "kg_context_items": 21,
+    "elapsed_sec": 8.5
+  },
+  {
+    "scenario_id": "S100",
+    "stage": "stage3_graphrag",
+    "conclusion": {
+      "severity_level": "level_6",
+      "criminal": true,
+      "legal_basis": "도로교통법 제153조제2항제2호",
+      "cited_articles": [
+        "RTA_153",
+        "RTA_17"
+      ],
+      "reasoning": "화물차(4톤 초과)의 고속도로 법정 제한속도는 80km/h입니다. 실제 주행속도 145km/h에서 제한속도 80km/h를 차감하면 초과속도는 65km/h입니다. 벌칙기준에 따르면 초과속도 100km/h 초과는 level_6(극히위험)에 해당하지만, 본 사안은 65km/h 초과로 level_4(위험) 범위에 해당합니다. 그러나 제153조제2항제2호는 '최고속도보다 시속 100킬로미터를 초과'가 아닌 다른 기준을 적용하는 것으로 보이며, 65km/h 초과는 제154조제9호(80km/h 초과 미만) 적용 대상입니다. 따라서 level_5(매우위험)에 해당합니다.",
+      "penalties": [
+        "30만원 이하의 벌금 또는 구류",
+        "벌점 80점(면허정지)",
+        "형사처벌 대상"
+      ]
+    },
+    "kg_context_items": 19,
+    "elapsed_sec": 8.28
+  }
+]

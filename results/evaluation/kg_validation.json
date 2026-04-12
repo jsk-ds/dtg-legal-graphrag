@@ -1,0 +1,443 @@
+{
+  "tests": [
+    {
+      "test": "level_1 존재",
+      "passed": true,
+      "detail": "경미"
+    },
+    {
+      "test": "level_1 속도범위",
+      "passed": true,
+      "detail": "KG:[0,20] vs SGT:[0,20]"
+    },
+    {
+      "test": "level_1 형사여부",
+      "passed": true,
+      "detail": "KG:False vs SGT:False"
+    },
+    {
+      "test": "level_1 법적근거",
+      "passed": true,
+      "detail": "KG:제156조제1호 vs SGT:제156조제1호"
+    },
+    {
+      "test": "level_1 벌점",
+      "passed": true,
+      "detail": "KG:0 vs SGT:0"
+    },
+    {
+      "test": "level_2 존재",
+      "passed": true,
+      "detail": "주의"
+    },
+    {
+      "test": "level_2 속도범위",
+      "passed": true,
+      "detail": "KG:[20,40] vs SGT:[20,40]"
+    },
+    {
+      "test": "level_2 형사여부",
+      "passed": true,
+      "detail": "KG:False vs SGT:False"
+    },
+    {
+      "test": "level_2 법적근거",
+      "passed": true,
+      "detail": "KG:제156조제1호 vs SGT:제156조제1호"
+    },
+    {
+      "test": "level_2 벌점",
+      "passed": true,
+      "detail": "KG:15 vs SGT:15"
+    },
+    {
+      "test": "level_3 존재",
+      "passed": true,
+      "detail": "경고"
+    },
+    {
+      "test": "level_3 속도범위",
+      "passed": true,
+      "detail": "KG:[40,60] vs SGT:[40,60]"
+    },
+    {
+      "test": "level_3 형사여부",
+      "passed": true,
+      "detail": "KG:False vs SGT:False"
+    },
+    {
+      "test": "level_3 법적근거",
+      "passed": true,
+      "detail": "KG:제156조제1호 vs SGT:제156조제1호"
+    },
+    {
+      "test": "level_3 벌점",
+      "passed": true,
+      "detail": "KG:30 vs SGT:30"
+    },
+    {
+      "test": "level_4 존재",
+      "passed": true,
+      "detail": "위험"
+    },
+    {
+      "test": "level_4 속도범위",
+      "passed": true,
+      "detail": "KG:[60,80] vs SGT:[60,80]"
+    },
+    {
+      "test": "level_4 형사여부",
+      "passed": true,
+      "detail": "KG:False vs SGT:False"
+    },
+    {
+      "test": "level_4 법적근거",
+      "passed": true,
+      "detail": "KG:제156조제1호 vs SGT:제156조제1호"
+    },
+    {
+      "test": "level_4 벌점",
+      "passed": true,
+      "detail": "KG:60 vs SGT:60"
+    },
+    {
+      "test": "level_5 존재",
+      "passed": true,
+      "detail": "매우위험"
+    },
+    {
+      "test": "level_5 속도범위",
+      "passed": true,
+      "detail": "KG:[80,100] vs SGT:[80,100]"
+    },
+    {
+      "test": "level_5 형사여부",
+      "passed": true,
+      "detail": "KG:True vs SGT:True"
+    },
+    {
+      "test": "level_5 법적근거",
+      "passed": true,
+      "detail": "KG:제154조제9호 vs SGT:제154조제9호"
+    },
+    {
+      "test": "level_5 벌점",
+      "passed": true,
+      "detail": "KG:80 vs SGT:80"
+    },
+    {
+      "test": "level_6 존재",
+      "passed": true,
+      "detail": "극히위험"
+    },
+    {
+      "test": "level_6 속도범위",
+      "passed": true,
+      "detail": "KG:[100,9999] vs SGT:[100,9999]"
+    },
+    {
+      "test": "level_6 형사여부",
+      "passed": true,
+      "detail": "KG:True vs SGT:True"
+    },
+    {
+      "test": "level_6 법적근거",
+      "passed": true,
+      "detail": "KG:제153조제2항제2호 vs SGT:제153조제2항제2호"
+    },
+    {
+      "test": "level_6 벌점",
+      "passed": true,
+      "detail": "KG:None vs SGT:None"
+    },
+    {
+      "test": "RELATED RTA_17→RTA_156",
+      "passed": true,
+      "detail": "제17조 속도위반 → 제156조 벌칙(20만원이하)"
+    },
+    {
+      "test": "RELATED RTA_17→RTA_154",
+      "passed": true,
+      "detail": "제17조 속도위반 → 제154조 벌칙(30만원이하, 80km/h초과)"
+    },
+    {
+      "test": "RELATED RTA_17→RTA_153",
+      "passed": true,
+      "detail": "제17조 속도위반 → 제153조 벌칙(100만원이하, 100km/h초과)"
+    },
+    {
+      "test": "RELATED RTA_17→RTA_151_2",
+      "passed": true,
+      "detail": "제17조 속도위반 → 제151조의2 반복초과속(3회이상)"
+    },
+    {
+      "test": "RELATED RTA_49→RTA_156",
+      "passed": true,
+      "detail": "제49조 준수사항위반(급감속 등) → 제156조 벌칙"
+    },
+    {
+      "test": "RELATED RTA_19→RTA_156",
+      "passed": true,
+      "detail": "제19조 안전거리위반 → 제156조 벌칙"
+    },
+    {
+      "test": "RELATED RTA_21→RTA_156",
+      "passed": true,
+      "detail": "제21조 앞지르기위반 → 제156조 벌칙"
+    },
+    {
+      "test": "RELATED RTA_25→RTA_156",
+      "passed": true,
+      "detail": "제25조 교차로통행위반 → 제156조 벌칙"
+    },
+    {
+      "test": "RELATED RTA_12→RTA_17",
+      "passed": true,
+      "detail": "제12조 어린이보호구역 → 제17조 속도위반 가중"
+    },
+    {
+      "test": "RELATED TSA_55→TTBA_11",
+      "passed": true,
+      "detail": "교통안전법 제55조 DTG 미제출 → 화물차법 제11조 행정처분"
+    },
+    {
+      "test": "RELATED TSA_54_2→TSA_55",
+      "passed": true,
+      "detail": "교통안전법 제54조의2 안전담당자 → 제55조 DTG관리"
+    },
+    {
+      "test": "RELATED TTBA_59→TTBA_11",
+      "passed": true,
+      "detail": "화물차법 제59조 교육미이수 → 제11조 행정처분"
+    },
+    {
+      "test": "RELATED TSA_54_2→TSA_55_3",
+      "passed": true,
+      "detail": "교통안전법 제54조의2 DTG장착 → 제55조③ 분석결과 제공"
+    },
+    {
+      "test": "RELATED TSA_55_3→TSA_55_4",
+      "passed": true,
+      "detail": "교통안전법 제55조③ 결과제공 → 제55조④ 목적외 사용 금지"
+    },
+    {
+      "test": "불필요 엣지 없음",
+      "passed": true,
+      "detail": "KG 엣지 14개 = GT 14개"
+    },
+    {
+      "test": "경로   5km/h",
+      "passed": true,
+      "detail": "초과 5km/h → level_1(✓) 형사:False(✓) 벌칙:['3만원', '화물차 과속 20km/h이하 범칙금 3만원'](✓)"
+    },
+    {
+      "test": "경로  10km/h",
+      "passed": true,
+      "detail": "초과 10km/h → level_1(✓) 형사:False(✓) 벌칙:['3만원', '화물차 과속 20km/h이하 범칙금 3만원'](✓)"
+    },
+    {
+      "test": "경로  15km/h",
+      "passed": true,
+      "detail": "초과 15km/h → level_1(✓) 형사:False(✓) 벌칙:['3만원', '화물차 과속 20km/h이하 범칙금 3만원'](✓)"
+    },
+    {
+      "test": "경로  20km/h",
+      "passed": true,
+      "detail": "초과 20km/h → level_1(✓) 형사:False(✓) 벌칙:['3만원', '화물차 과속 20km/h이하 범칙금 3만원'](✓)"
+    },
+    {
+      "test": "경로  25km/h",
+      "passed": true,
+      "detail": "초과 25km/h → level_2(✓) 형사:False(✓) 벌칙:['6만원', '15점', '화물차 과속 20~40km/h 범칙금 7만원'](✓)"
+    },
+    {
+      "test": "경로  35km/h",
+      "passed": true,
+      "detail": "초과 35km/h → level_2(✓) 형사:False(✓) 벌칙:['6만원', '15점', '화물차 과속 20~40km/h 범칙금 7만원'](✓)"
+    },
+    {
+      "test": "경로  40km/h",
+      "passed": true,
+      "detail": "초과 40km/h → level_2(✓) 형사:False(✓) 벌칙:['6만원', '15점', '화물차 과속 20~40km/h 범칙금 7만원'](✓)"
+    },
+    {
+      "test": "경로  45km/h",
+      "passed": true,
+      "detail": "초과 45km/h → level_3(✓) 형사:False(✓) 벌칙:['화물차 과속 40~60km/h 범칙금 10만원', '9만원', '30점'](✓)"
+    },
+    {
+      "test": "경로  55km/h",
+      "passed": true,
+      "detail": "초과 55km/h → level_3(✓) 형사:False(✓) 벌칙:['화물차 과속 40~60km/h 범칙금 10만원', '9만원', '30점'](✓)"
+    },
+    {
+      "test": "경로  60km/h",
+      "passed": true,
+      "detail": "초과 60km/h → level_3(✓) 형사:False(✓) 벌칙:['화물차 과속 40~60km/h 범칙금 10만원', '9만원', '30점'](✓)"
+    },
+    {
+      "test": "경로  65km/h",
+      "passed": true,
+      "detail": "초과 65km/h → level_4(✓) 형사:False(✓) 벌칙:['화물차 과속 60~80km/h 범칙금 13만원', '12만원', '60점'](✓)"
+    },
+    {
+      "test": "경로  75km/h",
+      "passed": true,
+      "detail": "초과 75km/h → level_4(✓) 형사:False(✓) 벌칙:['화물차 과속 60~80km/h 범칙금 13만원', '12만원', '60점'](✓)"
+    },
+    {
+      "test": "경로  80km/h",
+      "passed": true,
+      "detail": "초과 80km/h → level_4(✓) 형사:False(✓) 벌칙:['화물차 과속 60~80km/h 범칙금 13만원', '12만원', '60점'](✓)"
+    },
+    {
+      "test": "경로  85km/h",
+      "passed": true,
+      "detail": "초과 85km/h → level_5(✓) 형사:True(✓) 벌칙:['80점', '30만원이하'](✓)"
+    },
+    {
+      "test": "경로  95km/h",
+      "passed": true,
+      "detail": "초과 95km/h → level_5(✓) 형사:True(✓) 벌칙:['80점', '30만원이하'](✓)"
+    },
+    {
+      "test": "경로 100km/h",
+      "passed": true,
+      "detail": "초과 100km/h → level_5(✓) 형사:True(✓) 벌칙:['80점', '30만원이하'](✓)"
+    },
+    {
+      "test": "경로 105km/h",
+      "passed": true,
+      "detail": "초과 105km/h → level_6(✓) 형사:True(✓) 벌칙:['100만원이하', '1년이하 징역 또는 500만원이하', '면허취소'](✓)"
+    },
+    {
+      "test": "경로 120km/h",
+      "passed": true,
+      "detail": "초과 120km/h → level_6(✓) 형사:True(✓) 벌칙:['100만원이하', '1년이하 징역 또는 500만원이하', '면허취소'](✓)"
+    },
+    {
+      "test": "경로 150km/h",
+      "passed": true,
+      "detail": "초과 150km/h → level_6(✓) 형사:True(✓) 벌칙:['100만원이하', '1년이하 징역 또는 500만원이하', '면허취소'](✓)"
+    },
+    {
+      "test": "VIOLATES speeding",
+      "passed": true,
+      "detail": "기대 6개, KG 6개"
+    },
+    {
+      "test": "VIOLATES prolonged_speeding",
+      "passed": true,
+      "detail": "기대 4개, KG 4개"
+    },
+    {
+      "test": "VIOLATES sudden_accel",
+      "passed": true,
+      "detail": "기대 2개, KG 2개"
+    },
+    {
+      "test": "VIOLATES sudden_start",
+      "passed": true,
+      "detail": "기대 2개, KG 2개"
+    },
+    {
+      "test": "VIOLATES sudden_decel",
+      "passed": true,
+      "detail": "기대 2개, KG 2개"
+    },
+    {
+      "test": "VIOLATES sudden_stop",
+      "passed": true,
+      "detail": "기대 2개, KG 2개"
+    },
+    {
+      "test": "VIOLATES sudden_lane_change",
+      "passed": true,
+      "detail": "기대 2개, KG 2개"
+    },
+    {
+      "test": "VIOLATES sudden_overtake",
+      "passed": true,
+      "detail": "기대 3개, KG 3개"
+    },
+    {
+      "test": "VIOLATES sudden_turn",
+      "passed": true,
+      "detail": "기대 2개, KG 2개"
+    },
+    {
+      "test": "VIOLATES sudden_uturn",
+      "passed": true,
+      "detail": "기대 2개, KG 2개"
+    },
+    {
+      "test": "VIOLATES dtg_violation",
+      "passed": true,
+      "detail": "기대 1개, KG 1개"
+    },
+    {
+      "test": "VIOLATES education",
+      "passed": true,
+      "detail": "기대 1개, KG 1개"
+    },
+    {
+      "test": "VIOLATES overload",
+      "passed": true,
+      "detail": "기대 2개, KG 2개"
+    },
+    {
+      "test": "경계  20km/h",
+      "passed": true,
+      "detail": "20km/h = level_1 (20km/h 이하 초과) → KG: level_1 ✓"
+    },
+    {
+      "test": "경계  21km/h",
+      "passed": true,
+      "detail": "21km/h = level_2 (20km/h 초과) → KG: level_2 ✓"
+    },
+    {
+      "test": "경계  40km/h",
+      "passed": true,
+      "detail": "40km/h = level_2 (40km/h 이하 초과) → KG: level_2 ✓"
+    },
+    {
+      "test": "경계  41km/h",
+      "passed": true,
+      "detail": "41km/h = level_3 (40km/h 초과) → KG: level_3 ✓"
+    },
+    {
+      "test": "경계  60km/h",
+      "passed": true,
+      "detail": "60km/h = level_3 (60km/h 이하 초과) → KG: level_3 ✓"
+    },
+    {
+      "test": "경계  61km/h",
+      "passed": true,
+      "detail": "61km/h = level_4 (60km/h 초과) → KG: level_4 ✓"
+    },
+    {
+      "test": "경계  80km/h",
+      "passed": true,
+      "detail": "80km/h = level_4 (80km/h 이하 초과) → KG: level_4 ✓"
+    },
+    {
+      "test": "경계  81km/h",
+      "passed": true,
+      "detail": "81km/h = level_5 (80km/h 초과) → KG: level_5 ✓"
+    },
+    {
+      "test": "경계 100km/h",
+      "passed": true,
+      "detail": "100km/h = level_5 (100km/h 이하 초과) → KG: level_5 ✓"
+    },
+    {
+      "test": "경계 101km/h",
+      "passed": true,
+      "detail": "101km/h = level_6 (100km/h 초과) → KG: level_6 ✓"
+    }
+  ],
+  "pass": 87,
+  "fail": 0,
+  "total": 87,
+  "accuracy": 1.0
+}

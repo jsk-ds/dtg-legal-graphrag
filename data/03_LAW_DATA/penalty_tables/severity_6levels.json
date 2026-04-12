@@ -1,0 +1,72 @@
+{
+  "level_1": {
+    "label": "경미",
+    "speed_over_min": 0,
+    "speed_over_max": 20,
+    "description": "20km/h 이하 초과",
+    "fine_passenger": 30000,
+    "fine_van_etc": 30000,
+    "demerit_points": 0,
+    "legal_basis": "제156조제1호",
+    "criminal": false
+  },
+  "level_2": {
+    "label": "주의",
+    "speed_over_min": 20,
+    "speed_over_max": 40,
+    "description": "20~40km/h 초과",
+    "fine_passenger": 60000,
+    "fine_van_etc": 70000,
+    "demerit_points": 15,
+    "legal_basis": "제156조제1호",
+    "criminal": false
+  },
+  "level_3": {
+    "label": "경고",
+    "speed_over_min": 40,
+    "speed_over_max": 60,
+    "description": "40~60km/h 초과",
+    "fine_passenger": 90000,
+    "fine_van_etc": 100000,
+    "demerit_points": 30,
+    "legal_basis": "제156조제1호",
+    "criminal": false
+  },
+  "level_4": {
+    "label": "위험",
+    "speed_over_min": 60,
+    "speed_over_max": 80,
+    "description": "60~80km/h 초과",
+    "fine_passenger": 120000,
+    "fine_van_etc": 130000,
+    "demerit_points": 60,
+    "legal_basis": "제156조제1호",
+    "criminal": false,
+    "note": "벌점 60점=면허정지"
+  },
+  "level_5": {
+    "label": "매우위험",
+    "speed_over_min": 80,
+    "speed_over_max": 100,
+    "description": "80~100km/h 초과",
+    "fine_passenger": null,
+    "fine_van_etc": null,
+    "criminal_penalty": "30만원 이하 벌금·구류",
+    "demerit_points": 80,
+    "legal_basis": "제154조제9호",
+    "criminal": true
+  },
+  "level_6": {
+    "label": "극히위험",
+    "speed_over_min": 100,
+    "speed_over_max": 9999,
+    "description": "100km/h 초과",
+    "fine_passenger": null,
+    "fine_van_etc": null,
+    "criminal_penalty": "100만원 이하 벌금·구류",
+    "demerit_points": null,
+    "legal_basis": "제153조제2항제2호",
+    "criminal": true,
+    "note": "3회이상→제151조의2제2호: 1년이하 징역/500만원이하 벌금"
+  }
+}

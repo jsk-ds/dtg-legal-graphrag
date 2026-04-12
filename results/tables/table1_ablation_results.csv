@@ -1,0 +1,8 @@
+Metric,S1: Vanilla,S2: Flat RAG,S3: GraphRAG,S4: IRAC-V
+Citation Accuracy,1.3%,100.0%,100.0%,96.3%
+Severity F1 (macro),22.4%,24.2%,27.1%,63.3%
+Hallucination Rate,98.7%,0.0%,0.0%,3.7%
+Severity Accuracy,31.3%,33.0%,34.0%,64.3%
+Criminal Accuracy,54.7%,55.0%,50.7%,75.7%
+Multi-hop Recall,0.0%,30.9%,53.0%,70.7%
+Avg. Time (sec),6.4,6.7,7.4,11.7

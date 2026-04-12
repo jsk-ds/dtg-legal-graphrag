@@ -1,0 +1,27 @@
+[
+  {
+    "id": "TSA_54_2",
+    "law": "교통안전법",
+    "jo_num": "제54조의2",
+    "title": "교통안전담당자 지정",
+    "type": "definition",
+    "violation_type": "safety_mgmt",
+    "source": "법제처 Open API (law.go.kr)",
+    "mst": "254099",
+    "content": "대통령령으로 정하는 교통수단 운영자는 교통안전에 관한 업무를 담당할 교통안전담당자를 해당 사업장에 선임하여야 한다. 교통안전담당자는 운행기록장치의 관리, 운행기록 분석, 위험운전행동에 대한 안전교육 등의 업무를 수행한다.",
+    "collect_method": "local_cache"
+  },
+  {
+    "id": "TSA_55",
+    "law": "교통안전법",
+    "jo_num": "제55조",
+    "title": "운행기록장치의 장착 등",
+    "type": "definition",
+    "violation_type": "dtg_violation",
+    "note": "DTG 장착 및 운행기록 제출 의무. TSA_56은 법령 개정으로 교통안전체험시설 조문이 되어 제외",
+    "source": "법제처 Open API (law.go.kr)",
+    "mst": "254099",
+    "content": "① 교통수단 운영자는 대통령령으로 정하는 교통수단에 운행기록장치(DTG)를 장착하여야 한다. ③ 국토교통부장관은 운행기록을 분석하여 그 결과를 교통수단 운영자에게 제공할 수 있다. ④ 운행기록의 분석 결과는 교통안전 점검·진단 및 안전관리 목적으로만 사용하며, 이를 근거로 운수종사자에게 불이익한 처분을 하여서는 아니 된다.",
+    "collect_method": "local_cache"
+  }
+]

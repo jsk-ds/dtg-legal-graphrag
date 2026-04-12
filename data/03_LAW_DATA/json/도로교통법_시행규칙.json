@@ -1,0 +1,15 @@
+[
+  {
+    "id": "RTA_R_19",
+    "law": "도로교통법 시행규칙",
+    "jo_num": "제19조",
+    "title": "자동차등과 노면전차의 속도",
+    "type": "definition",
+    "violation_type": "speed_limit",
+    "note": "고속도로 화물차 80km/h, 일반도로 60km/h 등",
+    "source": "법제처 Open API (law.go.kr)",
+    "mst": "285317",
+    "content": "자동차등의 도로 통행 최고속도는 다음과 같다: 고속도로 승용자동차 100~110km/h, 적재중량 1.5톤 초과 화물자동차 80km/h. 자동차전용도로 승용자동차 90km/h, 화물자동차 80km/h. 편도 2차로 이상 일반도로 80km/h, 그 밖의 일반도로 60km/h, 주거·상업·공업지역 50km/h.",
+    "collect_method": "local_cache"
+  }
+]

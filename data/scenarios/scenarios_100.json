@@ -1,0 +1,2418 @@
+[
+  {
+    "id": "S001",
+    "category": "A_easy_explicit_limit",
+    "difficulty": "easy",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 제한속도 60km/h 일반도로에서 75km/h로 주행하였다.",
+    "speed_limit": 60,
+    "actual_speed": 75,
+    "speed_over": 15,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_1",
+      "severity_label": "경미",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 30000,
+      "demerit_points": 0
+    }
+  },
+  {
+    "id": "S002",
+    "category": "A_easy_explicit_limit",
+    "difficulty": "easy",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 제한속도 60km/h 일반도로에서 95km/h로 주행하였다.",
+    "speed_limit": 60,
+    "actual_speed": 95,
+    "speed_over": 35,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_2",
+      "severity_label": "주의",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 70000,
+      "demerit_points": 15
+    }
+  },
+  {
+    "id": "S003",
+    "category": "A_easy_explicit_limit",
+    "difficulty": "easy",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 제한속도 60km/h 일반도로에서 110km/h로 주행하였다.",
+    "speed_limit": 60,
+    "actual_speed": 110,
+    "speed_over": 50,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_3",
+      "severity_label": "경고",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 100000,
+      "demerit_points": 30
+    }
+  },
+  {
+    "id": "S004",
+    "category": "A_easy_explicit_limit",
+    "difficulty": "easy",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 제한속도 60km/h 일반도로에서 130km/h로 주행하였다.",
+    "speed_limit": 60,
+    "actual_speed": 130,
+    "speed_over": 70,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_4",
+      "severity_label": "위험",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 130000,
+      "demerit_points": 60
+    }
+  },
+  {
+    "id": "S005",
+    "category": "A_easy_explicit_limit",
+    "difficulty": "easy",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 제한속도 60km/h 일반도로에서 150km/h로 주행하였다.",
+    "speed_limit": 60,
+    "actual_speed": 150,
+    "speed_over": 90,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_5",
+      "severity_label": "매우위험",
+      "criminal": true,
+      "legal_basis": "제154조제9호",
+      "fine_amount": null,
+      "demerit_points": 80
+    }
+  },
+  {
+    "id": "S006",
+    "category": "A_easy_explicit_limit",
+    "difficulty": "easy",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 제한속도 60km/h 일반도로에서 170km/h로 주행하였다.",
+    "speed_limit": 60,
+    "actual_speed": 170,
+    "speed_over": 110,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_6",
+      "severity_label": "극히위험",
+      "criminal": true,
+      "legal_basis": "제153조제2항제2호",
+      "fine_amount": null,
+      "demerit_points": null
+    }
+  },
+  {
+    "id": "S007",
+    "category": "A_easy_explicit_limit",
+    "difficulty": "easy",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 제한속도 50km/h 일반도로에서 65km/h로 주행하였다.",
+    "speed_limit": 50,
+    "actual_speed": 65,
+    "speed_over": 15,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_1",
+      "severity_label": "경미",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 30000,
+      "demerit_points": 0
+    }
+  },
+  {
+    "id": "S008",
+    "category": "A_easy_explicit_limit",
+    "difficulty": "easy",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 제한속도 50km/h 일반도로에서 80km/h로 주행하였다.",
+    "speed_limit": 50,
+    "actual_speed": 80,
+    "speed_over": 30,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_2",
+      "severity_label": "주의",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 70000,
+      "demerit_points": 15
+    }
+  },
+  {
+    "id": "S009",
+    "category": "A_easy_explicit_limit",
+    "difficulty": "easy",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 제한속도 50km/h 일반도로에서 105km/h로 주행하였다.",
+    "speed_limit": 50,
+    "actual_speed": 105,
+    "speed_over": 55,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_3",
+      "severity_label": "경고",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 100000,
+      "demerit_points": 30
+    }
+  },
+  {
+    "id": "S010",
+    "category": "A_easy_explicit_limit",
+    "difficulty": "easy",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 제한속도 80km/h 일반도로에서 145km/h로 주행하였다.",
+    "speed_limit": 80,
+    "actual_speed": 145,
+    "speed_over": 65,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_4",
+      "severity_label": "위험",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 130000,
+      "demerit_points": 60
+    }
+  },
+  {
+    "id": "S011",
+    "category": "A_easy_explicit_limit",
+    "difficulty": "easy",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 제한속도 80km/h 일반도로에서 165km/h로 주행하였다.",
+    "speed_limit": 80,
+    "actual_speed": 165,
+    "speed_over": 85,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_5",
+      "severity_label": "매우위험",
+      "criminal": true,
+      "legal_basis": "제154조제9호",
+      "fine_amount": null,
+      "demerit_points": 80
+    }
+  },
+  {
+    "id": "S012",
+    "category": "A_easy_explicit_limit",
+    "difficulty": "easy",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 제한속도 80km/h 일반도로에서 195km/h로 주행하였다.",
+    "speed_limit": 80,
+    "actual_speed": 195,
+    "speed_over": 115,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_6",
+      "severity_label": "극히위험",
+      "criminal": true,
+      "legal_basis": "제153조제2항제2호",
+      "fine_amount": null,
+      "demerit_points": null
+    }
+  },
+  {
+    "id": "S013",
+    "category": "A_easy_explicit_limit",
+    "difficulty": "easy",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 제한속도 50km/h 일반도로에서 58km/h로 주행하였다.",
+    "speed_limit": 50,
+    "actual_speed": 58,
+    "speed_over": 8,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_1",
+      "severity_label": "경미",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 30000,
+      "demerit_points": 0
+    }
+  },
+  {
+    "id": "S014",
+    "category": "A_easy_explicit_limit",
+    "difficulty": "easy",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 제한속도 80km/h 일반도로에서 115km/h로 주행하였다.",
+    "speed_limit": 80,
+    "actual_speed": 115,
+    "speed_over": 35,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_2",
+      "severity_label": "주의",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 70000,
+      "demerit_points": 15
+    }
+  },
+  {
+    "id": "S015",
+    "category": "A_easy_explicit_limit",
+    "difficulty": "easy",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 제한속도 50km/h 일반도로에서 108km/h로 주행하였다.",
+    "speed_limit": 50,
+    "actual_speed": 108,
+    "speed_over": 58,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_3",
+      "severity_label": "경고",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 100000,
+      "demerit_points": 30
+    }
+  },
+  {
+    "id": "S016",
+    "category": "A_easy_explicit_limit",
+    "difficulty": "easy",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 제한속도 50km/h 일반도로에서 128km/h로 주행하였다.",
+    "speed_limit": 50,
+    "actual_speed": 128,
+    "speed_over": 78,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_4",
+      "severity_label": "위험",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 130000,
+      "demerit_points": 60
+    }
+  },
+  {
+    "id": "S017",
+    "category": "A_easy_explicit_limit",
+    "difficulty": "easy",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 제한속도 80km/h 일반도로에서 178km/h로 주행하였다.",
+    "speed_limit": 80,
+    "actual_speed": 178,
+    "speed_over": 98,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_5",
+      "severity_label": "매우위험",
+      "criminal": true,
+      "legal_basis": "제154조제9호",
+      "fine_amount": null,
+      "demerit_points": 80
+    }
+  },
+  {
+    "id": "S018",
+    "category": "A_easy_explicit_limit",
+    "difficulty": "easy",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 제한속도 50km/h 일반도로에서 155km/h로 주행하였다.",
+    "speed_limit": 50,
+    "actual_speed": 155,
+    "speed_over": 105,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_6",
+      "severity_label": "극히위험",
+      "criminal": true,
+      "legal_basis": "제153조제2항제2호",
+      "fine_amount": null,
+      "demerit_points": null
+    }
+  },
+  {
+    "id": "S019",
+    "category": "B_medium_no_limit",
+    "difficulty": "medium",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 고속도로에서 95km/h로 주행하였다.",
+    "speed_limit": 80,
+    "actual_speed": 95,
+    "speed_over": 15,
+    "road_type": "expressway",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_1",
+      "severity_label": "경미",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 30000,
+      "demerit_points": 0
+    }
+  },
+  {
+    "id": "S020",
+    "category": "B_medium_no_limit",
+    "difficulty": "medium",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 고속도로에서 115km/h로 주행하였다.",
+    "speed_limit": 80,
+    "actual_speed": 115,
+    "speed_over": 35,
+    "road_type": "expressway",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_2",
+      "severity_label": "주의",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 70000,
+      "demerit_points": 15
+    }
+  },
+  {
+    "id": "S021",
+    "category": "B_medium_no_limit",
+    "difficulty": "medium",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 고속도로에서 130km/h로 주행하였다.",
+    "speed_limit": 80,
+    "actual_speed": 130,
+    "speed_over": 50,
+    "road_type": "expressway",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_3",
+      "severity_label": "경고",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 100000,
+      "demerit_points": 30
+    }
+  },
+  {
+    "id": "S022",
+    "category": "B_medium_no_limit",
+    "difficulty": "medium",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 고속도로에서 150km/h로 주행하였다.",
+    "speed_limit": 80,
+    "actual_speed": 150,
+    "speed_over": 70,
+    "road_type": "expressway",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_4",
+      "severity_label": "위험",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 130000,
+      "demerit_points": 60
+    }
+  },
+  {
+    "id": "S023",
+    "category": "B_medium_no_limit",
+    "difficulty": "medium",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 고속도로에서 170km/h로 주행하였다.",
+    "speed_limit": 80,
+    "actual_speed": 170,
+    "speed_over": 90,
+    "road_type": "expressway",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_5",
+      "severity_label": "매우위험",
+      "criminal": true,
+      "legal_basis": "제154조제9호",
+      "fine_amount": null,
+      "demerit_points": 80
+    }
+  },
+  {
+    "id": "S024",
+    "category": "B_medium_no_limit",
+    "difficulty": "medium",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 고속도로에서 190km/h로 주행하였다.",
+    "speed_limit": 80,
+    "actual_speed": 190,
+    "speed_over": 110,
+    "road_type": "expressway",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_6",
+      "severity_label": "극히위험",
+      "criminal": true,
+      "legal_basis": "제153조제2항제2호",
+      "fine_amount": null,
+      "demerit_points": null
+    }
+  },
+  {
+    "id": "S025",
+    "category": "B_medium_no_limit",
+    "difficulty": "medium",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 자동차전용도로에서 100km/h로 주행하였다.",
+    "speed_limit": 80,
+    "actual_speed": 100,
+    "speed_over": 20,
+    "road_type": "auto_expressway",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_1",
+      "severity_label": "경미",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 30000,
+      "demerit_points": 0
+    }
+  },
+  {
+    "id": "S026",
+    "category": "B_medium_no_limit",
+    "difficulty": "medium",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 자동차전용도로에서 125km/h로 주행하였다.",
+    "speed_limit": 80,
+    "actual_speed": 125,
+    "speed_over": 45,
+    "road_type": "auto_expressway",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_3",
+      "severity_label": "경고",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 100000,
+      "demerit_points": 30
+    }
+  },
+  {
+    "id": "S027",
+    "category": "B_medium_no_limit",
+    "difficulty": "medium",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 일반도로에서 80km/h로 주행하였다.",
+    "speed_limit": 60,
+    "actual_speed": 80,
+    "speed_over": 20,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_1",
+      "severity_label": "경미",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 30000,
+      "demerit_points": 0
+    }
+  },
+  {
+    "id": "S028",
+    "category": "B_medium_no_limit",
+    "difficulty": "medium",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 일반도로에서 81km/h로 주행하였다.",
+    "speed_limit": 60,
+    "actual_speed": 81,
+    "speed_over": 21,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_2",
+      "severity_label": "주의",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 70000,
+      "demerit_points": 15
+    }
+  },
+  {
+    "id": "S029",
+    "category": "B_medium_no_limit",
+    "difficulty": "medium",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 일반도로에서 140km/h로 주행하였다.",
+    "speed_limit": 60,
+    "actual_speed": 140,
+    "speed_over": 80,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_4",
+      "severity_label": "위험",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 130000,
+      "demerit_points": 60
+    }
+  },
+  {
+    "id": "S030",
+    "category": "B_medium_no_limit",
+    "difficulty": "medium",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 일반도로에서 141km/h로 주행하였다.",
+    "speed_limit": 60,
+    "actual_speed": 141,
+    "speed_over": 81,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_5",
+      "severity_label": "매우위험",
+      "criminal": true,
+      "legal_basis": "제154조제9호",
+      "fine_amount": null,
+      "demerit_points": 80
+    }
+  },
+  {
+    "id": "S031",
+    "category": "B_medium_no_limit",
+    "difficulty": "medium",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 일반도로에서 100km/h로 주행하였다.",
+    "speed_limit": 60,
+    "actual_speed": 100,
+    "speed_over": 40,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_2",
+      "severity_label": "주의",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 70000,
+      "demerit_points": 15
+    }
+  },
+  {
+    "id": "S032",
+    "category": "B_medium_no_limit",
+    "difficulty": "medium",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 일반도로에서 101km/h로 주행하였다.",
+    "speed_limit": 60,
+    "actual_speed": 101,
+    "speed_over": 41,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_3",
+      "severity_label": "경고",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 100000,
+      "demerit_points": 30
+    }
+  },
+  {
+    "id": "S033",
+    "category": "B_medium_no_limit",
+    "difficulty": "medium",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 일반도로에서 120km/h로 주행하였다.",
+    "speed_limit": 60,
+    "actual_speed": 120,
+    "speed_over": 60,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_3",
+      "severity_label": "경고",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 100000,
+      "demerit_points": 30
+    }
+  },
+  {
+    "id": "S034",
+    "category": "B_medium_no_limit",
+    "difficulty": "medium",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 일반도로에서 121km/h로 주행하였다.",
+    "speed_limit": 60,
+    "actual_speed": 121,
+    "speed_over": 61,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_4",
+      "severity_label": "위험",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 130000,
+      "demerit_points": 60
+    }
+  },
+  {
+    "id": "S035",
+    "category": "B_medium_no_limit",
+    "difficulty": "medium",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 일반도로에서 160km/h로 주행하였다.",
+    "speed_limit": 60,
+    "actual_speed": 160,
+    "speed_over": 100,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_5",
+      "severity_label": "매우위험",
+      "criminal": true,
+      "legal_basis": "제154조제9호",
+      "fine_amount": null,
+      "demerit_points": 80
+    }
+  },
+  {
+    "id": "S036",
+    "category": "B_medium_no_limit",
+    "difficulty": "medium",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 일반도로에서 161km/h로 주행하였다.",
+    "speed_limit": 60,
+    "actual_speed": 161,
+    "speed_over": 101,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_6",
+      "severity_label": "극히위험",
+      "criminal": true,
+      "legal_basis": "제153조제2항제2호",
+      "fine_amount": null,
+      "demerit_points": null
+    }
+  },
+  {
+    "id": "S037",
+    "category": "C_easy_non_speed",
+    "difficulty": "easy",
+    "type": "single",
+    "violation_types": [
+      "sudden_accel"
+    ],
+    "description": "화물차가 일반도로에서 급가속하였다 (초당 가속도 +9km/h).",
+    "speed_over": null,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "제156조"
+    }
+  },
+  {
+    "id": "S038",
+    "category": "C_easy_non_speed",
+    "difficulty": "easy",
+    "type": "single",
+    "violation_types": [
+      "sudden_start"
+    ],
+    "description": "화물차가 정지 상태에서 급출발하였다 (초당 가속도 +11km/h).",
+    "speed_over": null,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "제156조"
+    }
+  },
+  {
+    "id": "S039",
+    "category": "C_easy_non_speed",
+    "difficulty": "easy",
+    "type": "single",
+    "violation_types": [
+      "sudden_decel"
+    ],
+    "description": "화물차가 50km/h 주행 중 급감속하였다 (초당 감속 -15km/h).",
+    "speed_over": null,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "제156조"
+    }
+  },
+  {
+    "id": "S040",
+    "category": "C_easy_non_speed",
+    "difficulty": "easy",
+    "type": "single",
+    "violation_types": [
+      "sudden_stop"
+    ],
+    "description": "화물차가 40km/h 주행 중 급정지하였다 (감속 후 5km/h 이하).",
+    "speed_over": null,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "제156조"
+    }
+  },
+  {
+    "id": "S041",
+    "category": "C_easy_non_speed",
+    "difficulty": "easy",
+    "type": "single",
+    "violation_types": [
+      "sudden_lane_change"
+    ],
+    "description": "화물차가 35km/h 주행 중 급격히 차로를 변경하였다.",
+    "speed_over": null,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "제156조"
+    }
+  },
+  {
+    "id": "S042",
+    "category": "C_easy_non_speed",
+    "difficulty": "easy",
+    "type": "single",
+    "violation_types": [
+      "sudden_overtake"
+    ],
+    "description": "화물차가 급차로변경과 동시에 가속하며 앞지르기하였다.",
+    "speed_over": null,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "제156조"
+    }
+  },
+  {
+    "id": "S043",
+    "category": "C_easy_non_speed",
+    "difficulty": "easy",
+    "type": "single",
+    "violation_types": [
+      "sudden_turn"
+    ],
+    "description": "화물차가 25km/h로 교차로에서 급회전하였다.",
+    "speed_over": null,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "제156조"
+    }
+  },
+  {
+    "id": "S044",
+    "category": "C_easy_non_speed",
+    "difficulty": "easy",
+    "type": "single",
+    "violation_types": [
+      "sudden_uturn"
+    ],
+    "description": "화물차가 20km/h로 급유턴하였다.",
+    "speed_over": null,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "제156조"
+    }
+  },
+  {
+    "id": "S045",
+    "category": "C_easy_non_speed",
+    "difficulty": "easy",
+    "type": "single",
+    "violation_types": [
+      "sudden_accel"
+    ],
+    "description": "화물차가 고속도로 진입로에서 급가속하였다 (초당 가속도 +12km/h).",
+    "speed_over": null,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "제156조"
+    }
+  },
+  {
+    "id": "S046",
+    "category": "C_easy_non_speed",
+    "difficulty": "easy",
+    "type": "single",
+    "violation_types": [
+      "sudden_decel"
+    ],
+    "description": "화물차가 80km/h 고속도로 주행 중 급감속하였다 (초당 감속 -18km/h).",
+    "speed_over": null,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "제156조"
+    }
+  },
+  {
+    "id": "S047",
+    "category": "C_easy_non_speed",
+    "difficulty": "easy",
+    "type": "single",
+    "violation_types": [
+      "sudden_stop"
+    ],
+    "description": "화물차가 60km/h 주행 중 갑작스럽게 급정지하였다.",
+    "speed_over": null,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "제156조"
+    }
+  },
+  {
+    "id": "S048",
+    "category": "C_easy_non_speed",
+    "difficulty": "easy",
+    "type": "single",
+    "violation_types": [
+      "sudden_lane_change"
+    ],
+    "description": "화물차가 70km/h 고속도로에서 급격히 차로를 변경하였다.",
+    "speed_over": null,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "제156조"
+    }
+  },
+  {
+    "id": "S049",
+    "category": "C_easy_non_speed",
+    "difficulty": "easy",
+    "type": "single",
+    "violation_types": [
+      "sudden_turn"
+    ],
+    "description": "화물차가 22km/h로 교차로에서 급좌회전하였다.",
+    "speed_over": null,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "제156조"
+    }
+  },
+  {
+    "id": "S050",
+    "category": "C_easy_non_speed",
+    "difficulty": "easy",
+    "type": "single",
+    "violation_types": [
+      "sudden_turn"
+    ],
+    "description": "화물차가 18km/h로 교차로에서 급우회전하였다.",
+    "speed_over": null,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "제156조"
+    }
+  },
+  {
+    "id": "S051",
+    "category": "D_hard_compound",
+    "difficulty": "hard",
+    "type": "compound",
+    "violation_types": [
+      "speeding",
+      "sudden_decel"
+    ],
+    "description": "화물차(4톤 초과)가 제한속도 60km/h 일반도로에서 고속 주행 후 급감속하였다. 주행속도 130km/h.",
+    "speed_limit": 60,
+    "actual_speed": 130,
+    "speed_over": 70,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_4",
+      "severity_label": "위험",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 130000,
+      "demerit_points": 60,
+      "compound_violations": 2
+    }
+  },
+  {
+    "id": "S052",
+    "category": "D_hard_compound",
+    "difficulty": "hard",
+    "type": "compound",
+    "violation_types": [
+      "speeding",
+      "sudden_stop"
+    ],
+    "description": "화물차(4톤 초과)가 제한속도 60km/h 도로에서 110km/h 주행 중 급정지하였다.",
+    "speed_limit": 60,
+    "actual_speed": 110,
+    "speed_over": 50,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_3",
+      "severity_label": "경고",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 100000,
+      "demerit_points": 30,
+      "compound_violations": 2
+    }
+  },
+  {
+    "id": "S053",
+    "category": "D_hard_compound",
+    "difficulty": "hard",
+    "type": "compound",
+    "violation_types": [
+      "speeding",
+      "sudden_lane_change"
+    ],
+    "description": "화물차(4톤 초과)가 고속도로에서 150km/h로 주행하며 급진로변경하였다.",
+    "speed_limit": 80,
+    "actual_speed": 150,
+    "speed_over": 70,
+    "road_type": "expressway",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_4",
+      "severity_label": "위험",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 130000,
+      "demerit_points": 60,
+      "compound_violations": 2
+    }
+  },
+  {
+    "id": "S054",
+    "category": "D_hard_compound",
+    "difficulty": "hard",
+    "type": "compound",
+    "violation_types": [
+      "speeding",
+      "sudden_accel"
+    ],
+    "description": "화물차(4톤 초과)가 일반도로에서 급가속하여 95km/h에 도달하였다. 해당 도로 제한속도 60km/h.",
+    "speed_limit": 60,
+    "actual_speed": 95,
+    "speed_over": 35,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_2",
+      "severity_label": "주의",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 70000,
+      "demerit_points": 15,
+      "compound_violations": 2
+    }
+  },
+  {
+    "id": "S055",
+    "category": "D_hard_compound",
+    "difficulty": "hard",
+    "type": "compound",
+    "violation_types": [
+      "speeding",
+      "sudden_overtake"
+    ],
+    "description": "화물차(4톤 초과)가 고속도로에서 125km/h로 급앞지르기하였다.",
+    "speed_limit": 80,
+    "actual_speed": 125,
+    "speed_over": 45,
+    "road_type": "expressway",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_3",
+      "severity_label": "경고",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 100000,
+      "demerit_points": 30,
+      "compound_violations": 2
+    }
+  },
+  {
+    "id": "S056",
+    "category": "D_hard_compound",
+    "difficulty": "hard",
+    "type": "compound",
+    "violation_types": [
+      "sudden_accel",
+      "sudden_decel"
+    ],
+    "description": "화물차가 일반도로에서 급가속 직후 급감속하였다 (지그재그 운전).",
+    "speed_limit": null,
+    "actual_speed": null,
+    "speed_over": null,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "제156조",
+      "compound_violations": 2
+    }
+  },
+  {
+    "id": "S057",
+    "category": "D_hard_compound",
+    "difficulty": "hard",
+    "type": "compound",
+    "violation_types": [
+      "sudden_lane_change",
+      "sudden_decel"
+    ],
+    "description": "화물차가 일반도로에서 급진로변경 후 급감속하였다.",
+    "speed_limit": null,
+    "actual_speed": null,
+    "speed_over": null,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "제156조",
+      "compound_violations": 2
+    }
+  },
+  {
+    "id": "S058",
+    "category": "D_hard_compound",
+    "difficulty": "hard",
+    "type": "compound",
+    "violation_types": [
+      "speeding",
+      "sudden_turn"
+    ],
+    "description": "화물차(4톤 초과)가 제한속도 50km/h 교차로에서 85km/h로 급회전하였다.",
+    "speed_limit": 50,
+    "actual_speed": 85,
+    "speed_over": 35,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_2",
+      "severity_label": "주의",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 70000,
+      "demerit_points": 15,
+      "compound_violations": 2
+    }
+  },
+  {
+    "id": "S059",
+    "category": "D_hard_compound",
+    "difficulty": "hard",
+    "type": "compound",
+    "violation_types": [
+      "speeding",
+      "sudden_decel",
+      "sudden_stop"
+    ],
+    "description": "화물차(4톤 초과)가 일반도로에서 140km/h 주행 후 급감속하여 급정지하였다. 제한속도 60km/h.",
+    "speed_limit": 60,
+    "actual_speed": 140,
+    "speed_over": 80,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_4",
+      "severity_label": "위험",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 130000,
+      "demerit_points": 60,
+      "compound_violations": 3
+    }
+  },
+  {
+    "id": "S060",
+    "category": "D_hard_compound",
+    "difficulty": "hard",
+    "type": "compound",
+    "violation_types": [
+      "speeding",
+      "sudden_lane_change",
+      "sudden_overtake"
+    ],
+    "description": "화물차(4톤 초과)가 고속도로에서 135km/h로 주행하며 급진로변경과 급앞지르기를 동시에 하였다.",
+    "speed_limit": 80,
+    "actual_speed": 135,
+    "speed_over": 55,
+    "road_type": "expressway",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_3",
+      "severity_label": "경고",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 100000,
+      "demerit_points": 30,
+      "compound_violations": 3
+    }
+  },
+  {
+    "id": "S061",
+    "category": "D_hard_compound",
+    "difficulty": "hard",
+    "type": "compound",
+    "violation_types": [
+      "speeding",
+      "sudden_uturn"
+    ],
+    "description": "화물차(4톤 초과)가 제한속도 50km/h 도로에서 72km/h로 주행 중 급유턴을 시도하였다.",
+    "speed_limit": 50,
+    "actual_speed": 72,
+    "speed_over": 22,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_2",
+      "severity_label": "주의",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 70000,
+      "demerit_points": 15,
+      "compound_violations": 2
+    }
+  },
+  {
+    "id": "S062",
+    "category": "D_hard_compound",
+    "difficulty": "hard",
+    "type": "compound",
+    "violation_types": [
+      "speeding",
+      "sudden_accel",
+      "sudden_lane_change"
+    ],
+    "description": "화물차(4톤 초과)가 일반도로에서 급가속하여 105km/h에 도달 후 급진로변경하였다. 제한속도 60km/h.",
+    "speed_limit": 60,
+    "actual_speed": 105,
+    "speed_over": 45,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_3",
+      "severity_label": "경고",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 100000,
+      "demerit_points": 30,
+      "compound_violations": 3
+    }
+  },
+  {
+    "id": "S063",
+    "category": "D_hard_compound",
+    "difficulty": "hard",
+    "type": "compound",
+    "violation_types": [
+      "sudden_accel",
+      "sudden_turn"
+    ],
+    "description": "화물차가 교차로 진입 시 급가속 후 급회전하였다.",
+    "speed_limit": null,
+    "actual_speed": null,
+    "speed_over": null,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "제156조",
+      "compound_violations": 2
+    }
+  },
+  {
+    "id": "S064",
+    "category": "D_hard_compound",
+    "difficulty": "hard",
+    "type": "compound",
+    "violation_types": [
+      "sudden_lane_change",
+      "sudden_overtake"
+    ],
+    "description": "화물차가 고속도로에서 급진로변경과 동시에 급앞지르기를 하였다.",
+    "speed_limit": null,
+    "actual_speed": null,
+    "speed_over": null,
+    "road_type": "expressway",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": null,
+      "criminal": false,
+      "legal_basis": "제156조",
+      "compound_violations": 2
+    }
+  },
+  {
+    "id": "S065",
+    "category": "E_hard_aggravating",
+    "difficulty": "hard",
+    "type": "aggravated",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 어린이보호구역에서 55km/h로 주행하였다.",
+    "speed_limit": 30,
+    "actual_speed": 55,
+    "speed_over": 25,
+    "road_type": "school_zone",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": true,
+    "repeat_over_100": false,
+    "expected": {
+      "severity_level": "level_2",
+      "severity_label": "주의",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 70000,
+      "demerit_points": 15,
+      "aggravating": "school_zone",
+      "demerit_multiplier": 2.0,
+      "demerit_points_adjusted": 30
+    }
+  },
+  {
+    "id": "S066",
+    "category": "E_hard_aggravating",
+    "difficulty": "hard",
+    "type": "aggravated",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 어린이보호구역에서 75km/h로 주행하였다.",
+    "speed_limit": 30,
+    "actual_speed": 75,
+    "speed_over": 45,
+    "road_type": "school_zone",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": true,
+    "repeat_over_100": false,
+    "expected": {
+      "severity_level": "level_3",
+      "severity_label": "경고",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 100000,
+      "demerit_points": 30,
+      "aggravating": "school_zone",
+      "demerit_multiplier": 2.0,
+      "demerit_points_adjusted": 60
+    }
+  },
+  {
+    "id": "S067",
+    "category": "E_hard_aggravating",
+    "difficulty": "hard",
+    "type": "aggravated",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 어린이보호구역에서 100km/h로 주행하였다.",
+    "speed_limit": 30,
+    "actual_speed": 100,
+    "speed_over": 70,
+    "road_type": "school_zone",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": true,
+    "repeat_over_100": false,
+    "expected": {
+      "severity_level": "level_4",
+      "severity_label": "위험",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 130000,
+      "demerit_points": 60,
+      "aggravating": "school_zone",
+      "demerit_multiplier": 2.0,
+      "demerit_points_adjusted": 120
+    }
+  },
+  {
+    "id": "S068",
+    "category": "E_hard_aggravating",
+    "difficulty": "hard",
+    "type": "aggravated",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 어린이보호구역에서 140km/h로 주행하였다.",
+    "speed_limit": 30,
+    "actual_speed": 140,
+    "speed_over": 110,
+    "road_type": "school_zone",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": true,
+    "repeat_over_100": false,
+    "expected": {
+      "severity_level": "level_6",
+      "severity_label": "극히위험",
+      "criminal": true,
+      "legal_basis": "제153조제2항제2호",
+      "fine_amount": null,
+      "demerit_points": null,
+      "aggravating": "school_zone",
+      "demerit_multiplier": 2.0
+    }
+  },
+  {
+    "id": "S069",
+    "category": "E_hard_aggravating",
+    "difficulty": "hard",
+    "type": "aggravated",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 일반도로에서 170km/h로 주행하였다. 해당 운전자는 이전에 100km/h 초과 과속으로 2회 적발된 바 있다.",
+    "speed_limit": 60,
+    "actual_speed": 170,
+    "speed_over": 110,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "repeat_over_100": true,
+    "expected": {
+      "severity_level": "level_6",
+      "severity_label": "극히위험",
+      "criminal": true,
+      "legal_basis": "제153조제2항제2호",
+      "fine_amount": null,
+      "demerit_points": null,
+      "aggravating": "repeat_100km",
+      "escalation": "제151조의2제2호"
+    }
+  },
+  {
+    "id": "S070",
+    "category": "E_hard_aggravating",
+    "difficulty": "hard",
+    "type": "aggravated",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 고속도로에서 190km/h로 주행하였다. 해당 운전자는 과거 100km/h 초과 과속 2회 전력이 있다.",
+    "speed_limit": 80,
+    "actual_speed": 190,
+    "speed_over": 110,
+    "road_type": "expressway",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "repeat_over_100": true,
+    "expected": {
+      "severity_level": "level_6",
+      "severity_label": "극히위험",
+      "criminal": true,
+      "legal_basis": "제153조제2항제2호",
+      "fine_amount": null,
+      "demerit_points": null,
+      "aggravating": "repeat_100km",
+      "escalation": "제151조의2제2호"
+    }
+  },
+  {
+    "id": "S071",
+    "category": "E_hard_aggravating",
+    "difficulty": "hard",
+    "type": "aggravated",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "적재중량 1.5톤 초과 화물차가 일반도로에서 95km/h로 주행하였다. 해당 도로 제한속도 60km/h.",
+    "speed_limit": 60,
+    "actual_speed": 95,
+    "speed_over": 35,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "repeat_over_100": false,
+    "expected": {
+      "severity_level": "level_2",
+      "severity_label": "주의",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 70000,
+      "demerit_points": 15
+    }
+  },
+  {
+    "id": "S072",
+    "category": "E_hard_aggravating",
+    "difficulty": "hard",
+    "type": "aggravated",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "적재중량 1.5톤 이하 소형화물차가 일반도로에서 130km/h로 주행하였다. 해당 도로 제한속도 60km/h.",
+    "speed_limit": 60,
+    "actual_speed": 130,
+    "speed_over": 70,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "repeat_over_100": false,
+    "expected": {
+      "severity_level": "level_4",
+      "severity_label": "위험",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 130000,
+      "demerit_points": 60
+    }
+  },
+  {
+    "id": "S073",
+    "category": "E_hard_aggravating",
+    "difficulty": "hard",
+    "type": "aggravated",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 어린이보호구역에서 45km/h로 주행하였다.",
+    "speed_limit": 30,
+    "actual_speed": 45,
+    "speed_over": 15,
+    "road_type": "school_zone",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": true,
+    "repeat_over_100": false,
+    "expected": {
+      "severity_level": "level_1",
+      "severity_label": "경미",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 30000,
+      "demerit_points": 0,
+      "aggravating": "school_zone",
+      "demerit_multiplier": 2.0,
+      "demerit_points_adjusted": 0
+    }
+  },
+  {
+    "id": "S074",
+    "category": "E_hard_aggravating",
+    "difficulty": "hard",
+    "type": "aggravated",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 어린이보호구역에서 120km/h로 주행하였다.",
+    "speed_limit": 30,
+    "actual_speed": 120,
+    "speed_over": 90,
+    "road_type": "school_zone",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": true,
+    "repeat_over_100": false,
+    "expected": {
+      "severity_level": "level_5",
+      "severity_label": "매우위험",
+      "criminal": true,
+      "legal_basis": "제154조제9호",
+      "fine_amount": null,
+      "demerit_points": 80,
+      "aggravating": "school_zone",
+      "demerit_multiplier": 2.0,
+      "demerit_points_adjusted": 160
+    }
+  },
+  {
+    "id": "S075",
+    "category": "E_hard_aggravating",
+    "difficulty": "hard",
+    "type": "aggravated",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 스쿨존(제한속도 30km/h)에서 50km/h로 주행하였다.",
+    "speed_limit": 30,
+    "actual_speed": 50,
+    "speed_over": 20,
+    "road_type": "school_zone",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": true,
+    "repeat_over_100": false,
+    "expected": {
+      "severity_level": "level_1",
+      "severity_label": "경미",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 30000,
+      "demerit_points": 0,
+      "aggravating": "school_zone",
+      "demerit_multiplier": 2.0,
+      "demerit_points_adjusted": 0
+    }
+  },
+  {
+    "id": "S076",
+    "category": "E_hard_aggravating",
+    "difficulty": "hard",
+    "type": "aggravated",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 어린이보호구역에서 160km/h로 주행하였다.",
+    "speed_limit": 30,
+    "actual_speed": 160,
+    "speed_over": 130,
+    "road_type": "school_zone",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": true,
+    "repeat_over_100": false,
+    "expected": {
+      "severity_level": "level_6",
+      "severity_label": "극히위험",
+      "criminal": true,
+      "legal_basis": "제153조제2항제2호",
+      "fine_amount": null,
+      "demerit_points": null,
+      "aggravating": "school_zone",
+      "demerit_multiplier": 2.0
+    }
+  },
+  {
+    "id": "S077",
+    "category": "E_hard_aggravating",
+    "difficulty": "hard",
+    "type": "aggravated",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 일반도로에서 165km/h로 주행하였다. 제한속도 60km/h. 해당 운전자는 100km/h 초과 과속으로 3회 적발 전력이 있다.",
+    "speed_limit": 60,
+    "actual_speed": 165,
+    "speed_over": 105,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "repeat_over_100": true,
+    "expected": {
+      "severity_level": "level_6",
+      "severity_label": "극히위험",
+      "criminal": true,
+      "legal_basis": "제153조제2항제2호",
+      "fine_amount": null,
+      "demerit_points": null,
+      "aggravating": "repeat_100km",
+      "escalation": "제151조의2제2호"
+    }
+  },
+  {
+    "id": "S078",
+    "category": "E_hard_aggravating",
+    "difficulty": "hard",
+    "type": "aggravated",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 고속도로에서 185km/h로 주행하였다. 해당 운전자는 과거 100km/h 초과 과속 전력이 3회이다.",
+    "speed_limit": 80,
+    "actual_speed": 185,
+    "speed_over": 105,
+    "road_type": "expressway",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "repeat_over_100": true,
+    "expected": {
+      "severity_level": "level_6",
+      "severity_label": "극히위험",
+      "criminal": true,
+      "legal_basis": "제153조제2항제2호",
+      "fine_amount": null,
+      "demerit_points": null,
+      "aggravating": "repeat_100km",
+      "escalation": "제151조의2제2호"
+    }
+  },
+  {
+    "id": "S079",
+    "category": "F_medium_special",
+    "difficulty": "medium",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 자동차전용도로에서 130km/h로 주행하였다.",
+    "speed_limit": 80,
+    "actual_speed": 130,
+    "speed_over": 50,
+    "road_type": "auto_only",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_3",
+      "severity_label": "경고",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 100000,
+      "demerit_points": 30
+    }
+  },
+  {
+    "id": "S080",
+    "category": "F_medium_special",
+    "difficulty": "medium",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과, DTG 미제출 상태)가 일반도로에서 90km/h로 주행하였다. 제한속도 60km/h.",
+    "speed_limit": 60,
+    "actual_speed": 90,
+    "speed_over": 30,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_2",
+      "severity_label": "주의",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 70000,
+      "demerit_points": 15
+    }
+  },
+  {
+    "id": "S081",
+    "category": "F_medium_special",
+    "difficulty": "medium",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 폭우 중 고속도로에서 109km/h로 주행하였다. 기상악화 시 제한속도 20% 감속 적용(시행규칙 제19조 제1항 제2호). 화물차 고속도로 80km/h × 0.8 = 64km/h.",
+    "speed_limit": 64,
+    "actual_speed": 109,
+    "speed_over": 45,
+    "road_type": "expressway",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_3",
+      "severity_label": "경고",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 100000,
+      "demerit_points": 30
+    }
+  },
+  {
+    "id": "S082",
+    "category": "F_medium_special",
+    "difficulty": "medium",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 공사구간(제한속도 50km/h)에서 95km/h로 주행하였다.",
+    "speed_limit": 50,
+    "actual_speed": 95,
+    "speed_over": 45,
+    "road_type": "construction",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_3",
+      "severity_label": "경고",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 100000,
+      "demerit_points": 30
+    }
+  },
+  {
+    "id": "S083",
+    "category": "F_medium_special",
+    "difficulty": "medium",
+    "type": "compound",
+    "violation_types": [
+      "speeding",
+      "sudden_decel"
+    ],
+    "description": "화물차(4톤 초과)가 터널(제한속도 70km/h)에서 140km/h로 주행 후 급감속하였다.",
+    "speed_limit": 70,
+    "actual_speed": 140,
+    "speed_over": 70,
+    "road_type": "tunnel",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_4",
+      "severity_label": "위험",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 130000,
+      "demerit_points": 60
+    }
+  },
+  {
+    "id": "S084",
+    "category": "F_medium_special",
+    "difficulty": "medium",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 주택가(제한속도 40km/h)에서 75km/h로 주행하였다.",
+    "speed_limit": 40,
+    "actual_speed": 75,
+    "speed_over": 35,
+    "road_type": "residential",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_2",
+      "severity_label": "주의",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 70000,
+      "demerit_points": 15
+    }
+  },
+  {
+    "id": "S085",
+    "category": "F_medium_special",
+    "difficulty": "medium",
+    "type": "compound",
+    "violation_types": [
+      "speeding",
+      "sudden_stop"
+    ],
+    "description": "화물차(4톤 초과)가 공사구간(제한속도 50km/h)에서 110km/h 주행 후 급정지하였다.",
+    "speed_limit": 50,
+    "actual_speed": 110,
+    "speed_over": 60,
+    "road_type": "construction",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_3",
+      "severity_label": "경고",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 100000,
+      "demerit_points": 30
+    }
+  },
+  {
+    "id": "S086",
+    "category": "F_medium_special",
+    "difficulty": "medium",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과, 야간 운행)가 일반도로에서 85km/h로 주행하였다. 제한속도 60km/h.",
+    "speed_limit": 60,
+    "actual_speed": 85,
+    "speed_over": 25,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_2",
+      "severity_label": "주의",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 70000,
+      "demerit_points": 15
+    }
+  },
+  {
+    "id": "S087",
+    "category": "F_medium_special",
+    "difficulty": "medium",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 터널구간(제한속도 80km/h)에서 145km/h로 주행하였다.",
+    "speed_limit": 80,
+    "actual_speed": 145,
+    "speed_over": 65,
+    "road_type": "tunnel",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_4",
+      "severity_label": "위험",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 130000,
+      "demerit_points": 60
+    }
+  },
+  {
+    "id": "S088",
+    "category": "F_medium_special",
+    "difficulty": "medium",
+    "type": "single",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 비 오는 날 일반도로(제한속도 60km/h)에서 75km/h로 주행하였다.",
+    "speed_limit": 60,
+    "actual_speed": 75,
+    "speed_over": 15,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_1",
+      "severity_label": "경미",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 30000,
+      "demerit_points": 0
+    }
+  },
+  {
+    "id": "S089",
+    "category": "G_hard_cross_law",
+    "difficulty": "hard",
+    "type": "compound",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 일반도로(제한속도 60km/h)에서 85km/h 주행 중 교통사고를 유발하였다.",
+    "speed_limit": 60,
+    "actual_speed": 85,
+    "speed_over": 25,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_2",
+      "severity_label": "주의",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 70000,
+      "demerit_points": 15
+    }
+  },
+  {
+    "id": "S090",
+    "category": "G_hard_cross_law",
+    "difficulty": "hard",
+    "type": "compound",
+    "violation_types": [
+      "speeding",
+      "dtg_violation"
+    ],
+    "description": "화물차(4톤 초과, DTG 운행기록 미제출)가 일반도로에서 110km/h로 주행하였다. 제한속도 60km/h.",
+    "speed_limit": 60,
+    "actual_speed": 110,
+    "speed_over": 50,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_3",
+      "severity_label": "경고",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 100000,
+      "demerit_points": 30
+    }
+  },
+  {
+    "id": "S091",
+    "category": "G_hard_cross_law",
+    "difficulty": "hard",
+    "type": "compound",
+    "violation_types": [
+      "speeding",
+      "education"
+    ],
+    "description": "화물차(4톤 초과, 운수종사자 교육 미이수)가 일반도로에서 130km/h로 주행하였다. 제한속도 60km/h.",
+    "speed_limit": 60,
+    "actual_speed": 130,
+    "speed_over": 70,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_4",
+      "severity_label": "위험",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 130000,
+      "demerit_points": 60
+    }
+  },
+  {
+    "id": "S092",
+    "category": "G_hard_cross_law",
+    "difficulty": "hard",
+    "type": "compound",
+    "violation_types": [
+      "speeding",
+      "sudden_stop"
+    ],
+    "description": "화물차(4톤 초과)가 어린이보호구역에서 70km/h로 주행 중 급정지하였다.",
+    "speed_limit": 30,
+    "actual_speed": 70,
+    "speed_over": 40,
+    "road_type": "school_zone",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": true,
+    "expected": {
+      "severity_level": "level_2",
+      "severity_label": "주의",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 70000,
+      "demerit_points": 15,
+      "aggravating": "school_zone",
+      "demerit_multiplier": 2.0,
+      "demerit_points_adjusted": 30
+    }
+  },
+  {
+    "id": "S093",
+    "category": "G_hard_cross_law",
+    "difficulty": "hard",
+    "type": "compound",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 일반도로에서 150km/h로 주행하였다. 제한속도 60km/h. 이 운전자는 100km/h 초과 과속 전력 2회.",
+    "speed_limit": 60,
+    "actual_speed": 150,
+    "speed_over": 90,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_5",
+      "severity_label": "매우위험",
+      "criminal": true,
+      "legal_basis": "제154조제9호",
+      "fine_amount": null,
+      "demerit_points": 80,
+      "aggravating": "repeat_100km",
+      "escalation": "제151조의2제2호"
+    }
+  },
+  {
+    "id": "S094",
+    "category": "G_hard_cross_law",
+    "difficulty": "hard",
+    "type": "compound",
+    "violation_types": [
+      "speeding",
+      "sudden_decel"
+    ],
+    "description": "화물차(4톤 초과)가 어린이보호구역에서 95km/h로 주행 중 급감속하였다.",
+    "speed_limit": 30,
+    "actual_speed": 95,
+    "speed_over": 65,
+    "road_type": "school_zone",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": true,
+    "expected": {
+      "severity_level": "level_4",
+      "severity_label": "위험",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 130000,
+      "demerit_points": 60,
+      "aggravating": "school_zone",
+      "demerit_multiplier": 2.0,
+      "demerit_points_adjusted": 120
+    }
+  },
+  {
+    "id": "S095",
+    "category": "G_hard_cross_law",
+    "difficulty": "hard",
+    "type": "compound",
+    "violation_types": [
+      "speeding",
+      "overload"
+    ],
+    "description": "화물차(4톤 초과, 적재량 초과 상태)가 일반도로에서 100km/h로 주행하였다. 제한속도 60km/h.",
+    "speed_limit": 60,
+    "actual_speed": 100,
+    "speed_over": 40,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_2",
+      "severity_label": "주의",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 70000,
+      "demerit_points": 15
+    }
+  },
+  {
+    "id": "S096",
+    "category": "G_hard_cross_law",
+    "difficulty": "hard",
+    "type": "compound",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 고속도로에서 165km/h로 주행 중 교통사고를 유발하였다.",
+    "speed_limit": 80,
+    "actual_speed": 165,
+    "speed_over": 85,
+    "road_type": "expressway",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_5",
+      "severity_label": "매우위험",
+      "criminal": true,
+      "legal_basis": "제154조제9호",
+      "fine_amount": null,
+      "demerit_points": 80
+    }
+  },
+  {
+    "id": "S097",
+    "category": "G_hard_cross_law",
+    "difficulty": "hard",
+    "type": "compound",
+    "violation_types": [
+      "speeding",
+      "sudden_lane_change"
+    ],
+    "description": "화물차(4톤 초과)가 일반도로(제한속도 50km/h)에서 120km/h로 주행하며 급진로변경하였다.",
+    "speed_limit": 50,
+    "actual_speed": 120,
+    "speed_over": 70,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_4",
+      "severity_label": "위험",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 130000,
+      "demerit_points": 60
+    }
+  },
+  {
+    "id": "S098",
+    "category": "G_hard_cross_law",
+    "difficulty": "hard",
+    "type": "compound",
+    "violation_types": [
+      "speeding"
+    ],
+    "description": "화물차(4톤 초과)가 일반도로에서 175km/h로 주행하였다. 제한속도 60km/h. 운전자는 100km/h 초과 과속 3회 적발 전력.",
+    "speed_limit": 60,
+    "actual_speed": 175,
+    "speed_over": 115,
+    "road_type": "general",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_6",
+      "severity_label": "극히위험",
+      "criminal": true,
+      "legal_basis": "제153조제2항제2호",
+      "fine_amount": null,
+      "demerit_points": null,
+      "aggravating": "repeat_100km",
+      "escalation": "제151조의2제2호"
+    }
+  },
+  {
+    "id": "S099",
+    "category": "G_hard_cross_law",
+    "difficulty": "hard",
+    "type": "compound",
+    "violation_types": [
+      "speeding",
+      "sudden_accel"
+    ],
+    "description": "화물차(4톤 초과)가 어린이보호구역에서 급가속하여 85km/h에 도달하였다.",
+    "speed_limit": 30,
+    "actual_speed": 85,
+    "speed_over": 55,
+    "road_type": "school_zone",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": true,
+    "expected": {
+      "severity_level": "level_3",
+      "severity_label": "경고",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 100000,
+      "demerit_points": 30,
+      "aggravating": "school_zone",
+      "demerit_multiplier": 2.0,
+      "demerit_points_adjusted": 60
+    }
+  },
+  {
+    "id": "S100",
+    "category": "G_hard_cross_law",
+    "difficulty": "hard",
+    "type": "compound",
+    "violation_types": [
+      "speeding",
+      "sudden_stop"
+    ],
+    "description": "화물차(4톤 초과)가 고속도로에서 145km/h 주행 중 급정지하였다.",
+    "speed_limit": 80,
+    "actual_speed": 145,
+    "speed_over": 65,
+    "road_type": "expressway",
+    "vehicle_type": "cargo_over_4t",
+    "school_zone": false,
+    "expected": {
+      "severity_level": "level_4",
+      "severity_label": "위험",
+      "criminal": false,
+      "legal_basis": "제156조제1호",
+      "fine_amount": 130000,
+      "demerit_points": 60
+    }
+  }
+]

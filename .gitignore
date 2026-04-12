@@ -1,0 +1,8 @@
+.env
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+data/kg/faiss_index.bin
+node_modules/
+.DS_Store
+Thumbs.db

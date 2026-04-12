@@ -1,0 +1,5 @@
+Metric,S2,S3,Delta
+Severity F1,24.2%,27.1%,+2.8%p
+Citation Accuracy,100.0%,100.0%,+0.0%p
+Multi-hop Recall,30.9%,53.0%,+22.1%p
+Severity Accuracy,33.0%,34.0%,+1.0%p
