@@ -1,0 +1,28 @@
+# IRAC-V GraphRAG Framework
+# Python 3.12.7
+# pip install -r requirements.txt
+
+# ── LLM & Embedding ──
+anthropic==0.96.0           # Claude Sonnet 4 API (claude-sonnet-4-20250514)
+openai==2.32.0              # text-embedding-3-small (1,536차원)
+
+# ── Graph & Vector DB ──
+neo4j==5.28.3               # Neo4j 5.x 그래프 DB 드라이버
+faiss-cpu==1.13.2           # FAISS 벡터 인덱스 (IndexFlatIP)
+
+# ── Data & Computation ──
+numpy==2.4.3
+pandas==3.0.1
+openpyxl==3.1.5             # Excel(.xlsx) 읽기
+
+# ── Visualization ──
+matplotlib==3.10.8          # 논문용 Figure (600 DPI)
+
+# ── ML & Statistics ──
+scikit-learn==1.8.0         # F1 Score, Confusion Matrix
+scipy==1.17.1               # McNemar 검정, Bootstrap CI
+
+# ── Utilities ──
+python-dotenv==1.2.2        # .env 환경변수 로드
+requests==2.33.0            # 법제처 Open API 호출
+tqdm==4.67.3                # 진행률 표시
