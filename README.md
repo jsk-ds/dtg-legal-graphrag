@@ -113,8 +113,6 @@ pip install anthropic openai neo4j faiss-cpu numpy pandas matplotlib scikit-lear
 
 ### API 키 설정
 
-프로젝트 루트에 `.env` 파일을 생성합니다:
-
 ```env
 # .env
 ANTHROPIC_API_KEY=sk-ant-...       # Anthropic Claude API
@@ -133,8 +131,6 @@ API 키 발급처:
 
 ## 실행 순서
 
-노트북을 **순서대로** 실행합니다:
-
 ```
 00_setup.ipynb          →  환경 검증, 디렉토리 생성
 01_data_collection.ipynb →  법령 15개 조문 수집, JSON 저장
@@ -144,8 +140,6 @@ API 키 발급처:
 05_analysis_and_paper   →  Figure/Table 생성, 통계 검정, M4 평가
 ```
 
-> **04 실행 시 주의**: 100건 × 4 Stage × 3회 반복 = 1,200회 LLM 호출. API 비용이 발생합니다.
-> 먼저 `N_REPEAT=1`로 테스트 후 `N_REPEAT=3`으로 확대를 권장합니다.
 
 ## Knowledge Graph 구조
 
@@ -204,8 +198,6 @@ API 키 발급처:
 | 교통사고 통계 | 경찰청 TAAS | 2019-2024 |
 
 ## 참고 논문
-
-본 프로젝트는 KCI 등재지 투고를 위한 연구 결과물입니다.
 
 **논문 제목**: 화물차 DTG 위험운전행동의 법적 심각도 분류를 위한 IRAC-V GraphRAG 프레임워크
 
